@@ -1,0 +1,56 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = "native"
+}
+
+model User {
+  id                  String    @id @default(uuid())
+  firstname           String?
+  lastname            String?
+  gender              String?
+  dateofbirth         DateTime?
+  email               String    @unique
+  hashedPassword      String
+  salt                String
+  resetToken          String?
+  resetTokenExpiresAt DateTime?
+  roles               String    @default("user")
+  registertimestamp   DateTime? @default(now())
+  Run                 Run[]
+}
+
+model Park {
+  id           Int       @id @default(autoincrement())
+  park_name    String?
+  image_url    String?
+  description  String?
+  address      String?
+  working_time Json?
+  Run          Run[]
+  Scanner      Scanner[]
+}
+
+model Run {
+  id              Int       @id @default(autoincrement())
+  start_timestamp DateTime?
+  stop_timestamp  DateTime?
+  total_distance  Float?
+  pace            Float?
+  user            User      @relation(fields: [userId], references: [id])
+  userId          String
+  park            Park      @relation(fields: [parkId], references: [id])
+  parkId          Int
+}
+
+model Scanner {
+  id        Int    @id @default(autoincrement())
+  park      Park   @relation(fields: [parkId], references: [id])
+  parkId    Int
+  longitude Float?
+  latitude  Float?
+}
