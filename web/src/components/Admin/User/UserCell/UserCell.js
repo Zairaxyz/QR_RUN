@@ -4,10 +4,11 @@ export const QUERY = gql`
   query FindUserById($id: String!) {
     user: user(id: $id) {
       id
-      firstname
-      lastname
+      firstName
+      lastName
       gender
-      dateofbirth
+      dateOfBirth
+      imageUrl
       email
       hashedPassword
       salt

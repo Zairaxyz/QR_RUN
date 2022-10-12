@@ -9,10 +9,11 @@ export const QUERY = gql`
   query EditUserById($id: String!) {
     user: user(id: $id) {
       id
-      firstname
-      lastname
+      firstName
+      lastName
       gender
-      dateofbirth
+      dateOfBirth
+      imageUrl
       email
       hashedPassword
       salt
@@ -27,10 +28,11 @@ const UPDATE_USER_MUTATION = gql`
   mutation UpdateUserMutation($id: String!, $input: UpdateUserInput!) {
     updateUser(id: $id, input: $input) {
       id
-      firstname
-      lastname
+      firstName
+      lastName
       gender
-      dateofbirth
+      dateOfBirth
+      imageUrl
       email
       hashedPassword
       salt

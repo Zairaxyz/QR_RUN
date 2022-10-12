@@ -30,38 +30,38 @@ const UserForm = (props) => {
         />
 
         <Label
-          name="firstname"
+          name="firstName"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Firstname
+          First name
         </Label>
 
         <TextField
-          name="firstname"
-          defaultValue={props.user?.firstname}
+          name="firstName"
+          defaultValue={props.user?.firstName}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
 
-        <FieldError name="firstname" className="rw-field-error" />
+        <FieldError name="firstName" className="rw-field-error" />
 
         <Label
-          name="lastname"
+          name="lastName"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Lastname
+          Last name
         </Label>
 
         <TextField
-          name="lastname"
-          defaultValue={props.user?.lastname}
+          name="lastName"
+          defaultValue={props.user?.lastName}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
 
-        <FieldError name="lastname" className="rw-field-error" />
+        <FieldError name="lastName" className="rw-field-error" />
 
         <Label
           name="gender"
@@ -81,21 +81,38 @@ const UserForm = (props) => {
         <FieldError name="gender" className="rw-field-error" />
 
         <Label
-          name="dateofbirth"
+          name="dateOfBirth"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Dateofbirth
+          Date of birth
         </Label>
 
         <DatetimeLocalField
-          name="dateofbirth"
-          defaultValue={formatDatetime(props.user?.dateofbirth)}
+          name="dateOfBirth"
+          defaultValue={formatDatetime(props.user?.dateOfBirth)}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
 
-        <FieldError name="dateofbirth" className="rw-field-error" />
+        <FieldError name="dateOfBirth" className="rw-field-error" />
+
+        <Label
+          name="imageUrl"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Image url
+        </Label>
+
+        <TextField
+          name="imageUrl"
+          defaultValue={props.user?.imageUrl}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+
+        <FieldError name="imageUrl" className="rw-field-error" />
 
         <Label
           name="email"

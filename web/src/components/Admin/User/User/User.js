@@ -77,20 +77,24 @@ const User = ({ user }) => {
               <td>{user.id}</td>
             </tr>
             <tr>
-              <th>Firstname</th>
-              <td>{user.firstname}</td>
+              <th>First name</th>
+              <td>{user.firstName}</td>
             </tr>
             <tr>
-              <th>Lastname</th>
-              <td>{user.lastname}</td>
+              <th>Last name</th>
+              <td>{user.lastName}</td>
             </tr>
             <tr>
               <th>Gender</th>
               <td>{user.gender}</td>
             </tr>
             <tr>
-              <th>Dateofbirth</th>
-              <td>{timeTag(user.dateofbirth)}</td>
+              <th>Date of birth</th>
+              <td>{timeTag(user.dateOfBirth)}</td>
+            </tr>
+            <tr>
+              <th>Image url</th>
+              <td>{user.imageUrl}</td>
             </tr>
             <tr>
               <th>Email</th>

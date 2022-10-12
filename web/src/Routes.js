@@ -10,7 +10,6 @@ const Routes = () => {
   return (
     <Router>
 
-
       <Set wrap={NavbarLayout}>
 
         <Private unauthenticated="home" roles="admin">
@@ -24,6 +23,7 @@ const Routes = () => {
           <Set wrap={ParksLayout}>
             <Route path="/admin/parks/new" page={AdminParkNewParkPage} name="newPark" />
             <Route path="/admin/parks/{id:Int}/edit" page={AdminParkEditParkPage} name="editPark" />
+            <Route path="/admin/parks/{id:Int}" page={AdminParkParkPage} name="park" />
             <Route path="/admin/parks" page={AdminParkParksPage} name="parks" />
           </Set>
 
@@ -49,8 +49,8 @@ const Routes = () => {
       <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
 
       <Route path="/" page={HomePage} name="home" />
-      <Route path="/parks" page={ParksPage} name="parks" />
       <Route path="/blog-park/{id:Int}" page={BlogParkPage} name="blogPark" />
+      <Route path="/blog-parks" page={BlogParksPage} name="blogParks" />
 
       </Set>
 

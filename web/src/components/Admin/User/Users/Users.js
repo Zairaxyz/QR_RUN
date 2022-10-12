@@ -80,10 +80,11 @@ const UsersList = ({ users }) => {
         <thead>
           <tr>
             <th>Id</th>
-            <th>Firstname</th>
-            <th>Lastname</th>
+            <th>First name</th>
+            <th>Last name</th>
             <th>Gender</th>
-            <th>Dateofbirth</th>
+            <th>Date of birth</th>
+            <th>Image url</th>
             <th>Email</th>
             <th>Hashed password</th>
             <th>Salt</th>
@@ -98,10 +99,11 @@ const UsersList = ({ users }) => {
           {users.map((user) => (
             <tr key={user.id}>
               <td>{truncate(user.id)}</td>
-              <td>{truncate(user.firstname)}</td>
-              <td>{truncate(user.lastname)}</td>
+              <td>{truncate(user.firstName)}</td>
+              <td>{truncate(user.lastName)}</td>
               <td>{truncate(user.gender)}</td>
-              <td>{timeTag(user.dateofbirth)}</td>
+              <td>{timeTag(user.dateOfBirth)}</td>
+              <td>{truncate(user.imageUrl)}</td>
               <td>{truncate(user.email)}</td>
               <td>{truncate(user.hashedPassword)}</td>
               <td>{truncate(user.salt)}</td>

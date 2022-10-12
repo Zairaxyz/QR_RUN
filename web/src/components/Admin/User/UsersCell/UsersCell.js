@@ -6,10 +6,11 @@ export const QUERY = gql`
   query FindUsers {
     users {
       id
-      firstname
-      lastname
+      firstName
+      lastName
       gender
-      dateofbirth
+      dateOfBirth
+      imageUrl
       email
       hashedPassword
       salt

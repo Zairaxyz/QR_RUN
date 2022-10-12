@@ -1,10 +1,11 @@
 export const schema = gql`
   type User {
     id: String!
-    firstname: String
-    lastname: String
+    firstName: String
+    lastName: String
     gender: String
-    dateofbirth: DateTime
+    dateOfBirth: DateTime
+    imageUrl: String
     email: String!
     hashedPassword: String!
     salt: String!
@@ -21,10 +22,11 @@ export const schema = gql`
   }
 
   input CreateUserInput {
-    firstname: String
-    lastname: String
+    firstName: String
+    lastName: String
     gender: String
-    dateofbirth: DateTime
+    dateOfBirth: DateTime
+    imageUrl: String
     email: String!
     hashedPassword: String!
     salt: String!
@@ -35,10 +37,11 @@ export const schema = gql`
   }
 
   input UpdateUserInput {
-    firstname: String
-    lastname: String
+    firstName: String
+    lastName: String
     gender: String
-    dateofbirth: DateTime
+    dateOfBirth: DateTime
+    imageUrl: String
     email: String
     hashedPassword: String
     salt: String

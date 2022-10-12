@@ -3,10 +3,10 @@ import { MetaTags } from '@redwoodjs/web'
 
 import BlogParksCell from 'src/components/BlogParksCell'
 
-const ParksPage = () => {
+const BlogParksPage = () => {
   return (
     <>
-      <MetaTags title="Parks" description="Parks page" />
+      <MetaTags title="BlogParks" description="BlogParks page" />
 
       <header class="bg-slate-200">
         <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
@@ -24,4 +24,4 @@ const ParksPage = () => {
   )
 }
 
-export default ParksPage
+export default BlogParksPage
