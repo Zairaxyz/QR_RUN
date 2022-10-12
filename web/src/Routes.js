@@ -1,20 +1,23 @@
 import { Router, Route, Set, Private } from '@redwoodjs/router'
 
-import ScannersLayout from 'src/layouts/ScannersLayout'
 import ParksLayout from 'src/layouts/ParksLayout'
 import RunsLayout from 'src/layouts/RunsLayout'
+import ScannersLayout from 'src/layouts/ScannersLayout'
 import UsersLayout from 'src/layouts/UsersLayout'
+
 import NavbarLayout from './layouts/NavbarLayout/NavbarLayout'
 
 const Routes = () => {
   return (
     <Router>
-
-
+      <Set wrap={UsersLayout}>
+        <Route path="/users/new" page={UserNewUserPage} name="newUser" />
+        <Route path="/users/{id}/edit" page={UserEditUserPage} name="editUser" />
+        <Route path="/users/{id}" page={UserUserPage} name="user" />
+        <Route path="/users" page={UserUsersPage} name="users" />
+      </Set>
       <Set wrap={NavbarLayout}>
-
         <Private unauthenticated="home" roles="admin">
-
           <Set wrap={ScannersLayout}>
             <Route path="/admin/scanners/new" page={AdminScannerNewScannerPage} name="newScanner" />
             <Route path="/admin/scanners/{id:Int}/edit" page={AdminScannerEditScannerPage} name="editScanner" />
@@ -40,22 +43,19 @@ const Routes = () => {
             <Route path="/admin/runs/{id:Int}" page={AdminRunRunPage} name="run" />
             <Route path="/admin/runs" page={AdminRunRunsPage} name="runs" />
           </Set>
-
         </Private>
 
-      <Route path="/login" page={LoginPage} name="login" />
-      <Route path="/signup" page={SignupPage} name="signup" />
-      <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
-      <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
+        <Route path="/login" page={LoginPage} name="login" />
+        <Route path="/signup" page={SignupPage} name="signup" />
+        <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
+        <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
 
-      <Route path="/" page={HomePage} name="home" />
-      <Route path="/parks" page={ParksPage} name="parks" />
-      <Route path="/blog-park/{id:Int}" page={BlogParkPage} name="blogPark" />
-
+        <Route path="/" page={HomePage} name="home" />
+        <Route path="/parks" page={ParksPage} name="parks" />
+        <Route path="/blog-park/{id:Int}" page={BlogParkPage} name="blogPark" />
       </Set>
 
       <Route notfound page={NotFoundPage} />
-
     </Router>
   )
 }
