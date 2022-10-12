@@ -10,6 +10,7 @@ const Routes = () => {
   return (
     <Router>
 
+
       <Set wrap={NavbarLayout}>
 
         <Private unauthenticated="home" roles="admin">
@@ -51,6 +52,7 @@ const Routes = () => {
       <Route path="/" page={HomePage} name="home" />
       <Route path="/blog-park/{id:Int}" page={BlogParkPage} name="blogPark" />
       <Route path="/blog-parks" page={BlogParksPage} name="blogParks" />
+      <Route path="/statistic" page={StatisticPage} name="statistic" />
 
       </Set>
 
