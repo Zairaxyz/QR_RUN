@@ -1,6 +1,6 @@
 export const schema = gql`
   type Park {
-    id: Int!
+    id: String!
     park_name: String
     image_url: String
     description: String
@@ -11,8 +11,8 @@ export const schema = gql`
   }
 
   type Query {
-    parks: [Park!]! @skipAuth
-    park(id: Int!): Park @skipAuth
+    parks: [Park!]! @requireAuth
+    park(id: String!): Park @requireAuth
   }
 
   input CreateParkInput {
@@ -33,7 +33,7 @@ export const schema = gql`
 
   type Mutation {
     createPark(input: CreateParkInput!): Park! @requireAuth
-    updatePark(id: Int!, input: UpdateParkInput!): Park! @requireAuth
-    deletePark(id: Int!): Park! @requireAuth
+    updatePark(id: String!, input: UpdateParkInput!): Park! @requireAuth
+    deletePark(id: String!): Park! @requireAuth
   }
 `

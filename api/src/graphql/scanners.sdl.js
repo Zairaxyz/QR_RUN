@@ -1,32 +1,33 @@
 export const schema = gql`
   type Scanner {
-    id: Int!
+    id: String!
     park: Park!
-    parkId: Int!
+    parkId: String!
     longitude: Float
     latitude: Float
   }
 
   type Query {
-    scanners: [Scanner!]! @skipAuth
-    scanner(id: Int!): Scanner @skipAuth
+    scanners: [Scanner!]! @requireAuth
+    scanner(id: String!): Scanner @requireAuth
   }
 
   input CreateScannerInput {
-    parkId: Int!
+    parkId: String!
     longitude: Float
     latitude: Float
   }
 
   input UpdateScannerInput {
-    parkId: Int
+    parkId: String
     longitude: Float
     latitude: Float
   }
 
   type Mutation {
     createScanner(input: CreateScannerInput!): Scanner! @requireAuth
-    updateScanner(id: Int!, input: UpdateScannerInput!): Scanner! @requireAuth
-    deleteScanner(id: Int!): Scanner! @requireAuth
+    updateScanner(id: String!, input: UpdateScannerInput!): Scanner!
+      @requireAuth
+    deleteScanner(id: String!): Scanner! @requireAuth
   }
 `
