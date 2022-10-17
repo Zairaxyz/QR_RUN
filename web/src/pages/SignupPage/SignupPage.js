@@ -33,7 +33,6 @@ const SignupPage = () => {
 
   const onSubmit = async (data) => {
     const response = await signUp({ ...data })
-
     if (response.message) {
       toast(response.message)
     } else if (response.error) {
@@ -104,48 +103,48 @@ const SignupPage = () => {
                   <FieldError name="password" className="rw-field-error" />
 
                   <Label
-                    name="firstname"
+                    name="FirstName"
                     className="rw-label"
                     errorClassName="rw-label rw-label-error"
                   >
-                    firstname
+                    FirstName
                   </Label>
                   <TextField
-                    name="firstname"
+                    name="firstName"
                     className="rw-input"
                     errorClassName="rw-input rw-input-error"
                     ref={usernameRef}
                     validation={{
                       required: {
                         value: true,
-                        message: 'firstname is required',
+                        message: 'FirstName is required',
                       },
                     }}
                   />
 
-                  <FieldError name="firstname" className="rw-field-error" />
+                  <FieldError name="firstName" className="rw-field-error" />
 
                   <Label
-                    name="lastname"
+                    name="lastName"
                     className="rw-label"
                     errorClassName="rw-label rw-label-error"
                   >
-                    lastname
+                    LastName
                   </Label>
                   <TextField
-                    name="lastname"
+                    name="lastName"
                     className="rw-input"
                     errorClassName="rw-input rw-input-error"
                     ref={usernameRef}
                     validation={{
                       required: {
                         value: true,
-                        message: 'lastname is required',
+                        message: 'lastName is required',
                       },
                     }}
                   />
 
-                  <FieldError name="lastname" className="rw-field-error" />
+                  <FieldError name="lastName" className="rw-field-error" />
 
                   <Label
                     name="lastname"
@@ -154,7 +153,7 @@ const SignupPage = () => {
                   >
                     Gender
                   </Label>
-                  <SelectField name='gender' className='w-full rw-input'>
+                  <SelectField name="gender" className="rw-input w-full">
                     <option>Male</option>
                     <option>Female</option>
                   </SelectField>
@@ -163,10 +162,10 @@ const SignupPage = () => {
                     name="dateofbirth"
                     className="rw-label"
                     errorClassName="rw-label rw-label-error"
-                    >
-                      Dateofbirth
+                  >
+                    Dateofbirth
                   </Label>
-                  <DateField name='dateofbirth' className='w-full rw-input' />
+                  <DateField name="dateofbirth" className="rw-input w-full" />
 
                   <div className="rw-button-group">
                     <Submit className="rw-button rw-button-blue">

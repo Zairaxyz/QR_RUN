@@ -32,7 +32,6 @@ export const handler = async (event, context) => {
       usernameRequired: 'Username is required',
     },
   }
-
   const loginOptions = {
     // handler() is called after finding the user that matches the
     // username/password provided at login, but before actually considering them
@@ -85,7 +84,6 @@ export const handler = async (event, context) => {
       reusedPassword: 'Must choose a new password',
     },
   }
-
   const signupOptions = {
     // Whatever you want to happen to your data on new user signup. Redwood will
     // check for duplicate usernames before calling this handler. At a minimum
@@ -115,7 +113,6 @@ export const handler = async (event, context) => {
         },
       })
     },
-
     errors: {
       // `field` will be either "username" or "password"
       fieldMissing: '${field} is required',

@@ -10,6 +10,24 @@ import NavbarLayout from './layouts/NavbarLayout/NavbarLayout'
 const Routes = () => {
   return (
     <Router>
+      <Set wrap={RunsLayout}>
+        <Route path="/runs/new" page={RunNewRunPage} name="newRun" />
+        <Route path="/runs/{id:Int}/edit" page={RunEditRunPage} name="editRun" />
+        <Route path="/runs/{id:Int}" page={RunRunPage} name="run" />
+        <Route path="/runs" page={RunRunsPage} name="runs" />
+      </Set>
+      <Set wrap={ScannersLayout}>
+        <Route path="/scanners/new" page={ScannerNewScannerPage} name="newScanner" />
+        <Route path="/scanners/{id}/edit" page={ScannerEditScannerPage} name="editScanner" />
+        <Route path="/scanners/{id}" page={ScannerScannerPage} name="scanner" />
+        <Route path="/scanners" page={ScannerScannersPage} name="scanners" />
+      </Set>
+      <Set wrap={ParksLayout}>
+        <Route path="/parks/new" page={ParkNewParkPage} name="newPark" />
+        <Route path="/parks/{id}/edit" page={ParkEditParkPage} name="editPark" />
+        <Route path="/parks/{id}" page={ParkParkPage} name="park" />
+        <Route path="/parks" page={ParkParksPage} name="parks" />
+      </Set>
       <Set wrap={UsersLayout}>
         <Route path="/users/new" page={UserNewUserPage} name="newUser" />
         <Route path="/users/{id}/edit" page={UserEditUserPage} name="editUser" />

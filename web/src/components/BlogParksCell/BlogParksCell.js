@@ -1,4 +1,4 @@
-import { Link, routes } from "@redwoodjs/router"
+import { Link, routes } from '@redwoodjs/router'
 
 export const QUERY = gql`
   query BlogParksQuery {
@@ -27,7 +27,9 @@ export const Success = ({ parks }) => {
             <Link to={routes.blogPark({ id: park.id })}>{park.park_name}</Link>
           </div>
           <div className="flex w-full items-center justify-center">
-            <Link to={routes.blogPark({ id: park.id })}><img src={park.image_url} alt="" width='700' height='700' /></Link>
+            <Link to={routes.blogPark({ id: park.id })}>
+              <img src={park.image_url} alt="" width="700" height="700" />
+            </Link>
           </div>
         </div>
       ))}

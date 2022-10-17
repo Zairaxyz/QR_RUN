@@ -8,12 +8,12 @@ export const schema = gql`
     user: User!
     userId: String!
     park: Park!
-    parkId: Int!
+    parkId: String!
   }
 
   type Query {
-    runs: [Run!]! @skipAuth
-    run(id: Int!): Run @skipAuth
+    runs: [Run!]! @requireAuth
+    run(id: Int!): Run @requireAuth
   }
 
   input CreateRunInput {
@@ -22,7 +22,7 @@ export const schema = gql`
     total_distance: Float
     pace: Float
     userId: String!
-    parkId: Int!
+    parkId: String!
   }
 
   input UpdateRunInput {
@@ -31,7 +31,7 @@ export const schema = gql`
     total_distance: Float
     pace: Float
     userId: String
-    parkId: Int
+    parkId: String
   }
 
   type Mutation {
