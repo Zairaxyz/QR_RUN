@@ -104,51 +104,51 @@ const SignupPage = () => {
                   <FieldError name="password" className="rw-field-error" />
 
                   <Label
-                    name="firstname"
+                    name="firstName"
                     className="rw-label"
                     errorClassName="rw-label rw-label-error"
                   >
                     firstname
                   </Label>
                   <TextField
-                    name="firstname"
+                    name="firstName"
                     className="rw-input"
                     errorClassName="rw-input rw-input-error"
                     ref={usernameRef}
                     validation={{
                       required: {
                         value: true,
-                        message: 'firstname is required',
+                        message: 'firstName is required',
                       },
                     }}
                   />
 
-                  <FieldError name="firstname" className="rw-field-error" />
+                  <FieldError name="firstName" className="rw-field-error" />
 
                   <Label
-                    name="lastname"
+                    name="lastName"
                     className="rw-label"
                     errorClassName="rw-label rw-label-error"
                   >
                     lastname
                   </Label>
                   <TextField
-                    name="lastname"
+                    name="lastName"
                     className="rw-input"
                     errorClassName="rw-input rw-input-error"
                     ref={usernameRef}
                     validation={{
                       required: {
                         value: true,
-                        message: 'lastname is required',
+                        message: 'lastName is required',
                       },
                     }}
                   />
 
-                  <FieldError name="lastname" className="rw-field-error" />
+                  <FieldError name="lastName" className="rw-field-error" />
 
                   <Label
-                    name="lastname"
+                    name="gender"
                     className="rw-label"
                     errorClassName="rw-label rw-label-error"
                   >
@@ -160,13 +160,13 @@ const SignupPage = () => {
                   </SelectField>
 
                   <Label
-                    name="dateofbirth"
+                    name="dateOfBirth"
                     className="rw-label"
                     errorClassName="rw-label rw-label-error"
                     >
                       Dateofbirth
                   </Label>
-                  <DateField name='dateofbirth' className='w-full rw-input' />
+                  <DateField name='dateOfBirth' className='w-full rw-input' />
 
                   <div className="rw-button-group">
                     <Submit className="rw-button rw-button-blue">
