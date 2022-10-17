@@ -3,7 +3,6 @@ import {
   FormError,
   FieldError,
   Label,
-  NumberField,
   TextField,
   Submit,
 } from '@redwoodjs/forms'
@@ -31,7 +30,7 @@ const ScannerForm = (props) => {
           Park id
         </Label>
 
-        <NumberField
+        <TextField
           name="parkId"
           defaultValue={props.scanner?.parkId}
           className="rw-input"
