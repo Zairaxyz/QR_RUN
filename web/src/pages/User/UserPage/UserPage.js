@@ -1,4 +1,4 @@
-import UserCell from 'src/components/User/UserCell'
+import UserCell from 'src/components/User/UsersCell'
 
 const UserPage = ({ id }) => {
   return <UserCell id={id} />

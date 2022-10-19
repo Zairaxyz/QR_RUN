@@ -1,12 +1,11 @@
 import { navigate, routes } from '@redwoodjs/router'
-
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import ParkForm from 'src/components/Park/ParkForm'
 
 export const QUERY = gql`
-  query EditParkById($id: String!) {
+  query EditParkById($id: Int!) {
     park: park(id: $id) {
       id
       park_name
@@ -18,7 +17,7 @@ export const QUERY = gql`
   }
 `
 const UPDATE_PARK_MUTATION = gql`
-  mutation UpdateParkMutation($id: String!, $input: UpdateParkInput!) {
+  mutation UpdateParkMutation($id: Int!, $input: UpdateParkInput!) {
     updatePark(id: $id, input: $input) {
       id
       park_name

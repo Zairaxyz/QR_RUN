@@ -1,4 +1,4 @@
-import ScannersCell from 'src/components/Admin/Scanner/ScannersCell'
+import ScannersCell from 'src/components/Scanner/ScannersCell'
 
 const ScannersPage = () => {
   return <ScannersCell />

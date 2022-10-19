@@ -5,6 +5,7 @@ import {
   Label,
   DatetimeLocalField,
   TextField,
+  NumberField,
   Submit,
 } from '@redwoodjs/forms'
 
@@ -125,7 +126,7 @@ const RunForm = (props) => {
           Park id
         </Label>
 
-        <TextField
+        <NumberField
           name="parkId"
           defaultValue={props.run?.parkId}
           className="rw-input"

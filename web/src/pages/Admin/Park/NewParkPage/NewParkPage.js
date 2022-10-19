@@ -1,4 +1,4 @@
-import NewPark from 'src/components/Admin/Park/NewPark'
+import NewPark from 'src/components/Park/NewPark'
 
 const NewParkPage = () => {
   return <NewPark />

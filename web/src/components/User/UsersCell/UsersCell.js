@@ -6,18 +6,17 @@ export const QUERY = gql`
   query FindUsers {
     users {
       id
-      firstName
-      lastName
+      firstname
+      lastname
       gender
-      dateOfBirth
+      dateofbirth
       email
       hashedPassword
       salt
       resetToken
-      imageUrl
       resetTokenExpiresAt
       roles
-      registerTimesTamp
+      registertimestamp
     }
   }
 `

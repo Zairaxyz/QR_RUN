@@ -1,6 +1,6 @@
 import { Link, routes } from '@redwoodjs/router'
 
-import Parks from 'src/components/Admin/Park/Parks'
+import Parks from 'src/components/Park/Parks'
 
 export const QUERY = gql`
   query FindParks {

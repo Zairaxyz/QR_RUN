@@ -11,7 +11,6 @@ const ScannerForm = (props) => {
   const onSubmit = (data) => {
     props.onSave(data, props?.scanner?.id)
   }
-
   return (
     <div className="rw-form-wrapper">
       <Form onSubmit={onSubmit} error={props.error}>
@@ -29,7 +28,6 @@ const ScannerForm = (props) => {
         >
           Park id
         </Label>
-
         <TextField
           name="parkId"
           defaultValue={props.scanner?.parkId}

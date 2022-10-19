@@ -1,7 +1,7 @@
 import Scanner from 'src/components/Scanner/Scanner'
 
 export const QUERY = gql`
-  query FindScannerById($id: String!) {
+  query FindScannerById($id: Int!) {
     scanner: scanner(id: $id) {
       id
       parkId

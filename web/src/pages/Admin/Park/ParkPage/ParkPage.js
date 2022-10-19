@@ -1,4 +1,4 @@
-import ParkCell from 'src/components/Admin/Park/ParkCell'
+import ParkCell from 'src/components/Park/ParkCell'
 
 const ParkPage = ({ id }) => {
   return <ParkCell id={id} />

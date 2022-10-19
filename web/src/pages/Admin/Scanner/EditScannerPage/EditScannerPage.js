@@ -1,4 +1,4 @@
-import EditScannerCell from 'src/components/Admin/Scanner/EditScannerCell'
+import EditScannerCell from 'src/components/Scanner/EditScannerCell'
 
 const EditScannerPage = ({ id }) => {
   return <EditScannerCell id={id} />

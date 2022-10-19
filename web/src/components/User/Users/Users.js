@@ -80,18 +80,17 @@ const UsersList = ({ users }) => {
         <thead>
           <tr>
             <th>Id</th>
-            <th>First name</th>
-            <th>Last name</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
             <th>Gender</th>
-            <th>Date of birth</th>
+            <th>Dateofbirth</th>
             <th>Email</th>
             <th>Hashed password</th>
             <th>Salt</th>
             <th>Reset token</th>
-            <th>Image url</th>
             <th>Reset token expires at</th>
             <th>Roles</th>
-            <th>Register times tamp</th>
+            <th>Registertimestamp</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -99,18 +98,17 @@ const UsersList = ({ users }) => {
           {users.map((user) => (
             <tr key={user.id}>
               <td>{truncate(user.id)}</td>
-              <td>{truncate(user.firstName)}</td>
-              <td>{truncate(user.lastName)}</td>
+              <td>{truncate(user.firstname)}</td>
+              <td>{truncate(user.lastname)}</td>
               <td>{truncate(user.gender)}</td>
-              <td>{timeTag(user.dateOfBirth)}</td>
+              <td>{timeTag(user.dateofbirth)}</td>
               <td>{truncate(user.email)}</td>
               <td>{truncate(user.hashedPassword)}</td>
               <td>{truncate(user.salt)}</td>
               <td>{truncate(user.resetToken)}</td>
-              <td>{truncate(user.imageUrl)}</td>
               <td>{timeTag(user.resetTokenExpiresAt)}</td>
               <td>{truncate(user.roles)}</td>
-              <td>{timeTag(user.registerTimesTamp)}</td>
+              <td>{timeTag(user.registertimestamp)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

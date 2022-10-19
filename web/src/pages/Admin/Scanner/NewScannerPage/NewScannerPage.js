@@ -1,4 +1,4 @@
-import NewScanner from 'src/components/Admin/Scanner/NewScanner'
+import NewScanner from 'src/components/Scanner/NewScanner'
 
 const NewScannerPage = () => {
   return <NewScanner />

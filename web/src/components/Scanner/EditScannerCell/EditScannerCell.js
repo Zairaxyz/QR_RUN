@@ -1,12 +1,11 @@
 import { navigate, routes } from '@redwoodjs/router'
-
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import ScannerForm from 'src/components/Scanner/ScannerForm'
 
 export const QUERY = gql`
-  query EditScannerById($id: String!) {
+  query EditScannerById($id: Int!) {
     scanner: scanner(id: $id) {
       id
       parkId
@@ -16,7 +15,7 @@ export const QUERY = gql`
   }
 `
 const UPDATE_SCANNER_MUTATION = gql`
-  mutation UpdateScannerMutation($id: String!, $input: UpdateScannerInput!) {
+  mutation UpdateScannerMutation($id: Int!, $input: UpdateScannerInput!) {
     updateScanner(id: $id, input: $input) {
       id
       parkId

@@ -1,4 +1,4 @@
-import NewRun from 'src/components/Admin/Run/NewRun'
+import NewRun from 'src/components/Run/NewRun'
 
 const NewRunPage = () => {
   return <NewRun />

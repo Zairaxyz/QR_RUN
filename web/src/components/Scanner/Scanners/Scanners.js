@@ -7,7 +7,7 @@ import { toast } from '@redwoodjs/web/toast'
 import { QUERY } from 'src/components/Scanner/ScannersCell'
 
 const DELETE_SCANNER_MUTATION = gql`
-  mutation DeleteScannerMutation($id: String!) {
+  mutation DeleteScannerMutation($id: Int!) {
     deleteScanner(id: $id) {
       id
     }

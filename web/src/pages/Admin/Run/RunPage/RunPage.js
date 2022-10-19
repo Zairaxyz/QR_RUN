@@ -1,4 +1,4 @@
-import RunCell from 'src/components/Admin/Run/RunCell'
+import RunCell from 'src/components/Run/RunCell'
 
 const RunPage = ({ id }) => {
   return <RunCell id={id} />

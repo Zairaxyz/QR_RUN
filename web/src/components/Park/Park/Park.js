@@ -5,7 +5,7 @@ import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 const DELETE_PARK_MUTATION = gql`
-  mutation DeleteParkMutation($id: String!) {
+  mutation DeleteParkMutation($id: Int!) {
     deletePark(id: $id) {
       id
     }

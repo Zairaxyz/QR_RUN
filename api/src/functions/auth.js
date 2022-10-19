@@ -138,6 +138,10 @@ export const handler = async (event, context) => {
       salt: 'salt',
       resetToken: 'resetToken',
       resetTokenExpiresAt: 'resetTokenExpiresAt',
+      gender: 'gender',
+      firstName: 'firstName',
+      lastName: 'lastName',
+      imageUrl: 'imageUrl',
     },
 
     // Specifies attributes on the cookie that dbAuth sets in order to remember
