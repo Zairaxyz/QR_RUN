@@ -32,6 +32,7 @@ const NavbarLayout = ({ children }) => {
     { name: 'Home', href: '/', current: false },
     { name: 'Parks', href: '/admin/parks', current: false },
     { name: 'Scanners', href: '/admin/scanners', current: false },
+    { name: 'Scans', href: '/admin/scans', current: false },
     { name: 'Runs', href: '/admin/runs', current: false },
     { name: 'Users', href: '/admin/users', current: false },
   ]

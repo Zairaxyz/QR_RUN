@@ -34,6 +34,7 @@ model Park {
   working_time Json?
   Run          Run[]
   Scanner      Scanner[]
+  Scan         Scan[]
 }
 
 model Run {
@@ -54,4 +55,12 @@ model Scanner {
   parkId    String
   longitude Float?
   latitude  Float?
+}
+
+model Scan {
+  id        String @id @default(cuid())
+  longitude Float?
+  latitude  Float?
+  park      Park   @relation(fields: [parkId], references: [id])
+  parkId    String
 }
