@@ -1,3 +1,7 @@
+import { useState } from 'react'
+
+import Select from 'react-select'
+
 import {
   Form,
   FormError,
@@ -6,11 +10,47 @@ import {
   TextField,
   Submit,
 } from '@redwoodjs/forms'
-
+import { useQuery } from '@redwoodjs/web'
 const ScannerForm = (props) => {
+  const [parkId, setParkId] = useState('')
   const onSubmit = (data) => {
-    props.onSave(data, props?.scanner?.id)
+    // ...data เป็นการแตกไฟล์จาก Form
+    const record = { ...data, parkId: parkId }
+    props.onSave(record, props?.scanner?.id)
   }
+
+  const QUERY = gql`
+    query FindParks {
+      parks {
+        id
+        park_name
+      }
+    }
+  `
+  const { loading, data } = useQuery(QUERY)
+  if (loading)
+    return (
+      <div className="... bg-indigo-500" disabled>
+        <svg
+          className="... mr-3 h-5 w-5 animate-spin"
+          viewBox="0 0 24 24"
+        ></svg>
+        Processing...
+      </div>
+    )
+
+  const parkOption = data.parks.map((data) => ({
+    value: data.id,
+    label: data.park_name,
+  }))
+
+  const handleChangePark = (e) => {
+    console.log(e)
+    setParkId(e.value)
+    // console.log(e.label)
+  }
+  console.log(parkId)
+
   return (
     <div className="rw-form-wrapper">
       <Form onSubmit={onSubmit} error={props.error}>
@@ -28,13 +68,14 @@ const ScannerForm = (props) => {
         >
           Park id
         </Label>
-        <TextField
+        <Select options={parkOption} onChange={handleChangePark} required />
+        {/* <TextField
           name="parkId"
           defaultValue={props.scanner?.parkId}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
-        />
+        /> */}
 
         <FieldError name="parkId" className="rw-field-error" />
 
