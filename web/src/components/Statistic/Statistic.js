@@ -1,4 +1,32 @@
+import { useState } from 'react'
+
+import QRCode from 'qrcode.react'
+
+import { useAuth } from '@redwoodjs/auth'
+import { Link, routes } from '@redwoodjs/router'
+
+
 const Statistic = () => {
+
+  const { currentUser, isAuthenticated } = useAuth()
+  const [qrValue, setQrValue] = useState('QR-CODE')
+  const downloadQRCode = () => {
+    setQrValue(currentUser.id)
+    // Generate download with use canvas and stream
+    const canvas = document.getElementById('qr-gen')
+    const pngUrl = canvas
+      .toDataURL('image/png')
+      .replace('image/png', 'image/octet-stream')
+
+    let downloadLink = document.createElement('a')
+    downloadLink.href = pngUrl
+    downloadLink.download = `${qrValue}.png`
+    document.body.appendChild(downloadLink)
+    downloadLink.click()
+    document.body.removeChild(downloadLink)
+    console.log(pngUrl)
+  }
+
   return (
     <div className="container mx-auto">
       <div className="md:grid md:grid-cols-3 md:gap-6">
@@ -6,12 +34,33 @@ const Statistic = () => {
           <div className="px-4 sm:px-0">
             <p className="text-lg font-medium leading-6 text-gray-900">Profile</p>
             <div className="flex justify-center">
-              <img src="https://scontent.fbkk5-1.fna.fbcdn.net/v/t39.30808-6/309922894_1450507872120357_2013748573071282769_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHoEFb3pcAmyzmuJHWgIm5GBZ8fFtv-FNIFnx8W2_4U0s2v9993OlrYZk-wrMXtrZ5HUrFx9zwyGNxHxVXJmMSZ&_nc_ohc=q2tyEG78H5EAX9B1eiu&_nc_ht=scontent.fbkk5-1.fna&oh=00_AT_r4gU-GBM6MvfYBqcsPBlhHA-u3LAEr0QjlBGmRQjh5Q&oe=635285BB" className="rounded-full w-64 sm:w-60 md:w-60 lg:w-80" />
+              {isAuthenticated && (
+                <>
+                  <img src={currentUser.imageUrl} className="rounded-full w-64 sm:w-60 md:w-60 lg:w-80" />
+                </>
+              )}
             </div>
             <button className="btn btn-blue"></button>
             <p className="mt-1 text-sm text-gray-600">
               This information will be displayed publicly so be careful what you share.
             </p>
+            <div className="flex justify-center">
+              {isAuthenticated && (
+                  <>
+                    <QRCode
+                      id="qr-gen"
+                      value={currentUser.id}
+                      renderAs="png"
+                      size={200}
+                      level={'H'}
+                      includeMargin={true}
+                    />
+                  </>
+                )}
+            </div>
+            <button className="text-center" type="button" onClick={downloadQRCode}>
+              Download QR Code
+            </button>
           </div>
         </div>
         <div className="mt-5 md:col-span-2 md:mt-0">
@@ -19,11 +68,12 @@ const Statistic = () => {
             <div className="space-y-6 bg-white px-4 py-5 sm:p-6">
               <div className="grid grid-cols-3 gap-6">
                 <div className="col-span-3 sm:col-span-2">
-                  <label htmlFor="company-website" className="block text-sm font-medium text-gray-700">
-                    Website
+                  <label htmlFor="company-website" className="block text-2xl font-bold text-gray-700">
+                    Recent activity
                   </label>
                 </div>
               </div>
+              <div class="border-t border-gray-200"></div>
             </div>
           </div>
         </div>

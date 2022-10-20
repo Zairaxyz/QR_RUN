@@ -11,40 +11,8 @@ const user = {
   name: 'Tom Cook',
   email: 'tom@example.com',
   imageUrl:
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    'https://scontent.fbkk5-1.fna.fbcdn.net/v/t39.30808-6/309922894_1450507872120357_2013748573071282769_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHoEFb3pcAmyzmuJHWgIm5GBZ8fFtv-FNIFnx8W2_4U0s2v9993OlrYZk-wrMXtrZ5HUrFx9zwyGNxHxVXJmMSZ&_nc_ohc=q2tyEG78H5EAX9B1eiu&_nc_ht=scontent.fbkk5-1.fna&oh=00_AT_r4gU-GBM6MvfYBqcsPBlhHA-u3LAEr0QjlBGmRQjh5Q&oe=635285BB',
 }
-
-const navigationUser = [
-  { name: 'Home', href: '/', current: true },
-  { name: 'Parks', href: '/blog-parks', current: false },
-  { name: 'Statistic', href: '/statistic', current: false },
-]
-
-const navigationAdmin = [
-  { name: 'Home', href: '/', current: false },
-  { name: 'Parks', href: '/admin/parks', current: false },
-  { name: 'Scanners', href: '/admin/scanners', current: false },
-  { name: 'Runs', href: '/admin/runs', current: false },
-  { name: 'Users', href: '/admin/users', current: false },
-]
-
-const navigationGovernor = [
-  { name: 'Home', href: '/', current: false },
-  { name: 'Parks', href: '/', current: false },
-  { name: 'Scanners', href: '/', current: false },
-]
-
-const navigationOwner = [
-  { name: 'Home', href: '/', current: false },
-  { name: 'Parks', href: '/', current: false },
-  { name: 'Owner', href: '/', current: false },
-]
-
-const userNavigation = [
-  { name: 'Your Profile', href: '#', state: false },
-  { name: 'Settings', href: '#', state: false },
-  { name: 'Sign out', href: '#', state: true },
-]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -53,6 +21,38 @@ function classNames(...classes) {
 const NavbarLayout = ({ children }) => {
 
   const { isAuthenticated, currentUser, logOut } = useAuth()
+
+  const navigationUser = [
+    { name: 'Home', href: '/', current: true },
+    { name: 'Parks', href: '/blog-parks', current: false },
+    { name: 'Statistic', href: '/statistic', current: false },
+  ]
+
+  const navigationAdmin = [
+    { name: 'Home', href: '/', current: false },
+    { name: 'Parks', href: '/admin/parks', current: false },
+    { name: 'Scanners', href: '/admin/scanners', current: false },
+    { name: 'Runs', href: '/admin/runs', current: false },
+    { name: 'Users', href: '/admin/users', current: false },
+  ]
+
+  const navigationGovernor = [
+    { name: 'Home', href: '/', current: false },
+    { name: 'Parks', href: '/', current: false },
+    { name: 'Scanners', href: '/', current: false },
+  ]
+
+  const navigationOwner = [
+    { name: 'Home', href: '/', current: false },
+    { name: 'Parks', href: '/', current: false },
+    { name: 'Owner', href: '/', current: false },
+  ]
+
+  const userNavigation = [
+    { name: 'Your Profile', href: '/statistic', state: false },
+    { name: 'Settings', href: '#', state: false },
+    { name: 'Sign out', href: '#', state: true },
+  ]
 
   return (
     <>
@@ -173,61 +173,70 @@ const NavbarLayout = ({ children }) => {
                     </div>
                   </div>
                   <div className="hidden md:block text-gray-300">
-                    {isAuthenticated ? (
-                      <div className="grid grid-rows-1">
-                        <Menu
-                          as="div"
-                          className="relative ml-3 grid grid-cols-1"
-                        >
-                          <div>
-                            <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                              <span className="sr-only">Open user menu</span>
-                              <img
-                                className="h-8 w-8 rounded-full"
-                                src={user.imageUrl}
-                                alt=""
-                              />
-                            </Menu.Button>
-                          </div>
-                          <Transition
-                            as={Fragment}
-                            enter="transition ease-out duration-100"
-                            enterFrom="transform opacity-0 scale-95"
-                            enterTo="transform opacity-100 scale-100"
-                            leave="transition ease-in duration-75"
-                            leaveFrom="transform opacity-100 scale-100"
-                            leaveTo="transform opacity-0 scale-95"
-                          >
-                            <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                              {userNavigation.map((item) => (
-                                <Menu.Item key={item.name}>
-                                  {({ active }) => (
-                                    <a
-                                      href={item.href}
-                                      onClick={
-                                        item.name === 'Sign out'
-                                          ? logOut
-                                          : undefined
-                                      }
-                                      className={classNames(
-                                        active ? 'bg-gray-100' : '',
-                                        'block px-4 py-2 text-sm text-gray-700'
-                                      )}
-                                    >
-                                      {item.name}
-                                    </a>
-                                  )}
-                                </Menu.Item>
-                              ))}
-                            </Menu.Items>
-                          </Transition>
-                        </Menu>
+                    <div className='flex items-center md:ml-6'>
+                      <div className='ml-4 flex items-center md:ml-6'>
+                        {isAuthenticated && (
+                          <>
+                            <span className='pr-2'>{currentUser.firstName}</span>
+                            <span className='pr-2'>{currentUser.lastName}</span>
+                          </>
+                        )}
                       </div>
-                    ) : (
-                      <Link to={routes.login()}>Login</Link>
-                    )}
+                      {isAuthenticated ? (
+                        <div className="grid grid-rows-1">
+                          <Menu
+                            as="div"
+                            className="relative ml-3 grid grid-cols-1"
+                          >
+                            <div>
+                              <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                                <span className="sr-only">Open user menu</span>
+                                <img
+                                  className="h-8 w-8 rounded-full"
+                                  src={currentUser.imageUrl}
+                                  alt=""
+                                />
+                              </Menu.Button>
+                            </div>
+                            <Transition
+                              as={Fragment}
+                              enter="transition ease-out duration-100"
+                              enterFrom="transform opacity-0 scale-95"
+                              enterTo="transform opacity-100 scale-100"
+                              leave="transition ease-in duration-75"
+                              leaveFrom="transform opacity-100 scale-100"
+                              leaveTo="transform opacity-0 scale-95"
+                            >
+                              <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                {userNavigation.map((item) => (
+                                  <Menu.Item key={item.name}>
+                                    {({ active }) => (
+                                      <a
+                                        href={item.href}
+                                        onClick={
+                                          item.name === 'Sign out'
+                                            ? logOut
+                                            : undefined
+                                        }
+                                        className={classNames(
+                                          active ? 'bg-gray-100' : '',
+                                          'block px-4 py-2 text-sm text-gray-700'
+                                        )}
+                                      >
+                                        {item.name}
+                                      </a>
+                                    )}
+                                  </Menu.Item>
+                                ))}
+                              </Menu.Items>
+                            </Transition>
+                          </Menu>
+                        </div>
+                      ) : (
+                        <Link to={routes.login()}>Login</Link>
+                      )}
+                    </div>
                   </div>
-
                   <div className="-mr-2 flex md:hidden">
                     {/* Mobile menu button */}
                     <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
