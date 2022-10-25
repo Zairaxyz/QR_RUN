@@ -12,8 +12,8 @@ const Routes = () => {
     <Router>
       <Set wrap={RunsLayout}>
         <Route path="/runs/new" page={RunNewRunPage} name="newRun" />
-        <Route path="/runs/{id:Int}/edit" page={RunEditRunPage} name="editRun" />
-        <Route path="/runs/{id:Int}" page={RunRunPage} name="run" />
+        <Route path="/runs/{id:String}/edit" page={RunEditRunPage} name="editRun" />
+        <Route path="/runs/{id:String}" page={RunRunPage} name="run" />
         <Route path="/runs" page={RunRunsPage} name="runs" />
       </Set>
       <Set wrap={ScannersLayout}>
@@ -38,27 +38,27 @@ const Routes = () => {
         <Private unauthenticated="home" roles="admin">
           <Set wrap={ScannersLayout}>
             <Route path="/admin/scanners/new" page={AdminScannerNewScannerPage} name="newScanner" />
-            <Route path="/admin/scanners/{id:Int}/edit" page={AdminScannerEditScannerPage} name="editScanner" />
-            <Route path="/admin/scanners/{id:Int}" page={AdminScannerScannerPage} name="scanner" />
+            <Route path="/admin/scanners/{id:String}/edit" page={AdminScannerEditScannerPage} name="editScanner" />
+            <Route path="/admin/scanners/{id:String}" page={AdminScannerScannerPage} name="scanner" />
             <Route path="/admin/scanners" page={AdminScannerScannersPage} name="scanners" />
           </Set>
           <Set wrap={ParksLayout}>
             <Route path="/admin/parks/new" page={AdminParkNewParkPage} name="newPark" />
-            <Route path="/admin/parks/{id:Int}/edit" page={AdminParkEditParkPage} name="editPark" />
+            <Route path="/admin/parks/{id:String}/edit" page={AdminParkEditParkPage} name="editPark" />
             <Route path="/admin/parks" page={AdminParkParksPage} name="parks" />
           </Set>
 
           <Set wrap={UsersLayout}>
             <Route path="/admin/users/new" page={AdminUserNewUserPage} name="newUser" />
-            <Route path="/admin/users/{id:Int}/edit" page={AdminUserEditUserPage} name="editUser" />
-            <Route path="/admin/users/{id:Int}" page={AdminUserUserPage} name="user" />
+            <Route path="/admin/users/{id:String}/edit" page={AdminUserEditUserPage} name="editUser" />
+            <Route path="/admin/users/{id:String}" page={AdminUserUserPage} name="user" />
             <Route path="/admin/users" page={AdminUserUsersPage} name="users" />
           </Set>
 
           <Set wrap={RunsLayout}>
             <Route path="/admin/runs/new" page={AdminRunNewRunPage} name="newRun" />
-            <Route path="/admin/runs/{id:Int}/edit" page={AdminRunEditRunPage} name="editRun" />
-            <Route path="/admin/runs/{id:Int}" page={AdminRunRunPage} name="run" />
+            <Route path="/admin/runs/{id:String}/edit" page={AdminRunEditRunPage} name="editRun" />
+            <Route path="/admin/runs/{id:String}" page={AdminRunRunPage} name="run" />
             <Route path="/admin/runs" page={AdminRunRunsPage} name="runs" />
           </Set>
         </Private>
@@ -70,7 +70,7 @@ const Routes = () => {
 
         <Route path="/" page={HomePage} name="home" />
         <Route path="/parks" page={ParksPage} name="parks" />
-        <Route path="/blog-park/{id:Int}" page={BlogParkPage} name="blogPark" />
+        <Route path="/blog-park/{id:String}" page={BlogParkPage} name="blogPark" />
       </Set>
 
       <Route notfound page={NotFoundPage} />

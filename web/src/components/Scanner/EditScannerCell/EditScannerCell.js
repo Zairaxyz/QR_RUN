@@ -5,7 +5,7 @@ import { toast } from '@redwoodjs/web/toast'
 import ScannerForm from 'src/components/Scanner/ScannerForm'
 
 export const QUERY = gql`
-  query EditScannerById($id: Int!) {
+  query EditScannerById($id: String!) {
     scanner: scanner(id: $id) {
       id
       parkId
@@ -15,7 +15,7 @@ export const QUERY = gql`
   }
 `
 const UPDATE_SCANNER_MUTATION = gql`
-  mutation UpdateScannerMutation($id: Int!, $input: UpdateScannerInput!) {
+  mutation UpdateScannerMutation($id: String!, $input: UpdateScannerInput!) {
     updateScanner(id: $id, input: $input) {
       id
       parkId

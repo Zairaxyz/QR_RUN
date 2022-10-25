@@ -5,7 +5,7 @@ import { toast } from '@redwoodjs/web/toast'
 import RunForm from 'src/components/Run/RunForm'
 
 export const QUERY = gql`
-  query EditRunById($id: Int!) {
+  query EditRunById($id: String!) {
     run: run(id: $id) {
       id
       start_timestamp
@@ -18,7 +18,7 @@ export const QUERY = gql`
   }
 `
 const UPDATE_RUN_MUTATION = gql`
-  mutation UpdateRunMutation($id: Int!, $input: UpdateRunInput!) {
+  mutation UpdateRunMutation($id: String!, $input: UpdateRunInput!) {
     updateRun(id: $id, input: $input) {
       id
       start_timestamp
