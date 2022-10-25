@@ -59,8 +59,8 @@ model Scanner {
 
 model Scan {
   id        String @id @default(cuid())
-  longitude Float?
   latitude  Float?
+  longitude Float?
   park      Park   @relation(fields: [parkId], references: [id])
   parkId    String
 }

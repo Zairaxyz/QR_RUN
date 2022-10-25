@@ -5,6 +5,7 @@ import QRCode from 'qrcode.react'
 import { useAuth } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
 
+import { DateTime } from 'luxon'
 
 const Statistic = () => {
 
@@ -32,7 +33,7 @@ const Statistic = () => {
       <div className="md:grid md:grid-cols-3 md:gap-6">
         <div className="md:col-span-1">
           <div className="px-4 sm:px-0">
-            <p className="text-lg font-medium leading-6 text-gray-900">Profile</p>
+            <p className="text-2xl font-bold leading-6 text-gray-900">Profile</p>
             <div className="flex justify-center">
               {isAuthenticated && (
                 <>
@@ -41,9 +42,24 @@ const Statistic = () => {
               )}
             </div>
             <button className="btn btn-blue"></button>
-            <p className="mt-1 text-sm text-gray-600">
-              This information will be displayed publicly so be careful what you share.
+
+            <div class="border-t border-gray-200 my-8"></div>
+
+            <p className="mt-1 mx-4 text- text-gray-600">
+              Name : {currentUser.firstName} {currentUser.lastName}
             </p>
+            <p className="mt-1 mx-4 text- text-gray-600">
+              Gender : {currentUser.gender}
+            </p>
+            <p className="mt-1 mx-4 text- text-gray-600">
+              Birthday : {DateTime.fromISO(currentUser.dateOfBirth).toFormat('dd/LL/yyyy')}
+            </p>
+            <p className="mt-1 mx-4 text- text-gray-600">
+              Role : {currentUser.roles}
+            </p>
+
+            <div class="border-t border-gray-200 my-8"></div>
+
             <div className="flex justify-center">
               {isAuthenticated && (
                   <>
@@ -58,22 +74,78 @@ const Statistic = () => {
                   </>
                 )}
             </div>
-            <button className="text-center" type="button" onClick={downloadQRCode}>
-              Download QR Code
-            </button>
+            {/* </br> */}
+            <div className='text-center'>
+              <button type="button" onClick={downloadQRCode}>
+                Download QR Code
+              </button>
+            </div>
           </div>
         </div>
         <div className="mt-5 md:col-span-2 md:mt-0">
           <div className="shadow-lg sm:overflow-hidden sm:rounded-md">
             <div className="space-y-6 bg-white px-4 py-5 sm:p-6">
               <div className="grid grid-cols-3 gap-6">
-                <div className="col-span-3 sm:col-span-2">
-                  <label htmlFor="company-website" className="block text-2xl font-bold text-gray-700">
+                <div className="flex justify-between col-span-3 sm:col-span-3">
+                  <label htmlFor="company-website" className="block text-xl sm:text-2xl font-bold text-gray-700">
                     Recent activity
                   </label>
+                  <button className='bg-sky-400 rounded-full font-bold text-white py-2 px-4'>History</button>
                 </div>
               </div>
               <div class="border-t border-gray-200"></div>
+              {currentUser.Run.map((el) => (
+                <div className='grid grid-cols-3 gap-3'>
+                  <div className='text-center'>
+                    <p>Avg.Pace</p>
+                    <p>{el.pace}</p>
+                  </div>
+                  <div className='text-center'>
+                    <p>Distace</p>
+                    <p>{el.total_distance} km</p>
+                  </div>
+                  <div className='text-center'>
+                    <p>Time</p>
+                    <p>
+                      {DateTime.fromISO(el.stop_timestamp).diff(DateTime.fromISO(el.start_timestamp), 'hours').toFormat(" hh ':' mm ':' ss ")}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="shadow-lg sm:overflow-hidden sm:rounded-md my-2">
+            <div className="space-y-6 bg-white px-4 py-5 sm:p-6">
+              <div className="grid grid-cols-3 gap-6">
+                <div className="flex justify-between col-span-3 sm:col-span-3">
+                  <label htmlFor="company-website" className="block text-xl sm:text-2xl font-bold text-gray-700">
+                    My statistics
+                  </label>
+                </div>
+              </div>
+              <div class="relative flex items-center">
+                <div class="flex-grow border-t border-gray-400"></div>
+                <span class="flex-shrink mx-4 text-gray-400">All time</span>
+                <div class="flex-grow border-t border-gray-400"></div>
+              </div>
+              {currentUser.Run.map((el) => (
+                <div className='grid grid-cols-3 gap-3'>
+                  <div className='text-center'>
+                    <p>Avg.Pace</p>
+                    <p>{el.pace}</p>
+                  </div>
+                  <div className='text-center'>
+                    <p>Distace</p>
+                    <p>{el.total_distance} km</p>
+                  </div>
+                  <div className='text-center'>
+                    <p>Time</p>
+                    <p>
+                      {DateTime.fromISO(el.stop_timestamp).diff(DateTime.fromISO(el.start_timestamp), 'hours').toFormat(" hh ':' mm ':' ss ")}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

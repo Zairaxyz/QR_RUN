@@ -366,21 +366,6 @@ const NavbarLayout = ({ children }) => {
                     ))}
                   </div>
                 </div>
-
-                <div className="border-t border-gray-700 pt-4 pb-3">
-                  <div className="flex items-center px-5 text-gray-300">
-                    {isAuthenticated ? (
-                      <div>
-                        <span className='px-2'> {currentUser.email} </span>{' '}
-                        <button type="button" onClick={logOut}>
-                          Logout
-                        </button>
-                      </div>
-                    ) : (
-                      <Link to={routes.login()}>Login</Link>
-                    )}
-                  </div>
-                </div>
               </Disclosure.Panel>
             </>
           )}

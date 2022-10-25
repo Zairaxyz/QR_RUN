@@ -18052,6 +18052,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"luxon@npm:^3.0.4":
+  version: 3.0.4
+  resolution: "luxon@npm:3.0.4"
+  checksum: 87cef04d1522446364b6db0b193c98d1a511e2f7fa3fa32498a38370ca81319ac487d9d5737c1c43dd2e63685a318ec69f3b143e498eedebc6ec3b05350b6775
+  languageName: node
+  linkType: hard
+
 "lz-string@npm:^1.4.4":
   version: 1.4.4
   resolution: "lz-string@npm:1.4.4"
@@ -25319,6 +25326,7 @@ __metadata:
     autoprefixer: ^10.4.12
     flowbite: ^1.5.3
     framer-motion: ^6
+    luxon: ^3.0.4
     postcss: ^8.4.17
     postcss-loader: ^7.0.1
     prop-types: 15.8.1
