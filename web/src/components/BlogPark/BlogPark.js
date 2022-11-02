@@ -2,7 +2,7 @@ import { Link, routes } from "@redwoodjs/router"
 
 const BlogPark = ({ park }) => {
 
-  const { park_name, image_url, description, address, working_time } = park
+  const { park_name, image_url, description, address, working_time, Run } = park
 
   return (
 
@@ -32,6 +32,34 @@ const BlogPark = ({ park }) => {
 
         <div class="my-5">
           <p class="font-bold mb-5">Description</p> {description}
+        </div>
+
+        <div className="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+          <div className="w-full overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr class="text-md tracking-wide text-left text-gray-900 bg-gray-100 border-b border-gray-600">
+                  <th class="py-3 text-center">No.</th>
+                  <th class="py-3 text-center">Username</th>
+                  <th class="py-3 text-center">Avg.pace</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Run.slice(0, 3).map((el , index) => (
+                  <tr class="text-center text-md">
+                  <td>{index + 1}</td>
+                  <td class="py-8">
+                    <a class="flex justify-center	items-center">
+                    <img width="40" height="40" src={el.user.imageUrl} class="block rounded-full float-left" alt="" sizes="(max-width: 150px) 100vw, 150px" />
+                    <span class="px-4">{el.user.firstName}</span>
+                    </a>
+                  </td>
+                  <td>{el.pace}</td>
+                </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
 
       </div>

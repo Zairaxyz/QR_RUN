@@ -8,7 +8,7 @@ export const schema = gql`
     working_time: JSON
     Run: [Run]!
     Scanner: [Scanner]!
-    Scan: [Scan]!
+    Routescanner: [Routescanner]!
   }
 
   type Query {

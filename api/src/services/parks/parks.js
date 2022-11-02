@@ -36,7 +36,7 @@ export const Park = {
   Scanner: (_obj, { root }) => {
     return db.park.findUnique({ where: { id: root?.id } }).Scanner()
   },
-  Scan: (_obj, { root }) => {
-    return db.park.findUnique({ where: { id: root?.id } }).Scan()
+  Routescanner: (_obj, { root }) => {
+    return db.park.findUnique({ where: { id: root?.id } }).Routescanner()
   },
 }

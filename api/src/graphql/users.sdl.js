@@ -14,6 +14,8 @@ export const schema = gql`
     roles: String!
     registertimestamp: DateTime
     Run: [Run]!
+    Log: [Log]!
+    Lap: [Lap]!
   }
 
   type Query {

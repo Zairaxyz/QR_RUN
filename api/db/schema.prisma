@@ -23,10 +23,12 @@ model User {
   roles               String    @default("user")
   registertimestamp   DateTime? @default(now())
   Run                 Run[]
+  Log                 Log[]
+  Lap                 Lap[]
 }
 
 model Park {
-  id           String    @id @default(uuid())
+  id           String         @id @default(uuid())
   park_name    String?
   image_url    String?
   description  String?
@@ -34,7 +36,7 @@ model Park {
   working_time Json?
   Run          Run[]
   Scanner      Scanner[]
-  Scan         Scan[]
+  Routescanner Routescanner[]
 }
 
 model Run {
@@ -55,12 +57,33 @@ model Scanner {
   parkId    String
   longitude Float?
   latitude  Float?
+  Log       Log[]
 }
 
-model Scan {
-  id        String @id @default(cuid())
-  latitude  Float?
-  longitude Float?
-  park      Park   @relation(fields: [parkId], references: [id])
-  parkId    String
+model Log {
+  id         String    @id @default(uuid())
+  time_stamp DateTime?
+  user       User      @relation(fields: [userId], references: [id])
+  userId     String
+  scanner    Scanner   @relation(fields: [scannerId], references: [id])
+  scannerId  String
+}
+
+model Lap {
+  id              String    @id @default(uuid())
+  start_timestamp DateTime?
+  stop_timestamp  DateTime?
+  user            User      @relation(fields: [userId], references: [id])
+  userId          String
+}
+
+model Routescanner {
+  id             String   @id @default(uuid())
+  scanner        String?
+  before         String?
+  total_distance Float?
+  is_start       Boolean?
+  is_stop        Boolean?
+  park           Park     @relation(fields: [parkId], references: [id])
+  parkId         String
 }

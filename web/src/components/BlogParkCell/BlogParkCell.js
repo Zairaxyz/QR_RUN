@@ -9,6 +9,15 @@ export const QUERY = gql`
       description
       address
       working_time
+      Run {
+        id
+        pace
+        user {
+          firstName
+          lastName
+          imageUrl
+        }
+      }
     }
   }
 `

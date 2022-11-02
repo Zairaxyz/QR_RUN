@@ -32,20 +32,22 @@ const NavbarLayout = ({ children }) => {
     { name: 'Home', href: '/', current: false },
     { name: 'Parks', href: '/admin/parks', current: false },
     { name: 'Scanners', href: '/admin/scanners', current: false },
-    { name: 'Scans', href: '/admin/scans', current: false },
     { name: 'Runs', href: '/admin/runs', current: false },
     { name: 'Users', href: '/admin/users', current: false },
+    { name: 'Log', href: '/admin/logs', current: false },
+    { name: 'Lap', href: '/admin/laps', current: false },
+    { name: 'Routescanners', href: '/admin/routescanners', current: false },
   ]
 
   const navigationGovernor = [
     { name: 'Home', href: '/', current: false },
-    { name: 'Parks', href: '/', current: false },
+    { name: 'Parks', href: '/blog-parks', current: false },
     { name: 'Scanners', href: '/', current: false },
   ]
 
   const navigationOwner = [
     { name: 'Home', href: '/', current: false },
-    { name: 'Parks', href: '/', current: false },
+    { name: 'Parks', href: '/blog-parks', current: false },
     { name: 'Owner', href: '/', current: false },
   ]
 
@@ -124,7 +126,6 @@ const NavbarLayout = ({ children }) => {
                                   <>
                                     {currentUser.roles === 'governor' ? (
                                       <>
-                                        <h1>governor</h1>
                                         {navigationGovernor.map((item) => (
                                           <Link
                                             key={item.name}
