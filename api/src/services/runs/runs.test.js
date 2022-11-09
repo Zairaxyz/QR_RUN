@@ -35,10 +35,10 @@ describe('runs', () => {
     const original = await run({ id: scenario.run.one.id })
     const result = await updateRun({
       id: original.id,
-      input: { userId: scenario.run.two.userId },
+      input: { parkId: scenario.run.two.userId },
     })
 
-    expect(result.userId).toEqual(scenario.run.two.userId)
+    expect(result.parkId).toEqual(scenario.run.two.userId)
   })
 
   scenario('deletes a run', async (scenario) => {

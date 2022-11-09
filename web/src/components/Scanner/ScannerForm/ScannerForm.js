@@ -45,11 +45,11 @@ const ScannerForm = (props) => {
   }))
 
   const handleChangePark = (e) => {
-    console.log(e)
+    // console.log(e)
     setParkId(e.value)
     // console.log(e.label)
   }
-  console.log(parkId)
+  // console.log(parkId)
 
   return (
     <div className="rw-form-wrapper">

@@ -77,20 +77,8 @@ const User = ({ user }) => {
               <td>{user.id}</td>
             </tr>
             <tr>
-              <th>Firstname</th>
-              <td>{user.firstname}</td>
-            </tr>
-            <tr>
-              <th>Lastname</th>
-              <td>{user.lastname}</td>
-            </tr>
-            <tr>
               <th>Gender</th>
               <td>{user.gender}</td>
-            </tr>
-            <tr>
-              <th>Dateofbirth</th>
-              <td>{timeTag(user.dateofbirth)}</td>
             </tr>
             <tr>
               <th>Email</th>
@@ -117,8 +105,24 @@ const User = ({ user }) => {
               <td>{user.roles}</td>
             </tr>
             <tr>
-              <th>Registertimestamp</th>
-              <td>{timeTag(user.registertimestamp)}</td>
+              <th>Date of birth</th>
+              <td>{timeTag(user.dateOfBirth)}</td>
+            </tr>
+            <tr>
+              <th>First name</th>
+              <td>{user.firstName}</td>
+            </tr>
+            <tr>
+              <th>Image url</th>
+              <td>{user.imageUrl}</td>
+            </tr>
+            <tr>
+              <th>Last name</th>
+              <td>{user.lastName}</td>
+            </tr>
+            <tr>
+              <th>Register times tamp</th>
+              <td>{timeTag(user.registerTimesTamp)}</td>
             </tr>
           </tbody>
         </table>

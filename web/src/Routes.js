@@ -1,6 +1,9 @@
 import { Router, Route, Set, Private } from '@redwoodjs/router'
 
+import LapsLayout from 'src/layouts/LapsLayout'
+import LogsLayout from 'src/layouts/LogsLayout'
 import ParksLayout from 'src/layouts/ParksLayout'
+import RouteScannersLayout from 'src/layouts/RouteScannersLayout'
 import RunsLayout from 'src/layouts/RunsLayout'
 import ScannersLayout from 'src/layouts/ScannersLayout'
 import UsersLayout from 'src/layouts/UsersLayout'
@@ -10,32 +13,32 @@ import NavbarLayout from './layouts/NavbarLayout/NavbarLayout'
 const Routes = () => {
   return (
     <Router>
-      <Set wrap={RunsLayout}>
-        <Route path="/runs/new" page={RunNewRunPage} name="newRun" />
-        <Route path="/runs/{id:String}/edit" page={RunEditRunPage} name="editRun" />
-        <Route path="/runs/{id:String}" page={RunRunPage} name="run" />
-        <Route path="/runs" page={RunRunsPage} name="runs" />
-      </Set>
-      <Set wrap={ScannersLayout}>
-        <Route path="/scanners/new" page={ScannerNewScannerPage} name="newScanner" />
-        <Route path="/scanners/{id}/edit" page={ScannerEditScannerPage} name="editScanner" />
-        <Route path="/scanners/{id}" page={ScannerScannerPage} name="scanner" />
-        <Route path="/scanners" page={ScannerScannersPage} name="scanners" />
-      </Set>
-      <Set wrap={ParksLayout}>
-        <Route path="/parks/new" page={ParkNewParkPage} name="newPark" />
-        <Route path="/parks/{id}/edit" page={ParkEditParkPage} name="editPark" />
-        <Route path="/parks/{id}" page={ParkParkPage} name="park" />
-        <Route path="/parks" page={ParkParksPage} name="parks" />
-      </Set>
-      <Set wrap={UsersLayout}>
-        <Route path="/users/new" page={UserNewUserPage} name="newUser" />
-        <Route path="/users/{id}/edit" page={UserEditUserPage} name="editUser" />
-        <Route path="/users/{id}" page={UserUserPage} name="user" />
-        <Route path="/users" page={UserUsersPage} name="users" />
-      </Set>
       <Set wrap={NavbarLayout}>
         <Private unauthenticated="home" roles="admin">
+          <Set wrap={RouteScannersLayout}>
+            <Route path="/admin/route-scanners/new" page={RouteScannerNewRouteScannerPage} name="newRouteScanner" />
+            <Route path="/admin/route-scanners/{id}/edit" page={RouteScannerEditRouteScannerPage} name="editRouteScanner" />
+            <Route path="/admin/route-scanners/{id}" page={RouteScannerRouteScannerPage} name="routeScanner" />
+            <Route path="/admin/route-scanners" page={RouteScannerRouteScannersPage} name="routeScanners" />
+          </Set>
+          <Set wrap={LapsLayout}>
+            <Route path="/admin/laps/new" page={LapNewLapPage} name="newLap" />
+            <Route path="/admin/laps/{id}/edit" page={LapEditLapPage} name="editLap" />
+            <Route path="/admin/laps/{id}" page={LapLapPage} name="lap" />
+            <Route path="/admin/laps" page={LapLapsPage} name="laps" />
+          </Set>
+          {/* <Set wrap={RouteScannersLayout}>
+            <Route path="/admin/route-scanners/new" page={RouteScannerNewRouteScannerPage} name="newRouteScanner" />
+            <Route path="/admin/route-scanners/{id}/edit" page={RouteScannerEditRouteScannerPage} name="editRouteScanner" />
+            <Route path="/admin/route-scanners/{id}" page={RouteScannerRouteScannerPage} name="routeScanner" />
+            <Route path="/admin/route-scanners" page={RouteScannerRouteScannersPage} name="routeScanners" />
+          </Set> */}
+          <Set wrap={LogsLayout}>
+            <Route path="/admin/logs/new" page={LogNewLogPage} name="newLog" />
+            <Route path="/admin/logs/{id}/edit" page={LogEditLogPage} name="editLog" />
+            <Route path="/admin/logs/{id}" page={LogLogPage} name="log" />
+            <Route path="/admin/logs" page={LogLogsPage} name="logs" />
+          </Set>
           <Set wrap={ScannersLayout}>
             <Route path="/admin/scanners/new" page={AdminScannerNewScannerPage} name="newScanner" />
             <Route path="/admin/scanners/{id:String}/edit" page={AdminScannerEditScannerPage} name="editScanner" />
@@ -43,9 +46,10 @@ const Routes = () => {
             <Route path="/admin/scanners" page={AdminScannerScannersPage} name="scanners" />
           </Set>
           <Set wrap={ParksLayout}>
-            <Route path="/admin/parks/new" page={AdminParkNewParkPage} name="newPark" />
-            <Route path="/admin/parks/{id:String}/edit" page={AdminParkEditParkPage} name="editPark" />
-            <Route path="/admin/parks" page={AdminParkParksPage} name="parks" />
+            <Route path="/admin/parks/new" page={ParkNewParkPage} name="newPark" />
+            <Route path="/admin/parks/{id}/edit" page={ParkEditParkPage} name="editPark" />
+            <Route path="/admin/parks/{id}" page={ParkParkPage} name="park" />
+            <Route path="/admin/parks" page={ParkParksPage} name="parks" />
           </Set>
 
           <Set wrap={UsersLayout}>

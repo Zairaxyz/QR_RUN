@@ -19,14 +19,12 @@ const NewPark = () => {
       navigate(routes.parks())
     },
     onError: (error) => {
-      // console.log(error)
       toast.error(error.message)
     },
   })
 
   const onSave = (input) => {
     createPark({ variables: { input } })
-    // console.log(createPark.variables)
   }
 
   return (

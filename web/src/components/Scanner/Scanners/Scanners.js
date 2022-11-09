@@ -90,7 +90,7 @@ const ScannersList = ({ scanners }) => {
           {scanners.map((scanner) => (
             <tr key={scanner.id}>
               <td>{truncate(scanner.id)}</td>
-              <td>{truncate(scanner.park.park_name)}</td>
+              <td>{truncate(scanner.parkId)}</td>
               <td>{truncate(scanner.longitude)}</td>
               <td>{truncate(scanner.latitude)}</td>
               <td>

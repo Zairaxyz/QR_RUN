@@ -1,53 +1,55 @@
 export const schema = gql`
   type User {
     id: String!
-    firstName: String
-    lastName: String
     gender: String
-    dateOfBirth: DateTime
     email: String!
     hashedPassword: String!
     salt: String!
     resetToken: String
-    imageUrl: String
     resetTokenExpiresAt: DateTime
     roles: String!
+    dateOfBirth: DateTime
+    firstName: String
+    imageUrl: String
+    lastName: String
     registerTimesTamp: DateTime
     Run: [Run]!
+    Log: [Log]!
+    Lap: [Lap]!
   }
 
   type Query {
-    users: [User!]! @skipAuth
-    user(id: String!): User @skipAuth
+    users: [User!]! @requireAuth
+    user(id: String!): User @requireAuth
   }
 
   input CreateUserInput {
-    firstName: String
-    lastName: String
     gender: String
-    dateOfBirth: DateTime
     email: String!
     hashedPassword: String!
     salt: String!
     resetToken: String
-    imageUrl: String
     resetTokenExpiresAt: DateTime
     roles: String!
+    dateOfBirth: DateTime
+    firstName: String
+    imageUrl: String
+    lastName: String
     registerTimesTamp: DateTime
   }
 
   input UpdateUserInput {
-    firstName: String
-    lastName: String
     gender: String
-    dateOfBirth: DateTime
     email: String
     hashedPassword: String
     salt: String
     resetToken: String
-    imageUrl: String
     resetTokenExpiresAt: DateTime
     roles: String
+    dateOfBirth: DateTime
+    firstName: String
+    imageUrl: String
+    lastName: String
     registerTimesTamp: DateTime
   }
 

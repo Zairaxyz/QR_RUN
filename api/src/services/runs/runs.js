@@ -30,10 +30,10 @@ export const deleteRun = ({ id }) => {
 }
 
 export const Run = {
-  user: (_obj, { root }) => {
-    return db.run.findUnique({ where: { id: root?.id } }).user()
-  },
   park: (_obj, { root }) => {
     return db.run.findUnique({ where: { id: root?.id } }).park()
+  },
+  user: (_obj, { root }) => {
+    return db.run.findUnique({ where: { id: root?.id } }).user()
   },
 }

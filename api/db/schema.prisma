@@ -23,10 +23,12 @@ model User {
   lastName            String?
   registerTimesTamp   DateTime? @default(now())
   Run                 Run[]
+  Log                 Log[]
+  Lap                 Lap[]
 }
 
 model Park {
-  id           String    @id @default(cuid())
+  id           String         @id @default(cuid())
   park_name    String?
   image_url    String?
   description  String?
@@ -34,11 +36,11 @@ model Park {
   working_time Json?
   Run          Run[]
   Scanner      Scanner[]
-  Scan         Scan[]
+  RouteScanner RouteScanner[]
 }
 
 model Run {
-  id              Int       @id @default(autoincrement())
+  id              String    @id @default(cuid())
   start_timestamp DateTime?
   stop_timestamp  DateTime?
   total_distance  Float?
@@ -55,12 +57,36 @@ model Scanner {
   parkId    String
   longitude Float?
   latitude  Float?
+  Log       Log[]
 }
 
-model Scan {
-  id        String @id @default(cuid())
-  longitude Float?
-  latitude  Float?
-  park      Park   @relation(fields: [parkId], references: [id])
-  parkId    String
+model Log {
+  id         String   @id @default(uuid())
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String
+  scannerId  String
+  scanner    Scanner  @relation(fields: [scannerId], references: [id])
+  time_stamp DateTime
+}
+
+model Lap {
+  id               String       @id @default(uuid())
+  start_time_stamp DateTime
+  stop_time_stamp  DateTime
+  route_scannerId  String
+  route_scanner    RouteScanner @relation(fields: [route_scannerId], references: [id])
+  userId           String
+  user             User         @relation(fields: [userId], references: [id])
+}
+
+model RouteScanner {
+  id             String  @id @default(uuid())
+  after          String
+  before         String
+  total_distance Float
+  is_start       Boolean
+  is_finish      Boolean
+  parkId         String
+  park           Park    @relation(fields: [parkId], references: [id])
+  Lap            Lap[]
 }

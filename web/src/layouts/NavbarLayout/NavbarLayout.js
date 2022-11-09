@@ -39,6 +39,9 @@ const NavbarLayout = ({ children }) => {
     { name: 'Scanners', href: '/admin/scanners', current: false },
     { name: 'Runs', href: '/admin/runs', current: false },
     { name: 'Users', href: '/admin/users', current: false },
+    { name: 'Logs', href: '/admin/logs', current: false },
+    { name: 'Laps', href: '/admin/laps', current: false },
+    { name: 'Routes', href: '/admin/route-scanners', current: false },
   ]
 
   const navigationGovernor = [
@@ -65,16 +68,16 @@ const NavbarLayout = ({ children }) => {
         <Disclosure as="nav" className="bg-gray-800">
           {({ open }) => (
             <>
-              <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="flex h-16 items-center justify-between">
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
                       <Link to={routes.home()}>
-                        <img className="w-auto h-8" src={logo} alt="Thairun" />
+                        <img className="h-8 w-auto" src={logo} alt="Thairun" />
                       </Link>
                     </div>
                     <div className="hidden md:block">
-                      <div className="flex items-baseline ml-10 space-x-4">
+                      <div className="ml-10 flex items-baseline space-x-4">
                         {isAuthenticated && (
                           <>
                             {currentUser.roles === 'admin' ? (
@@ -182,13 +185,13 @@ const NavbarLayout = ({ children }) => {
                         {/* <span className="px-2"> {currentUser.email} </span>{' '} */}
                         <Menu
                           as="div"
-                          className="relative grid grid-cols-1 ml-3"
+                          className="relative ml-3 grid grid-cols-1"
                         >
                           <div>
-                            <Menu.Button className="flex items-center max-w-xs text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                            <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                               <span className="sr-only">Open user menu</span>
                               <img
-                                className="w-8 h-8 rounded-full"
+                                className="h-8 w-8 rounded-full"
                                 src={currentUser.imageUrl}
                                 alt=""
                               />
@@ -203,7 +206,7 @@ const NavbarLayout = ({ children }) => {
                             leaveFrom="transform opacity-100 scale-100"
                             leaveTo="transform opacity-0 scale-95"
                           >
-                            <Menu.Items className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                               {userNavigation.map((item) => (
                                 <Menu.Item key={item.name}>
                                   {({ active }) => (
@@ -242,17 +245,17 @@ const NavbarLayout = ({ children }) => {
                       <Link to={routes.login()}>Login</Link>
                     )}
                   </div>
-                  <div className="flex -mr-2 md:hidden">
-                    <Disclosure.Button className="inline-flex items-center justify-center p-2 text-gray-400 bg-gray-800 rounded-md hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                  <div className="-mr-2 flex md:hidden">
+                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open main menu</span>
                       {open ? (
                         <XMarkIcon
-                          className="block w-6 h-6"
+                          className="block h-6 w-6"
                           aria-hidden="true"
                         />
                       ) : (
                         <Bars3Icon
-                          className="block w-6 h-6"
+                          className="block h-6 w-6"
                           aria-hidden="true"
                         />
                       )}

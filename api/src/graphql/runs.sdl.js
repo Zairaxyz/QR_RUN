@@ -1,19 +1,19 @@
 export const schema = gql`
   type Run {
-    id: Int!
+    id: String!
     start_timestamp: DateTime
     stop_timestamp: DateTime
     total_distance: Float
     pace: Float
-    user: User!
     userId: String!
-    park: Park!
     parkId: String!
+    park: Park!
+    user: User!
   }
 
   type Query {
     runs: [Run!]! @requireAuth
-    run(id: Int!): Run @requireAuth
+    run(id: String!): Run @requireAuth
   }
 
   input CreateRunInput {
@@ -36,7 +36,7 @@ export const schema = gql`
 
   type Mutation {
     createRun(input: CreateRunInput!): Run! @requireAuth
-    updateRun(id: Int!, input: UpdateRunInput!): Run! @requireAuth
-    deleteRun(id: Int!): Run! @requireAuth
+    updateRun(id: String!, input: UpdateRunInput!): Run! @requireAuth
+    deleteRun(id: String!): Run! @requireAuth
   }
 `

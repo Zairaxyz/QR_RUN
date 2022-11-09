@@ -5,6 +5,7 @@ export const schema = gql`
     parkId: String!
     longitude: Float
     latitude: Float
+    Log: [Log]!
   }
 
   type Query {

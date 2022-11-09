@@ -33,4 +33,10 @@ export const User = {
   Run: (_obj, { root }) => {
     return db.user.findUnique({ where: { id: root?.id } }).Run()
   },
+  Log: (_obj, { root }) => {
+    return db.user.findUnique({ where: { id: root?.id } }).Log()
+  },
+  Lap: (_obj, { root }) => {
+    return db.user.findUnique({ where: { id: root?.id } }).Lap()
+  },
 }
