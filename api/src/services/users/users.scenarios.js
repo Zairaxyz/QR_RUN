@@ -2,7 +2,7 @@ export const standard = defineScenario({
   user: {
     one: {
       data: {
-        email: 'String1170705',
+        email: 'String5826255',
         hashedPassword: 'String',
         salt: 'String',
       },
@@ -10,7 +10,7 @@ export const standard = defineScenario({
 
     two: {
       data: {
-        email: 'String4363008',
+        email: 'String6727256',
         hashedPassword: 'String',
         salt: 'String',
       },

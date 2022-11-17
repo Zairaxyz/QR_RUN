@@ -12,6 +12,8 @@ export const schema = gql`
     firstName: String
     imageUrl: String
     lastName: String
+    currentRoad: String
+    currentCheckPoint: String
     registerTimesTamp: DateTime
     Run: [Run]!
     Log: [Log]!
@@ -35,6 +37,8 @@ export const schema = gql`
     firstName: String
     imageUrl: String
     lastName: String
+    currentRoad: String
+    currentCheckPoint: String
     registerTimesTamp: DateTime
   }
 
@@ -50,6 +54,8 @@ export const schema = gql`
     firstName: String
     imageUrl: String
     lastName: String
+    currentRoad: String
+    currentCheckPoint: String
     registerTimesTamp: DateTime
   }
 

@@ -4,11 +4,11 @@ import { Link, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
-import { QUERY } from 'src/components/User/UsersCell'
+import { QUERY } from 'src/components/CheckPoint/CheckPointsCell'
 
-const DELETE_USER_MUTATION = gql`
-  mutation DeleteUserMutation($id: String!) {
-    deleteUser(id: $id) {
+const DELETE_CHECK_POINT_MUTATION = gql`
+  mutation DeleteCheckPointMutation($id: String!) {
+    deleteCheckPoint(id: $id) {
       id
     }
   }
@@ -53,10 +53,10 @@ const checkboxInputTag = (checked) => {
   return <input type="checkbox" checked={checked} disabled />
 }
 
-const UsersList = ({ users }) => {
-  const [deleteUser] = useMutation(DELETE_USER_MUTATION, {
+const CheckPointsList = ({ checkPoints }) => {
+  const [deleteCheckPoint] = useMutation(DELETE_CHECK_POINT_MUTATION, {
     onCompleted: () => {
-      toast.success('User deleted')
+      toast.success('CheckPoint deleted')
     },
     onError: (error) => {
       toast.error(error.message)
@@ -69,8 +69,8 @@ const UsersList = ({ users }) => {
   })
 
   const onDeleteClick = (id) => {
-    if (confirm('Are you sure you want to delete user ' + id + '?')) {
-      deleteUser({ variables: { id } })
+    if (confirm('Are you sure you want to delete checkPoint ' + id + '?')) {
+      deleteCheckPoint({ variables: { id } })
     }
   }
 
@@ -80,62 +80,40 @@ const UsersList = ({ users }) => {
         <thead>
           <tr>
             <th>Id</th>
-            <th>Gender</th>
-            <th>Email</th>
-            <th>Hashed password</th>
-            <th>Salt</th>
-            <th>Reset token</th>
-            <th>Reset token expires at</th>
-            <th>Roles</th>
-            <th>Date of birth</th>
-            <th>First name</th>
-            <th>Image url</th>
-            <th>Last name</th>
-            <th>Current road</th>
-            <th>Current check point</th>
-            <th>Register times tamp</th>
+            <th>Park id</th>
+            <th>Longitude</th>
+            <th>Latitude</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
-            <tr key={user.id}>
-              <td>{truncate(user.id)}</td>
-              <td>{truncate(user.gender)}</td>
-              <td>{truncate(user.email)}</td>
-              <td>{truncate(user.hashedPassword)}</td>
-              <td>{truncate(user.salt)}</td>
-              <td>{truncate(user.resetToken)}</td>
-              <td>{timeTag(user.resetTokenExpiresAt)}</td>
-              <td>{truncate(user.roles)}</td>
-              <td>{timeTag(user.dateOfBirth)}</td>
-              <td>{truncate(user.firstName)}</td>
-              <td>{truncate(user.imageUrl)}</td>
-              <td>{truncate(user.lastName)}</td>
-              <td>{truncate(user.currentRoad)}</td>
-              <td>{truncate(user.currentCheckPoint)}</td>
-              <td>{timeTag(user.registerTimesTamp)}</td>
+          {checkPoints.map((checkPoint) => (
+            <tr key={checkPoint.id}>
+              <td>{truncate(checkPoint.id)}</td>
+              <td>{truncate(checkPoint.parkId)}</td>
+              <td>{truncate(checkPoint.longitude)}</td>
+              <td>{truncate(checkPoint.latitude)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link
-                    to={routes.user({ id: user.id })}
-                    title={'Show user ' + user.id + ' detail'}
+                    to={routes.checkPoint({ id: checkPoint.id })}
+                    title={'Show checkPoint ' + checkPoint.id + ' detail'}
                     className="rw-button rw-button-small"
                   >
                     Show
                   </Link>
                   <Link
-                    to={routes.editUser({ id: user.id })}
-                    title={'Edit user ' + user.id}
+                    to={routes.editCheckPoint({ id: checkPoint.id })}
+                    title={'Edit checkPoint ' + checkPoint.id}
                     className="rw-button rw-button-small rw-button-blue"
                   >
                     Edit
                   </Link>
                   <button
                     type="button"
-                    title={'Delete user ' + user.id}
+                    title={'Delete checkPoint ' + checkPoint.id}
                     className="rw-button rw-button-small rw-button-red"
-                    onClick={() => onDeleteClick(user.id)}
+                    onClick={() => onDeleteClick(checkPoint.id)}
                   >
                     Delete
                   </button>
@@ -149,4 +127,4 @@ const UsersList = ({ users }) => {
   )
 }
 
-export default UsersList
+export default CheckPointsList

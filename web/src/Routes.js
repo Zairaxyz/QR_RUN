@@ -1,11 +1,11 @@
 import { Router, Route, Set, Private } from '@redwoodjs/router'
 
+import CheckPointsLayout from 'src/layouts/CheckPointsLayout'
 import LapsLayout from 'src/layouts/LapsLayout'
 import LogsLayout from 'src/layouts/LogsLayout'
 import ParksLayout from 'src/layouts/ParksLayout'
-import RouteScannersLayout from 'src/layouts/RouteScannersLayout'
+import RouteCheckPointsLayout from 'src/layouts/RouteCheckPointsLayout'
 import RunsLayout from 'src/layouts/RunsLayout'
-import ScannersLayout from 'src/layouts/ScannersLayout'
 import UsersLayout from 'src/layouts/UsersLayout'
 
 import NavbarLayout from './layouts/NavbarLayout/NavbarLayout'
@@ -13,14 +13,26 @@ import NavbarLayout from './layouts/NavbarLayout/NavbarLayout'
 const Routes = () => {
   return (
     <Router>
+      <Set wrap={UsersLayout}>
+        <Route path="/users/new" page={UserNewUserPage} name="newUser" />
+        <Route path="/users/{id}/edit" page={UserEditUserPage} name="editUser" />
+        <Route path="/users/{id}" page={UserUserPage} name="user" />
+        <Route path="/users" page={UserUsersPage} name="users" />
+      </Set>
+      <Set wrap={CheckPointsLayout}>
+        <Route path="/check-points/new" page={CheckPointNewCheckPointPage} name="newCheckPoint" />
+        <Route path="/check-points/{id}/edit" page={CheckPointEditCheckPointPage} name="editCheckPoint" />
+        <Route path="/check-points/{id}" page={CheckPointCheckPointPage} name="checkPoint" />
+        <Route path="/check-points" page={CheckPointCheckPointsPage} name="checkPoints" />
+      </Set>
+      <Set wrap={RouteCheckPointsLayout}>
+        <Route path="/route-check-points/new" page={RouteCheckPointNewRouteCheckPointPage} name="newRouteCheckPoint" />
+        <Route path="/route-check-points/{id}/edit" page={RouteCheckPointEditRouteCheckPointPage} name="editRouteCheckPoint" />
+        <Route path="/route-check-points/{id}" page={RouteCheckPointRouteCheckPointPage} name="routeCheckPoint" />
+        <Route path="/route-check-points" page={RouteCheckPointRouteCheckPointsPage} name="routeCheckPoints" />
+      </Set>
       <Set wrap={NavbarLayout}>
         <Private unauthenticated="home" roles="admin">
-          <Set wrap={RouteScannersLayout}>
-            <Route path="/admin/route-scanners/new" page={RouteScannerNewRouteScannerPage} name="newRouteScanner" />
-            <Route path="/admin/route-scanners/{id}/edit" page={RouteScannerEditRouteScannerPage} name="editRouteScanner" />
-            <Route path="/admin/route-scanners/{id}" page={RouteScannerRouteScannerPage} name="routeScanner" />
-            <Route path="/admin/route-scanners" page={RouteScannerRouteScannersPage} name="routeScanners" />
-          </Set>
           <Set wrap={LapsLayout}>
             <Route path="/admin/laps/new" page={LapNewLapPage} name="newLap" />
             <Route path="/admin/laps/{id}/edit" page={LapEditLapPage} name="editLap" />
@@ -38,12 +50,6 @@ const Routes = () => {
             <Route path="/admin/logs/{id}/edit" page={LogEditLogPage} name="editLog" />
             <Route path="/admin/logs/{id}" page={LogLogPage} name="log" />
             <Route path="/admin/logs" page={LogLogsPage} name="logs" />
-          </Set>
-          <Set wrap={ScannersLayout}>
-            <Route path="/admin/scanners/new" page={AdminScannerNewScannerPage} name="newScanner" />
-            <Route path="/admin/scanners/{id:String}/edit" page={AdminScannerEditScannerPage} name="editScanner" />
-            <Route path="/admin/scanners/{id:String}" page={AdminScannerScannerPage} name="scanner" />
-            <Route path="/admin/scanners" page={AdminScannerScannersPage} name="scanners" />
           </Set>
           <Set wrap={ParksLayout}>
             <Route path="/admin/parks/new" page={ParkNewParkPage} name="newPark" />
