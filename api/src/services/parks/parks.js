@@ -33,10 +33,10 @@ export const Park = {
   Run: (_obj, { root }) => {
     return db.park.findUnique({ where: { id: root?.id } }).Run()
   },
-  Scanner: (_obj, { root }) => {
-    return db.park.findUnique({ where: { id: root?.id } }).Scanner()
+  RouteCheckPoint: (_obj, { root }) => {
+    return db.park.findUnique({ where: { id: root?.id } }).RouteCheckPoint()
   },
-  RouteScanner: (_obj, { root }) => {
-    return db.park.findUnique({ where: { id: root?.id } }).RouteScanner()
+  CheckPoint: (_obj, { root }) => {
+    return db.park.findUnique({ where: { id: root?.id } }).CheckPoint()
   },
 }

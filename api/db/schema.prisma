@@ -9,7 +9,7 @@ datasource db {
 }
 
 model User {
-  id                  String    @id @default(cuid())
+  id                  String    @id @default(uuid())
   gender              String?
   email               String    @unique
   hashedPassword      String
@@ -30,7 +30,7 @@ model User {
 }
 
 model Park {
-  id              String            @id @default(cuid())
+  id              String            @id @default(uuid())
   park_name       String?
   image_url       String?
   description     String?
@@ -42,7 +42,7 @@ model Park {
 }
 
 model Run {
-  id              String    @id @default(cuid())
+  id              String    @id @default(uuid())
   start_timestamp DateTime?
   stop_timestamp  DateTime?
   total_distance  Float?
