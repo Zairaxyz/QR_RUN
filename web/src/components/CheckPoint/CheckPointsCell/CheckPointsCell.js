@@ -1,12 +1,13 @@
 import { Link, routes } from '@redwoodjs/router'
 
-import CheckPoints from 'src/components/CheckPoint/CheckPoints'
+import Checkpoints from 'src/components/Checkpoint/Checkpoints'
 
 export const QUERY = gql`
-  query FindCheckPoints {
-    checkPoints {
+  query FindCheckpoints {
+    checkpoints {
       id
       parkId
+      name
       longitude
       latitude
     }
@@ -18,8 +19,8 @@ export const Loading = () => <div>Loading...</div>
 export const Empty = () => {
   return (
     <div className="rw-text-center">
-      {'No checkPoints yet. '}
-      <Link to={routes.newCheckPoint()} className="rw-link">
+      {'No checkpoints yet. '}
+      <Link to={routes.newCheckpoint()} className="rw-link">
         {'Create one?'}
       </Link>
     </div>
@@ -30,6 +31,6 @@ export const Failure = ({ error }) => (
   <div className="rw-cell-error">{error?.message}</div>
 )
 
-export const Success = ({ checkPoints }) => {
-  return <CheckPoints checkPoints={checkPoints} />
+export const Success = ({ checkpoints }) => {
+  return <Checkpoints checkpoints={checkpoints} />
 }

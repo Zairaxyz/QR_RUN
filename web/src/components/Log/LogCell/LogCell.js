@@ -5,8 +5,8 @@ export const QUERY = gql`
     log: log(id: $id) {
       id
       userId
-      scannerId
-      time_stamp
+      timeStamp
+      checkpointId
     }
   }
 `

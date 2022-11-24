@@ -9,10 +9,10 @@ export const QUERY = gql`
   query EditLapById($id: String!) {
     lap: lap(id: $id) {
       id
-      start_time_stamp
-      stop_time_stamp
-      route_scannerId
+      startTime
+      stopTimee
       userId
+      pathId
     }
   }
 `
@@ -20,10 +20,10 @@ const UPDATE_LAP_MUTATION = gql`
   mutation UpdateLapMutation($id: String!, $input: UpdateLapInput!) {
     updateLap(id: $id, input: $input) {
       id
-      start_time_stamp
-      stop_time_stamp
-      route_scannerId
+      startTime
+      stopTimee
       userId
+      pathId
     }
   }
 `

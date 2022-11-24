@@ -3,26 +3,28 @@ import { navigate, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
-import CheckPointForm from 'src/components/CheckPoint/CheckPointForm'
+import CheckpointForm from 'src/components/Checkpoint/CheckpointForm'
 
 export const QUERY = gql`
-  query EditCheckPointById($id: String!) {
-    checkPoint: checkPoint(id: $id) {
+  query EditCheckpointById($id: String!) {
+    checkpoint: checkpoint(id: $id) {
       id
       parkId
+      name
       longitude
       latitude
     }
   }
 `
-const UPDATE_CHECK_POINT_MUTATION = gql`
-  mutation UpdateCheckPointMutation(
+const UPDATE_CHECKPOINT_MUTATION = gql`
+  mutation UpdateCheckpointMutation(
     $id: String!
-    $input: UpdateCheckPointInput!
+    $input: UpdateCheckpointInput!
   ) {
-    updateCheckPoint(id: $id, input: $input) {
+    updateCheckpoint(id: $id, input: $input) {
       id
       parkId
+      name
       longitude
       latitude
     }
@@ -35,13 +37,13 @@ export const Failure = ({ error }) => (
   <div className="rw-cell-error">{error?.message}</div>
 )
 
-export const Success = ({ checkPoint }) => {
-  const [updateCheckPoint, { loading, error }] = useMutation(
-    UPDATE_CHECK_POINT_MUTATION,
+export const Success = ({ checkpoint }) => {
+  const [updateCheckpoint, { loading, error }] = useMutation(
+    UPDATE_CHECKPOINT_MUTATION,
     {
       onCompleted: () => {
-        toast.success('CheckPoint updated')
-        navigate(routes.checkPoints())
+        toast.success('Checkpoint updated')
+        navigate(routes.checkpoints())
       },
       onError: (error) => {
         toast.error(error.message)
@@ -50,19 +52,19 @@ export const Success = ({ checkPoint }) => {
   )
 
   const onSave = (input, id) => {
-    updateCheckPoint({ variables: { id, input } })
+    updateCheckpoint({ variables: { id, input } })
   }
 
   return (
     <div className="rw-segment">
       <header className="rw-segment-header">
         <h2 className="rw-heading rw-heading-secondary">
-          Edit CheckPoint {checkPoint?.id}
+          Edit Checkpoint {checkpoint?.id}
         </h2>
       </header>
       <div className="rw-segment-main">
-        <CheckPointForm
-          checkPoint={checkPoint}
+        <CheckpointForm
+          checkpoint={checkpoint}
           onSave={onSave}
           error={error}
           loading={loading}

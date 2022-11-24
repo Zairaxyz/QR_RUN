@@ -221,38 +221,38 @@ const UserForm = (props) => {
         <FieldError name="lastName" className="rw-field-error" />
 
         <Label
-          name="currentRoad"
+          name="currentPath"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Current road
+          Current path
         </Label>
 
         <TextField
-          name="currentRoad"
-          defaultValue={props.user?.currentRoad}
+          name="currentPath"
+          defaultValue={props.user?.currentPath}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
 
-        <FieldError name="currentRoad" className="rw-field-error" />
+        <FieldError name="currentPath" className="rw-field-error" />
 
         <Label
-          name="currentCheckPoint"
+          name="currentCheckpoint"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Current check point
+          Current checkpoint
         </Label>
 
         <TextField
-          name="currentCheckPoint"
-          defaultValue={props.user?.currentCheckPoint}
+          name="currentCheckpoint"
+          defaultValue={props.user?.currentCheckpoint}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
 
-        <FieldError name="currentCheckPoint" className="rw-field-error" />
+        <FieldError name="currentCheckpoint" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">

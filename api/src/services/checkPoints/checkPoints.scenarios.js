@@ -1,6 +1,6 @@
 export const standard = defineScenario({
-  checkPoint: {
-    one: { data: { park: { create: {} } } },
-    two: { data: { park: { create: {} } } },
+  checkpoint: {
+    one: { data: { name: 'String', park: { create: {} } } },
+    two: { data: { name: 'String', park: { create: {} } } },
   },
 })

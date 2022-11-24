@@ -1,7 +1,7 @@
-import NewCheckPoint from 'src/components/CheckPoint/NewCheckPoint'
+import NewCheckpoint from 'src/components/Checkpoint/NewCheckpoint'
 
-const NewCheckPointPage = () => {
-  return <NewCheckPoint />
+const NewCheckpointPage = () => {
+  return <NewCheckpoint />
 }
 
-export default NewCheckPointPage
+export default NewCheckpointPage

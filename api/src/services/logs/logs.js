@@ -33,7 +33,7 @@ export const Log = {
   user: (_obj, { root }) => {
     return db.log.findUnique({ where: { id: root?.id } }).user()
   },
-  scanner: (_obj, { root }) => {
-    return db.log.findUnique({ where: { id: root?.id } }).scanner()
+  Checkpoint: (_obj, { root }) => {
+    return db.log.findUnique({ where: { id: root?.id } }).Checkpoint()
   },
 }

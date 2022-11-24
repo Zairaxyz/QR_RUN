@@ -1,34 +1,40 @@
 export const schema = gql`
-  type CheckPoint {
+  type Checkpoint {
     id: String!
     park: Park!
     parkId: String!
+    name: String!
     longitude: Float
     latitude: Float
     Log: [Log]!
+    PathCheckpoint: [PathCheckpoint]!
+    PrevPathCheckpoint: [PathCheckpoint]!
   }
 
   type Query {
-    checkPoints: [CheckPoint!]! @requireAuth
-    checkPoint(id: String!): CheckPoint @requireAuth
+    checkpoints: [Checkpoint!]! @requireAuth
+    checkpoint(id: String!): Checkpoint @requireAuth
   }
 
-  input CreateCheckPointInput {
+  input CreateCheckpointInput {
     parkId: String!
+    name: String!
     longitude: Float
     latitude: Float
   }
 
-  input UpdateCheckPointInput {
+  input UpdateCheckpointInput {
     parkId: String
+    name: String
     longitude: Float
     latitude: Float
   }
 
   type Mutation {
-    createCheckPoint(input: CreateCheckPointInput!): CheckPoint! @requireAuth
-    updateCheckPoint(id: String!, input: UpdateCheckPointInput!): CheckPoint!
+    createCheckpoint(input: CreateCheckpointInput!): Checkpoint! @requireAuth
+    updateCheckpoint(id: String!, input: UpdateCheckpointInput!): Checkpoint!
       @requireAuth
-    deleteCheckPoint(id: String!): CheckPoint! @requireAuth
+    deleteCheckpoint(id: String!): Checkpoint! @requireAuth
+    checkRunningPath(userId: String!, checkpointId: String!): String @skipAuth
   }
 `

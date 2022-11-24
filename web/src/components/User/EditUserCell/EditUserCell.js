@@ -20,9 +20,9 @@ export const QUERY = gql`
       firstName
       imageUrl
       lastName
-      currentRoad
-      currentCheckPoint
-      registerTimesTamp
+      currentPath
+      currentCheckpoint
+      createdAt
     }
   }
 `
@@ -41,9 +41,9 @@ const UPDATE_USER_MUTATION = gql`
       firstName
       imageUrl
       lastName
-      currentRoad
-      currentCheckPoint
-      registerTimesTamp
+      currentPath
+      currentCheckpoint
+      createdAt
     }
   }
 `

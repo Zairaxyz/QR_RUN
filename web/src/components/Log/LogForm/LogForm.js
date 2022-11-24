@@ -48,25 +48,7 @@ const LogForm = (props) => {
         <FieldError name="userId" className="rw-field-error" />
 
         <Label
-          name="scannerId"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Scanner id
-        </Label>
-
-        <TextField
-          name="scannerId"
-          defaultValue={props.log?.scannerId}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-
-        <FieldError name="scannerId" className="rw-field-error" />
-
-        <Label
-          name="time_stamp"
+          name="timeStamp"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
@@ -74,14 +56,31 @@ const LogForm = (props) => {
         </Label>
 
         <DatetimeLocalField
-          name="time_stamp"
-          defaultValue={formatDatetime(props.log?.time_stamp)}
+          name="timeStamp"
+          defaultValue={formatDatetime(props.log?.timeStamp)}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
         />
 
-        <FieldError name="time_stamp" className="rw-field-error" />
+        <FieldError name="timeStamp" className="rw-field-error" />
+
+        <Label
+          name="checkpointId"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Checkpoint id
+        </Label>
+
+        <TextField
+          name="checkpointId"
+          defaultValue={props.log?.checkpointId}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+
+        <FieldError name="checkpointId" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">

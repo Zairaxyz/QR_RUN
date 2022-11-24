@@ -1,7 +1,3 @@
-import { useState } from 'react'
-
-import Select from 'react-select'
-
 import {
   Form,
   FormError,
@@ -10,46 +6,11 @@ import {
   TextField,
   Submit,
 } from '@redwoodjs/forms'
-import { useQuery } from '@redwoodjs/web'
-const CheckPointForm = (props) => {
-  const [parkId, setParkId] = useState('')
+
+const CheckpointForm = (props) => {
   const onSubmit = (data) => {
-    // ...data เป็นการแตกไฟล์จาก Form
-    const record = { ...data, parkId: parkId }
-    props.onSave(record, props?.scanner?.id)
+    props.onSave(data, props?.checkpoint?.id)
   }
-
-  const QUERY = gql`
-    query FindParks {
-      parks {
-        id
-        park_name
-      }
-    }
-  `
-  const { loading, data } = useQuery(QUERY)
-  if (loading)
-    return (
-      <div className="... bg-indigo-500" disabled>
-        <svg
-          className="... mr-3 h-5 w-5 animate-spin"
-          viewBox="0 0 24 24"
-        ></svg>
-        Processing...
-      </div>
-    )
-
-  const parkOption = data.parks.map((data) => ({
-    value: data.id,
-    label: data.park_name,
-  }))
-
-  const handleChangePark = (e) => {
-    // console.log(e)
-    setParkId(e.value)
-    // console.log(e.label)
-  }
-  // console.log(parkId)
 
   return (
     <div className="rw-form-wrapper">
@@ -68,16 +29,34 @@ const CheckPointForm = (props) => {
         >
           Park id
         </Label>
-        <Select options={parkOption} onChange={handleChangePark} required />
-        {/* <TextField
+
+        <TextField
           name="parkId"
-          defaultValue={props.scanner?.parkId}
+          defaultValue={props.checkpoint?.parkId}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
-        /> */}
+        />
 
         <FieldError name="parkId" className="rw-field-error" />
+
+        <Label
+          name="name"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Name
+        </Label>
+
+        <TextField
+          name="name"
+          defaultValue={props.checkpoint?.name}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          validation={{ required: true }}
+        />
+
+        <FieldError name="name" className="rw-field-error" />
 
         <Label
           name="longitude"
@@ -89,7 +68,7 @@ const CheckPointForm = (props) => {
 
         <TextField
           name="longitude"
-          defaultValue={props.scanner?.longitude}
+          defaultValue={props.checkpoint?.longitude}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ valueAsNumber: true }}
@@ -107,7 +86,7 @@ const CheckPointForm = (props) => {
 
         <TextField
           name="latitude"
-          defaultValue={props.scanner?.latitude}
+          defaultValue={props.checkpoint?.latitude}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ valueAsNumber: true }}
@@ -125,4 +104,4 @@ const CheckPointForm = (props) => {
   )
 }
 
-export default CheckPointForm
+export default CheckpointForm

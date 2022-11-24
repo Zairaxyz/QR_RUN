@@ -1,7 +1,7 @@
-import CheckPointsCell from 'src/components/CheckPoint/CheckPointsCell'
+import CheckpointsCell from 'src/components/Checkpoint/CheckpointsCell'
 
-const CheckPointsPage = () => {
-  return <CheckPointsCell />
+const CheckpointsPage = () => {
+  return <CheckpointsCell />
 }
 
-export default CheckPointsPage
+export default CheckpointsPage

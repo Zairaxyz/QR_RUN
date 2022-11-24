@@ -91,9 +91,9 @@ const UsersList = ({ users }) => {
             <th>First name</th>
             <th>Image url</th>
             <th>Last name</th>
-            <th>Current road</th>
-            <th>Current check point</th>
-            <th>Register times tamp</th>
+            <th>Current path</th>
+            <th>Current checkpoint</th>
+            <th>Created at</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -112,9 +112,9 @@ const UsersList = ({ users }) => {
               <td>{truncate(user.firstName)}</td>
               <td>{truncate(user.imageUrl)}</td>
               <td>{truncate(user.lastName)}</td>
-              <td>{truncate(user.currentRoad)}</td>
-              <td>{truncate(user.currentCheckPoint)}</td>
-              <td>{timeTag(user.registerTimesTamp)}</td>
+              <td>{truncate(user.currentPath)}</td>
+              <td>{truncate(user.currentCheckpoint)}</td>
+              <td>{timeTag(user.createdAt)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

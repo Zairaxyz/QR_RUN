@@ -2,23 +2,23 @@ import { navigate, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
-import CheckPointForm from 'src/components/CheckPoint/CheckPointForm'
+import CheckpointForm from 'src/components/Checkpoint/CheckpointForm'
 
-const CREATE_CHECK_POINT_MUTATION = gql`
-  mutation CreateCheckPointMutation($input: CreateCheckPointInput!) {
-    createCheckPoint(input: $input) {
+const CREATE_CHECKPOINT_MUTATION = gql`
+  mutation CreateCheckpointMutation($input: CreateCheckpointInput!) {
+    createCheckpoint(input: $input) {
       id
     }
   }
 `
 
-const NewCheckPoint = () => {
-  const [createCheckPoint, { loading, error }] = useMutation(
-    CREATE_CHECK_POINT_MUTATION,
+const NewCheckpoint = () => {
+  const [createCheckpoint, { loading, error }] = useMutation(
+    CREATE_CHECKPOINT_MUTATION,
     {
       onCompleted: () => {
-        toast.success('CheckPoint created')
-        navigate(routes.checkPoints())
+        toast.success('Checkpoint created')
+        navigate(routes.checkpoints())
       },
       onError: (error) => {
         toast.error(error.message)
@@ -27,19 +27,19 @@ const NewCheckPoint = () => {
   )
 
   const onSave = (input) => {
-    createCheckPoint({ variables: { input } })
+    createCheckpoint({ variables: { input } })
   }
 
   return (
     <div className="rw-segment">
       <header className="rw-segment-header">
-        <h2 className="rw-heading rw-heading-secondary">New CheckPoint</h2>
+        <h2 className="rw-heading rw-heading-secondary">New Checkpoint</h2>
       </header>
       <div className="rw-segment-main">
-        <CheckPointForm onSave={onSave} loading={loading} error={error} />
+        <CheckpointForm onSave={onSave} loading={loading} error={error} />
       </div>
     </div>
   )
 }
 
-export default NewCheckPoint
+export default NewCheckpoint

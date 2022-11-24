@@ -1,10 +1,11 @@
-import CheckPoint from 'src/components/CheckPoint/CheckPoint'
+import Checkpoint from 'src/components/Checkpoint/Checkpoint'
 
 export const QUERY = gql`
-  query FindCheckPointById($id: String!) {
-    checkPoint: checkPoint(id: $id) {
+  query FindCheckpointById($id: String!) {
+    checkpoint: checkpoint(id: $id) {
       id
       parkId
+      name
       longitude
       latitude
     }
@@ -13,12 +14,12 @@ export const QUERY = gql`
 
 export const Loading = () => <div>Loading...</div>
 
-export const Empty = () => <div>CheckPoint not found</div>
+export const Empty = () => <div>Checkpoint not found</div>
 
 export const Failure = ({ error }) => (
   <div className="rw-cell-error">{error?.message}</div>
 )
 
-export const Success = ({ checkPoint }) => {
-  return <CheckPoint checkPoint={checkPoint} />
+export const Success = ({ checkpoint }) => {
+  return <Checkpoint checkpoint={checkpoint} />
 }

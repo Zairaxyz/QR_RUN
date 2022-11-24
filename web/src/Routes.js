@@ -1,11 +1,19 @@
 import { Router, Route, Set, Private } from '@redwoodjs/router'
 
-import CheckPointsLayout from 'src/layouts/CheckPointsLayout'
+import PathCheckpointsLayout from 'src/layouts/PathCheckpointsLayout'
+
+import PathsLayout from 'src/layouts/PathsLayout'
+
 import LapsLayout from 'src/layouts/LapsLayout'
+
 import LogsLayout from 'src/layouts/LogsLayout'
-import ParksLayout from 'src/layouts/ParksLayout'
-import RouteCheckPointsLayout from 'src/layouts/RouteCheckPointsLayout'
+
+import CheckpointsLayout from 'src/layouts/CheckpointsLayout'
+
 import RunsLayout from 'src/layouts/RunsLayout'
+
+import ParksLayout from 'src/layouts/ParksLayout'
+
 import UsersLayout from 'src/layouts/UsersLayout'
 
 import NavbarLayout from './layouts/NavbarLayout/NavbarLayout'
@@ -13,7 +21,43 @@ import NavbarLayout from './layouts/NavbarLayout/NavbarLayout'
 const Routes = () => {
   return (
     <Router>
-      {/* <Set wrap={ParksLayout}>
+      <Set wrap={PathCheckpointsLayout}>
+        <Route path="/path-checkpoints/new" page={PathCheckpointNewPathCheckpointPage} name="newPathCheckpoint" />
+        <Route path="/path-checkpoints/{id}/edit" page={PathCheckpointEditPathCheckpointPage} name="editPathCheckpoint" />
+        <Route path="/path-checkpoints/{id}" page={PathCheckpointPathCheckpointPage} name="pathCheckpoint" />
+        <Route path="/path-checkpoints" page={PathCheckpointPathCheckpointsPage} name="pathCheckpoints" />
+      </Set>
+      <Set wrap={PathsLayout}>
+        <Route path="/paths/new" page={PathNewPathPage} name="newPath" />
+        <Route path="/paths/{id}/edit" page={PathEditPathPage} name="editPath" />
+        <Route path="/paths/{id}" page={PathPathPage} name="path" />
+        <Route path="/paths" page={PathPathsPage} name="paths" />
+      </Set>
+      <Set wrap={LapsLayout}>
+        <Route path="/laps/new" page={LapNewLapPage} name="newLap" />
+        <Route path="/laps/{id}/edit" page={LapEditLapPage} name="editLap" />
+        <Route path="/laps/{id}" page={LapLapPage} name="lap" />
+        <Route path="/laps" page={LapLapsPage} name="laps" />
+      </Set>
+      <Set wrap={LogsLayout}>
+        <Route path="/logs/new" page={LogNewLogPage} name="newLog" />
+        <Route path="/logs/{id}/edit" page={LogEditLogPage} name="editLog" />
+        <Route path="/logs/{id}" page={LogLogPage} name="log" />
+        <Route path="/logs" page={LogLogsPage} name="logs" />
+      </Set>
+      <Set wrap={CheckpointsLayout}>
+        <Route path="/checkpoints/new" page={CheckpointNewCheckpointPage} name="newCheckpoint" />
+        <Route path="/checkpoints/{id}/edit" page={CheckpointEditCheckpointPage} name="editCheckpoint" />
+        <Route path="/checkpoints/{id}" page={CheckpointCheckpointPage} name="checkpoint" />
+        <Route path="/checkpoints" page={CheckpointCheckpointsPage} name="checkpoints" />
+      </Set>
+      <Set wrap={RunsLayout}>
+        <Route path="/runs/new" page={RunNewRunPage} name="newRun" />
+        <Route path="/runs/{id}/edit" page={RunEditRunPage} name="editRun" />
+        <Route path="/runs/{id}" page={RunRunPage} name="run" />
+        <Route path="/runs" page={RunRunsPage} name="runs" />
+      </Set>
+      <Set wrap={ParksLayout}>
         <Route path="/parks/new" page={ParkNewParkPage} name="newPark" />
         <Route path="/parks/{id}/edit" page={ParkEditParkPage} name="editPark" />
         <Route path="/parks/{id}" page={ParkParkPage} name="park" />
@@ -24,22 +68,11 @@ const Routes = () => {
         <Route path="/users/{id}/edit" page={UserEditUserPage} name="editUser" />
         <Route path="/users/{id}" page={UserUserPage} name="user" />
         <Route path="/users" page={UserUsersPage} name="users" />
-      </Set> */}
+      </Set>
+      {/* */}
 
       <Set wrap={NavbarLayout}>
         <Private unauthenticated="home" roles="admin">
-          <Set wrap={RouteCheckPointsLayout}>
-            <Route path="/route-check-points/new" page={RouteCheckPointNewRouteCheckPointPage} name="newRouteCheckPoint" />
-            <Route path="/route-check-points/{id}/edit" page={RouteCheckPointEditRouteCheckPointPage} name="editRouteCheckPoint" />
-            <Route path="/route-check-points/{id}" page={RouteCheckPointRouteCheckPointPage} name="routeCheckPoint" />
-            <Route path="/route-check-points" page={RouteCheckPointRouteCheckPointsPage} name="routeCheckPoints" />
-          </Set>
-          <Set wrap={CheckPointsLayout}>
-            <Route path="/check-points/new" page={CheckPointNewCheckPointPage} name="newCheckPoint" />
-            <Route path="/check-points/{id}/edit" page={CheckPointEditCheckPointPage} name="editCheckPoint" />
-            <Route path="/check-points/{id}" page={CheckPointCheckPointPage} name="checkPoint" />
-            <Route path="/check-points" page={CheckPointCheckPointsPage} name="checkPoints" />
-          </Set>
           <Set wrap={LapsLayout}>
             <Route path="/admin/laps/new" page={LapNewLapPage} name="newLap" />
             <Route path="/admin/laps/{id}/edit" page={LapEditLapPage} name="editLap" />

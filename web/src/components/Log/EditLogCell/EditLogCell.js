@@ -10,8 +10,8 @@ export const QUERY = gql`
     log: log(id: $id) {
       id
       userId
-      scannerId
-      time_stamp
+      timeStamp
+      checkpointId
     }
   }
 `
@@ -20,8 +20,8 @@ const UPDATE_LOG_MUTATION = gql`
     updateLog(id: $id, input: $input) {
       id
       userId
-      scannerId
-      time_stamp
+      timeStamp
+      checkpointId
     }
   }
 `

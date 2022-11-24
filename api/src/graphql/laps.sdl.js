@@ -1,12 +1,12 @@
 export const schema = gql`
   type Lap {
     id: String!
-    start_time_stamp: DateTime!
-    stop_time_stamp: DateTime!
-    route_scannerId: String!
-    route_scanner: RouteScanner!
+    startTime: DateTime!
+    stopTimee: DateTime!
     userId: String!
     user: User!
+    pathId: String!
+    path: Path!
   }
 
   type Query {
@@ -15,17 +15,17 @@ export const schema = gql`
   }
 
   input CreateLapInput {
-    start_time_stamp: DateTime!
-    stop_time_stamp: DateTime!
-    route_scannerId: String!
+    startTime: DateTime!
+    stopTimee: DateTime!
     userId: String!
+    pathId: String!
   }
 
   input UpdateLapInput {
-    start_time_stamp: DateTime
-    stop_time_stamp: DateTime
-    route_scannerId: String
+    startTime: DateTime
+    stopTimee: DateTime
     userId: String
+    pathId: String
   }
 
   type Mutation {

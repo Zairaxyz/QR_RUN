@@ -2,24 +2,21 @@ export const standard = defineScenario({
   lap: {
     one: {
       data: {
-        start_time_stamp: '2022-11-08T07:32:50Z',
-        stop_time_stamp: '2022-11-08T07:32:50Z',
-        route_scanner: {
+        startTime: '2022-11-24T09:48:09Z',
+        stopTimee: '2022-11-24T09:48:09Z',
+        user: {
           create: {
-            after: 'String',
-            before: 'String',
-            total_distance: 5652546.114079755,
-            is_start: true,
-            is_finish: true,
-            park: { create: {} },
+            email: 'String5395937',
+            hashedPassword: 'String',
+            salt: 'String',
           },
         },
 
-        user: {
+        path: {
           create: {
-            email: 'String1469692',
-            hashedPassword: 'String',
-            salt: 'String',
+            name: 'String',
+            distance: 4616839.847700116,
+            park: { create: {} },
           },
         },
       },
@@ -27,24 +24,21 @@ export const standard = defineScenario({
 
     two: {
       data: {
-        start_time_stamp: '2022-11-08T07:32:50Z',
-        stop_time_stamp: '2022-11-08T07:32:50Z',
-        route_scanner: {
+        startTime: '2022-11-24T09:48:09Z',
+        stopTimee: '2022-11-24T09:48:09Z',
+        user: {
           create: {
-            after: 'String',
-            before: 'String',
-            total_distance: 3413735.09519614,
-            is_start: true,
-            is_finish: true,
-            park: { create: {} },
+            email: 'String3213409',
+            hashedPassword: 'String',
+            salt: 'String',
           },
         },
 
-        user: {
+        path: {
           create: {
-            email: 'String5516762',
-            hashedPassword: 'String',
-            salt: 'String',
+            name: 'String',
+            distance: 6631106.838188796,
+            park: { create: {} },
           },
         },
       },

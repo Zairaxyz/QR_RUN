@@ -6,9 +6,9 @@ export const QUERY = gql`
   query FindRuns {
     runs {
       id
-      start_timestamp
-      stop_timestamp
-      total_distance
+      startTime
+      stopTime
+      distance
       pace
       userId
       parkId

@@ -5,7 +5,7 @@ export const standard = defineScenario({
         park: { create: {} },
         user: {
           create: {
-            email: 'String6902454',
+            email: 'String1320934',
             hashedPassword: 'String',
             salt: 'String',
           },
@@ -18,7 +18,7 @@ export const standard = defineScenario({
         park: { create: {} },
         user: {
           create: {
-            email: 'String2420951',
+            email: 'String561070',
             hashedPassword: 'String',
             salt: 'String',
           },

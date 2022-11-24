@@ -22,27 +22,27 @@ describe('laps', () => {
   scenario('creates a lap', async (scenario) => {
     const result = await createLap({
       input: {
-        start_time_stamp: '2022-11-08T07:32:49Z',
-        stop_time_stamp: '2022-11-08T07:32:49Z',
-        route_scannerId: scenario.lap.two.route_scannerId,
+        startTime: '2022-11-24T09:48:09Z',
+        stopTimee: '2022-11-24T09:48:09Z',
         userId: scenario.lap.two.userId,
+        pathId: scenario.lap.two.pathId,
       },
     })
 
-    expect(result.start_time_stamp).toEqual('2022-11-08T07:32:49Z')
-    expect(result.stop_time_stamp).toEqual('2022-11-08T07:32:49Z')
-    expect(result.route_scannerId).toEqual(scenario.lap.two.route_scannerId)
+    expect(result.startTime).toEqual('2022-11-24T09:48:09Z')
+    expect(result.stopTimee).toEqual('2022-11-24T09:48:09Z')
     expect(result.userId).toEqual(scenario.lap.two.userId)
+    expect(result.pathId).toEqual(scenario.lap.two.pathId)
   })
 
   scenario('updates a lap', async (scenario) => {
     const original = await lap({ id: scenario.lap.one.id })
     const result = await updateLap({
       id: original.id,
-      input: { start_time_stamp: '2022-11-09T07:32:49Z' },
+      input: { startTime: '2022-11-25T09:48:09Z' },
     })
 
-    expect(result.start_time_stamp).toEqual('2022-11-09T07:32:49Z')
+    expect(result.startTime).toEqual('2022-11-25T09:48:09Z')
   })
 
   scenario('deletes a lap', async (scenario) => {

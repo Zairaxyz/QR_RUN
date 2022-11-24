@@ -30,10 +30,10 @@ export const deleteLap = ({ id }) => {
 }
 
 export const Lap = {
-  route_scanner: (_obj, { root }) => {
-    return db.lap.findUnique({ where: { id: root?.id } }).route_scanner()
-  },
   user: (_obj, { root }) => {
     return db.lap.findUnique({ where: { id: root?.id } }).user()
+  },
+  path: (_obj, { root }) => {
+    return db.lap.findUnique({ where: { id: root?.id } }).path()
   },
 }

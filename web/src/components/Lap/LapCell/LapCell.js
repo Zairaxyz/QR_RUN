@@ -4,10 +4,10 @@ export const QUERY = gql`
   query FindLapById($id: String!) {
     lap: lap(id: $id) {
       id
-      start_time_stamp
-      stop_time_stamp
-      route_scannerId
+      startTime
+      stopTimee
       userId
+      pathId
     }
   }
 `

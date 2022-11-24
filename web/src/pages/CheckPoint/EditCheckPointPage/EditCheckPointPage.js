@@ -1,7 +1,7 @@
-import EditCheckPointCell from 'src/components/CheckPoint/EditCheckPointCell'
+import EditCheckpointCell from 'src/components/Checkpoint/EditCheckpointCell'
 
-const EditCheckPointPage = ({ id }) => {
-  return <EditCheckPointCell id={id} />
+const EditCheckpointPage = ({ id }) => {
+  return <EditCheckpointCell id={id} />
 }
 
-export default EditCheckPointPage
+export default EditCheckpointPage

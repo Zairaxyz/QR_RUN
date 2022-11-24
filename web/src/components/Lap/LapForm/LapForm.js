@@ -30,58 +30,40 @@ const LapForm = (props) => {
         />
 
         <Label
-          name="start_time_stamp"
+          name="startTime"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Start time stamp
+          Start time
         </Label>
 
         <DatetimeLocalField
-          name="start_time_stamp"
-          defaultValue={formatDatetime(props.lap?.start_time_stamp)}
+          name="startTime"
+          defaultValue={formatDatetime(props.lap?.startTime)}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
         />
 
-        <FieldError name="start_time_stamp" className="rw-field-error" />
+        <FieldError name="startTime" className="rw-field-error" />
 
         <Label
-          name="stop_time_stamp"
+          name="stopTimee"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Stop time stamp
+          Stop timee
         </Label>
 
         <DatetimeLocalField
-          name="stop_time_stamp"
-          defaultValue={formatDatetime(props.lap?.stop_time_stamp)}
+          name="stopTimee"
+          defaultValue={formatDatetime(props.lap?.stopTimee)}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
         />
 
-        <FieldError name="stop_time_stamp" className="rw-field-error" />
-
-        <Label
-          name="route_scannerId"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Route scanner id
-        </Label>
-
-        <TextField
-          name="route_scannerId"
-          defaultValue={props.lap?.route_scannerId}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-
-        <FieldError name="route_scannerId" className="rw-field-error" />
+        <FieldError name="stopTimee" className="rw-field-error" />
 
         <Label
           name="userId"
@@ -100,6 +82,24 @@ const LapForm = (props) => {
         />
 
         <FieldError name="userId" className="rw-field-error" />
+
+        <Label
+          name="pathId"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Path id
+        </Label>
+
+        <TextField
+          name="pathId"
+          defaultValue={props.lap?.pathId}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          validation={{ required: true }}
+        />
+
+        <FieldError name="pathId" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">

@@ -12,9 +12,9 @@ export const schema = gql`
     firstName: String
     imageUrl: String
     lastName: String
-    currentRoad: String
-    currentCheckPoint: String
-    registerTimesTamp: DateTime
+    currentPath: String
+    currentCheckpoint: String
+    createdAt: DateTime
     Run: [Run]!
     Log: [Log]!
     Lap: [Lap]!
@@ -37,9 +37,8 @@ export const schema = gql`
     firstName: String
     imageUrl: String
     lastName: String
-    currentRoad: String
-    currentCheckPoint: String
-    registerTimesTamp: DateTime
+    currentPath: String
+    currentCheckpoint: String
   }
 
   input UpdateUserInput {
@@ -54,9 +53,8 @@ export const schema = gql`
     firstName: String
     imageUrl: String
     lastName: String
-    currentRoad: String
-    currentCheckPoint: String
-    registerTimesTamp: DateTime
+    currentPath: String
+    currentCheckpoint: String
   }
 
   type Mutation {

@@ -3,9 +3,9 @@ export const schema = gql`
     id: String!
     user: User!
     userId: String!
-    scannerId: String!
-    scanner: Scanner!
-    time_stamp: DateTime!
+    timeStamp: DateTime!
+    Checkpoint: Checkpoint
+    checkpointId: String
   }
 
   type Query {
@@ -15,14 +15,14 @@ export const schema = gql`
 
   input CreateLogInput {
     userId: String!
-    scannerId: String!
-    time_stamp: DateTime!
+    timeStamp: DateTime!
+    checkpointId: String
   }
 
   input UpdateLogInput {
     userId: String
-    scannerId: String
-    time_stamp: DateTime
+    timeStamp: DateTime
+    checkpointId: String
   }
 
   type Mutation {

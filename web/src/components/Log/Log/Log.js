@@ -81,12 +81,12 @@ const Log = ({ log }) => {
               <td>{log.userId}</td>
             </tr>
             <tr>
-              <th>Scanner id</th>
-              <td>{log.scannerId}</td>
+              <th>Time stamp</th>
+              <td>{timeTag(log.timeStamp)}</td>
             </tr>
             <tr>
-              <th>Time stamp</th>
-              <td>{timeTag(log.time_stamp)}</td>
+              <th>Checkpoint id</th>
+              <td>{log.checkpointId}</td>
             </tr>
           </tbody>
         </table>

@@ -6,10 +6,10 @@ export const QUERY = gql`
   query FindLaps {
     laps {
       id
-      start_time_stamp
-      stop_time_stamp
-      route_scannerId
+      startTime
+      stopTimee
       userId
+      pathId
     }
   }
 `

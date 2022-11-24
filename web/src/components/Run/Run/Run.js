@@ -77,16 +77,16 @@ const Run = ({ run }) => {
               <td>{run.id}</td>
             </tr>
             <tr>
-              <th>Start timestamp</th>
-              <td>{timeTag(run.start_timestamp)}</td>
+              <th>Start time</th>
+              <td>{timeTag(run.startTime)}</td>
             </tr>
             <tr>
-              <th>Stop timestamp</th>
-              <td>{timeTag(run.stop_timestamp)}</td>
+              <th>Stop time</th>
+              <td>{timeTag(run.stopTime)}</td>
             </tr>
             <tr>
-              <th>Total distance</th>
-              <td>{run.total_distance}</td>
+              <th>Distance</th>
+              <td>{run.distance}</td>
             </tr>
             <tr>
               <th>Pace</th>

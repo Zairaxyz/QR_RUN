@@ -4,9 +4,9 @@ import { Link, routes, navigate } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
-const DELETE_CHECK_POINT_MUTATION = gql`
-  mutation DeleteCheckPointMutation($id: String!) {
-    deleteCheckPoint(id: $id) {
+const DELETE_CHECKPOINT_MUTATION = gql`
+  mutation DeleteCheckpointMutation($id: String!) {
+    deleteCheckpoint(id: $id) {
       id
     }
   }
@@ -45,11 +45,11 @@ const checkboxInputTag = (checked) => {
   return <input type="checkbox" checked={checked} disabled />
 }
 
-const CheckPoint = ({ checkPoint }) => {
-  const [deleteCheckPoint] = useMutation(DELETE_CHECK_POINT_MUTATION, {
+const Checkpoint = ({ checkpoint }) => {
+  const [deleteCheckpoint] = useMutation(DELETE_CHECKPOINT_MUTATION, {
     onCompleted: () => {
-      toast.success('CheckPoint deleted')
-      navigate(routes.checkPoints())
+      toast.success('Checkpoint deleted')
+      navigate(routes.checkpoints())
     },
     onError: (error) => {
       toast.error(error.message)
@@ -57,8 +57,8 @@ const CheckPoint = ({ checkPoint }) => {
   })
 
   const onDeleteClick = (id) => {
-    if (confirm('Are you sure you want to delete checkPoint ' + id + '?')) {
-      deleteCheckPoint({ variables: { id } })
+    if (confirm('Are you sure you want to delete checkpoint ' + id + '?')) {
+      deleteCheckpoint({ variables: { id } })
     }
   }
 
@@ -67,33 +67,37 @@ const CheckPoint = ({ checkPoint }) => {
       <div className="rw-segment">
         <header className="rw-segment-header">
           <h2 className="rw-heading rw-heading-secondary">
-            CheckPoint {checkPoint.id} Detail
+            Checkpoint {checkpoint.id} Detail
           </h2>
         </header>
         <table className="rw-table">
           <tbody>
             <tr>
               <th>Id</th>
-              <td>{checkPoint.id}</td>
+              <td>{checkpoint.id}</td>
             </tr>
             <tr>
               <th>Park id</th>
-              <td>{checkPoint.parkId}</td>
+              <td>{checkpoint.parkId}</td>
+            </tr>
+            <tr>
+              <th>Name</th>
+              <td>{checkpoint.name}</td>
             </tr>
             <tr>
               <th>Longitude</th>
-              <td>{checkPoint.longitude}</td>
+              <td>{checkpoint.longitude}</td>
             </tr>
             <tr>
               <th>Latitude</th>
-              <td>{checkPoint.latitude}</td>
+              <td>{checkpoint.latitude}</td>
             </tr>
           </tbody>
         </table>
       </div>
       <nav className="rw-button-group">
         <Link
-          to={routes.editCheckPoint({ id: checkPoint.id })}
+          to={routes.editCheckpoint({ id: checkpoint.id })}
           className="rw-button rw-button-blue"
         >
           Edit
@@ -101,7 +105,7 @@ const CheckPoint = ({ checkPoint }) => {
         <button
           type="button"
           className="rw-button rw-button-red"
-          onClick={() => onDeleteClick(checkPoint.id)}
+          onClick={() => onDeleteClick(checkpoint.id)}
         >
           Delete
         </button>
@@ -110,4 +114,4 @@ const CheckPoint = ({ checkPoint }) => {
   )
 }
 
-export default CheckPoint
+export default Checkpoint

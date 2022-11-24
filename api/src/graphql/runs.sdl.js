@@ -1,9 +1,9 @@
 export const schema = gql`
   type Run {
     id: String!
-    start_timestamp: DateTime
-    stop_timestamp: DateTime
-    total_distance: Float
+    startTime: DateTime
+    stopTime: DateTime
+    distance: Float
     pace: Float
     userId: String!
     parkId: String!
@@ -17,18 +17,18 @@ export const schema = gql`
   }
 
   input CreateRunInput {
-    start_timestamp: DateTime
-    stop_timestamp: DateTime
-    total_distance: Float
+    startTime: DateTime
+    stopTime: DateTime
+    distance: Float
     pace: Float
     userId: String!
     parkId: String!
   }
 
   input UpdateRunInput {
-    start_timestamp: DateTime
-    stop_timestamp: DateTime
-    total_distance: Float
+    startTime: DateTime
+    stopTime: DateTime
+    distance: Float
     pace: Float
     userId: String
     parkId: String

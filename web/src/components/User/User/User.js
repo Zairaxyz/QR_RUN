@@ -121,16 +121,16 @@ const User = ({ user }) => {
               <td>{user.lastName}</td>
             </tr>
             <tr>
-              <th>Current road</th>
-              <td>{user.currentRoad}</td>
+              <th>Current path</th>
+              <td>{user.currentPath}</td>
             </tr>
             <tr>
-              <th>Current check point</th>
-              <td>{user.currentCheckPoint}</td>
+              <th>Current checkpoint</th>
+              <td>{user.currentCheckpoint}</td>
             </tr>
             <tr>
-              <th>Register times tamp</th>
-              <td>{timeTag(user.registerTimesTamp)}</td>
+              <th>Created at</th>
+              <td>{timeTag(user.createdAt)}</td>
             </tr>
           </tbody>
         </table>

@@ -17,9 +17,9 @@ export const QUERY = gql`
       firstName
       imageUrl
       lastName
-      currentRoad
-      currentCheckPoint
-      registerTimesTamp
+      currentPath
+      currentCheckpoint
+      createdAt
     }
   }
 `

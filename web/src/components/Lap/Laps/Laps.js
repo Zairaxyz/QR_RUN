@@ -80,10 +80,10 @@ const LapsList = ({ laps }) => {
         <thead>
           <tr>
             <th>Id</th>
-            <th>Start time stamp</th>
-            <th>Stop time stamp</th>
-            <th>Route scanner id</th>
+            <th>Start time</th>
+            <th>Stop timee</th>
             <th>User id</th>
+            <th>Path id</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -91,10 +91,10 @@ const LapsList = ({ laps }) => {
           {laps.map((lap) => (
             <tr key={lap.id}>
               <td>{truncate(lap.id)}</td>
-              <td>{timeTag(lap.start_time_stamp)}</td>
-              <td>{timeTag(lap.stop_time_stamp)}</td>
-              <td>{truncate(lap.route_scannerId)}</td>
+              <td>{timeTag(lap.startTime)}</td>
+              <td>{timeTag(lap.stopTimee)}</td>
               <td>{truncate(lap.userId)}</td>
+              <td>{truncate(lap.pathId)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

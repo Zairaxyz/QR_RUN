@@ -77,20 +77,20 @@ const Lap = ({ lap }) => {
               <td>{lap.id}</td>
             </tr>
             <tr>
-              <th>Start time stamp</th>
-              <td>{timeTag(lap.start_time_stamp)}</td>
+              <th>Start time</th>
+              <td>{timeTag(lap.startTime)}</td>
             </tr>
             <tr>
-              <th>Stop time stamp</th>
-              <td>{timeTag(lap.stop_time_stamp)}</td>
-            </tr>
-            <tr>
-              <th>Route scanner id</th>
-              <td>{lap.route_scannerId}</td>
+              <th>Stop timee</th>
+              <td>{timeTag(lap.stopTimee)}</td>
             </tr>
             <tr>
               <th>User id</th>
               <td>{lap.userId}</td>
+            </tr>
+            <tr>
+              <th>Path id</th>
+              <td>{lap.pathId}</td>
             </tr>
           </tbody>
         </table>
