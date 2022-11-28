@@ -121,10 +121,6 @@ const User = ({ user }) => {
               <td>{user.lastName}</td>
             </tr>
             <tr>
-              <th>Current path</th>
-              <td>{user.currentPath}</td>
-            </tr>
-            <tr>
               <th>Current checkpoint</th>
               <td>{user.currentCheckpoint}</td>
             </tr>

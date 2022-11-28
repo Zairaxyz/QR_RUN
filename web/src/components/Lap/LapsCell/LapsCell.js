@@ -7,7 +7,7 @@ export const QUERY = gql`
     laps {
       id
       startTime
-      stopTimee
+      stopTime
       userId
       pathId
     }

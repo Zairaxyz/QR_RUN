@@ -10,7 +10,7 @@ export const QUERY = gql`
     lap: lap(id: $id) {
       id
       startTime
-      stopTimee
+      stopTime
       userId
       pathId
     }
@@ -21,7 +21,7 @@ const UPDATE_LAP_MUTATION = gql`
     updateLap(id: $id, input: $input) {
       id
       startTime
-      stopTimee
+      stopTime
       userId
       pathId
     }

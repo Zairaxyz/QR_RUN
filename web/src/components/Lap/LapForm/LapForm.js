@@ -42,28 +42,26 @@ const LapForm = (props) => {
           defaultValue={formatDatetime(props.lap?.startTime)}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
         />
 
         <FieldError name="startTime" className="rw-field-error" />
 
         <Label
-          name="stopTimee"
+          name="stopTime"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Stop timee
+          Stop time
         </Label>
 
         <DatetimeLocalField
-          name="stopTimee"
-          defaultValue={formatDatetime(props.lap?.stopTimee)}
+          name="stopTime"
+          defaultValue={formatDatetime(props.lap?.stopTime)}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
         />
 
-        <FieldError name="stopTimee" className="rw-field-error" />
+        <FieldError name="stopTime" className="rw-field-error" />
 
         <Label
           name="userId"

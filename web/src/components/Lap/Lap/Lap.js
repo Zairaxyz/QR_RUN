@@ -81,8 +81,8 @@ const Lap = ({ lap }) => {
               <td>{timeTag(lap.startTime)}</td>
             </tr>
             <tr>
-              <th>Stop timee</th>
-              <td>{timeTag(lap.stopTimee)}</td>
+              <th>Stop time</th>
+              <td>{timeTag(lap.stopTime)}</td>
             </tr>
             <tr>
               <th>User id</th>

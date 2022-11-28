@@ -2,11 +2,9 @@ export const standard = defineScenario({
   lap: {
     one: {
       data: {
-        startTime: '2022-11-24T09:48:09Z',
-        stopTimee: '2022-11-24T09:48:09Z',
         user: {
           create: {
-            email: 'String5395937',
+            email: 'String5306048',
             hashedPassword: 'String',
             salt: 'String',
           },
@@ -15,7 +13,7 @@ export const standard = defineScenario({
         path: {
           create: {
             name: 'String',
-            distance: 4616839.847700116,
+            distance: 642290.8792631987,
             park: { create: {} },
           },
         },
@@ -24,11 +22,9 @@ export const standard = defineScenario({
 
     two: {
       data: {
-        startTime: '2022-11-24T09:48:09Z',
-        stopTimee: '2022-11-24T09:48:09Z',
         user: {
           create: {
-            email: 'String3213409',
+            email: 'String3320563',
             hashedPassword: 'String',
             salt: 'String',
           },
@@ -37,7 +33,7 @@ export const standard = defineScenario({
         path: {
           create: {
             name: 'String',
-            distance: 6631106.838188796,
+            distance: 4036874.3457263,
             park: { create: {} },
           },
         },

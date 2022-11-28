@@ -221,23 +221,6 @@ const UserForm = (props) => {
         <FieldError name="lastName" className="rw-field-error" />
 
         <Label
-          name="currentPath"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Current path
-        </Label>
-
-        <TextField
-          name="currentPath"
-          defaultValue={props.user?.currentPath}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-        />
-
-        <FieldError name="currentPath" className="rw-field-error" />
-
-        <Label
           name="currentCheckpoint"
           className="rw-label"
           errorClassName="rw-label rw-label-error"

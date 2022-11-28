@@ -91,7 +91,6 @@ const UsersList = ({ users }) => {
             <th>First name</th>
             <th>Image url</th>
             <th>Last name</th>
-            <th>Current path</th>
             <th>Current checkpoint</th>
             <th>Created at</th>
             <th>&nbsp;</th>
@@ -112,7 +111,6 @@ const UsersList = ({ users }) => {
               <td>{truncate(user.firstName)}</td>
               <td>{truncate(user.imageUrl)}</td>
               <td>{truncate(user.lastName)}</td>
-              <td>{truncate(user.currentPath)}</td>
               <td>{truncate(user.currentCheckpoint)}</td>
               <td>{timeTag(user.createdAt)}</td>
               <td>

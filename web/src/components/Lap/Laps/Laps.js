@@ -81,7 +81,7 @@ const LapsList = ({ laps }) => {
           <tr>
             <th>Id</th>
             <th>Start time</th>
-            <th>Stop timee</th>
+            <th>Stop time</th>
             <th>User id</th>
             <th>Path id</th>
             <th>&nbsp;</th>
@@ -92,7 +92,7 @@ const LapsList = ({ laps }) => {
             <tr key={lap.id}>
               <td>{truncate(lap.id)}</td>
               <td>{timeTag(lap.startTime)}</td>
-              <td>{timeTag(lap.stopTimee)}</td>
+              <td>{timeTag(lap.stopTime)}</td>
               <td>{truncate(lap.userId)}</td>
               <td>{truncate(lap.pathId)}</td>
               <td>

@@ -12,7 +12,6 @@ export const schema = gql`
     firstName: String
     imageUrl: String
     lastName: String
-    currentPath: String
     currentCheckpoint: String
     createdAt: DateTime
     Run: [Run]!
@@ -37,7 +36,6 @@ export const schema = gql`
     firstName: String
     imageUrl: String
     lastName: String
-    currentPath: String
     currentCheckpoint: String
   }
 
@@ -53,7 +51,6 @@ export const schema = gql`
     firstName: String
     imageUrl: String
     lastName: String
-    currentPath: String
     currentCheckpoint: String
   }
 

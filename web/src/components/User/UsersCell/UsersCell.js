@@ -17,7 +17,6 @@ export const QUERY = gql`
       firstName
       imageUrl
       lastName
-      currentPath
       currentCheckpoint
       createdAt
     }

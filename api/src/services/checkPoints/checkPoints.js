@@ -47,7 +47,6 @@ export const Checkpoint = {
       .PrevPathCheckpoint()
   },
 }
-
 export const checkRunningPath = async ({ userId, checkpointId }) => {
   // ดึงข้อมูล user
   const user = await db.user.findUnique({
@@ -55,52 +54,97 @@ export const checkRunningPath = async ({ userId, checkpointId }) => {
   })
   // ได้ข้อมูล user ที่เข้ามาสแกน
   // ดึงข้อมูลของ เส้นทางที่ได้จากเครื่องสแกนมา
-  console.log(checkpointId)
-  const checkpoint = await db.pathCheckpoint.findMany({
-    where: { checkpointId: checkpointId },
+  // console.log(checkpointId)
+  const checkpointNull = await db.pathCheckpoint.findFirst({
+    where: {
+      checkpointId: checkpointId,
+      AND: { prevCheckpointId: null },
+    },
     // include: {
     //   park: true,
     // },
   })
-  // logger.warn(JSON.stringify(checkpoint[0].prevCheckpointId))
-  for (let i = 0; i < checkpoint.length; i++) {
-    // เช็คว่า ก่อนหน้าของ user เท่ากับเครื่องสแกนปัจจุบันรึป่าว
-    if (user.currentCheckpoint == checkpoint[i].prevCheckpointId) {
-      // เช็คว่า isStart === true
-      if (checkpoint[i].isStart === true && checkpoint[i].isFinish === true) {
-        console.log('จบการวิ่งแบบวงกลม')
-      } else if (checkpoint[i].isStart === true) {
-        console.log('เริ่มวิ่ง', checkpoint[1].checkpointId)
-        return db.user.update({
-          data: { checkpointId: checkpoint[1].checkpointId },
-          where: user.id,
-        })
-        // console.log('isStart')
-        // console.log(JSON.stringify(user))
-        // break
-        // เช็คว่า isFinish === true
-      } else if (checkpoint[i].isFinish === true) {
-        console.log('จบการวิ่งแบบเส้นตรง')
-        break
-      }
-      // else {
-      //   console.log('222')
-      // }
-      console.log('เปลี่ยน ID checkpoint')
-      db.user.update({
-        data: checkpoint[i].checkpointId,
-        where: user.id,
+  const checkpoint = await db.pathCheckpoint.findFirst({
+    where: {
+      checkpointId: checkpointId,
+      NOT: { prevCheckpointId: null },
+    },
+  })
+  // logger.warn(JSON.stringify(checkpointNull.prevCheckpointId))
+
+  // logger.warn(JSON.stringify(userId))
+  // logger.warn(userId)
+  if (user.currentCheckpoint === checkpoint.prevCheckpointId) {
+    if (checkpoint.isFinish === true) {
+      await db.log.create({
+        data: {
+          userId: userId,
+          timeStamp: new Date(),
+          checkpointId: checkpointId,
+        },
+      })
+      await db.user.update({
+        data: { currentCheckpoint: null },
+        where: {
+          id: userId,
+        },
+      })
+      await db.lap.update({
+        data: { stopTime: new Date() },
+        where: {
+          id: userId,
+        },
+        orderBy: {
+          id: 'desc',
+        },
       })
     }
+    await db.user.update({
+      data: { currentCheckpoint: checkpointId },
+      where: {
+        id: userId,
+      },
+    })
+    await db.log.create({
+      data: {
+        userId: userId,
+        timeStamp: new Date(),
+        checkpointId: checkpointId,
+      },
+    })
+    // logger.warn(JSON.stringify(checkpoint.prevCheckpointId))
   }
+  try {
+    if (checkpointNull != null) {
+      if (user.currentCheckpoint === checkpointNull.prevCheckpointId) {
+        if (checkpointNull.isStart === true) {
+          await db.user.update({
+            data: { currentCheckpoint: checkpointId },
+            where: {
+              id: userId,
+            },
+          })
 
-  // const users = prisma.checkpoint.findMany()
-  // const data = db.checkpoint.findMany()
-  // const users = await prisma.uesr.findMany(userId)
-  logger.warn(JSON.stringify(checkpoint))
-  // logger.warn(user)
-  logger.warn(JSON.stringify(user))
-  // logger.warn(JSON.stringify(checkpointId))
-  // console.log('true')
+          await db.log.create({
+            data: {
+              userId: userId,
+              timeStamp: new Date(),
+              checkpointId: checkpointId,
+            },
+          })
+          await db.lap.create({
+            data: {
+              userId: userId,
+              pathId: checkpoint.pathId,
+              startTime: new Date(),
+              stopTime: null,
+            },
+          })
+        }
+      }
+    }
+  } catch (e) {
+    logger.error(JSON.stringify(e))
+  }
   return userId + ' / ' + checkpointId
 }

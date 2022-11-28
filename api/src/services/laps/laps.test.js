@@ -22,15 +22,11 @@ describe('laps', () => {
   scenario('creates a lap', async (scenario) => {
     const result = await createLap({
       input: {
-        startTime: '2022-11-24T09:48:09Z',
-        stopTimee: '2022-11-24T09:48:09Z',
         userId: scenario.lap.two.userId,
         pathId: scenario.lap.two.pathId,
       },
     })
 
-    expect(result.startTime).toEqual('2022-11-24T09:48:09Z')
-    expect(result.stopTimee).toEqual('2022-11-24T09:48:09Z')
     expect(result.userId).toEqual(scenario.lap.two.userId)
     expect(result.pathId).toEqual(scenario.lap.two.pathId)
   })
@@ -39,10 +35,10 @@ describe('laps', () => {
     const original = await lap({ id: scenario.lap.one.id })
     const result = await updateLap({
       id: original.id,
-      input: { startTime: '2022-11-25T09:48:09Z' },
+      input: { userId: scenario.lap.two.userId },
     })
 
-    expect(result.startTime).toEqual('2022-11-25T09:48:09Z')
+    expect(result.userId).toEqual(scenario.lap.two.userId)
   })
 
   scenario('deletes a lap', async (scenario) => {

@@ -41,7 +41,8 @@ const NavbarLayout = ({ children }) => {
     { name: 'Users', href: '/admin/users', current: false },
     { name: 'Logs', href: '/admin/logs', current: false },
     { name: 'Laps', href: '/admin/laps', current: false },
-    { name: 'Routes', href: '/admin/route-scanners', current: false },
+    { name: 'PathCheckpoints', href: '/path-checkpoints', current: false },
+    { name: 'Path', href: '/paths', current: false },
   ]
 
   const navigationGovernor = [

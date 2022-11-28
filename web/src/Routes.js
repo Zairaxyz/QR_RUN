@@ -14,18 +14,6 @@ import NavbarLayout from './layouts/NavbarLayout/NavbarLayout'
 const Routes = () => {
   return (
     <Router>
-      <Set wrap={UsersLayout}>
-        <Route path="/users/new" page={UserNewUserPage} name="newUser" />
-        <Route path="/users/{id}/edit" page={UserEditUserPage} name="editUser" />
-        <Route path="/users/{id}" page={UserUserPage} name="user" />
-        <Route path="/users" page={UserUsersPage} name="users" />
-      </Set>
-      <Set wrap={LapsLayout}>
-        <Route path="/laps/new" page={LapNewLapPage} name="newLap" />
-        <Route path="/laps/{id}/edit" page={LapEditLapPage} name="editLap" />
-        <Route path="/laps/{id}" page={LapLapPage} name="lap" />
-        <Route path="/laps" page={LapLapsPage} name="laps" />
-      </Set>
       {/* <Set wrap={CheckpointsLayout}>
         <Route path="/checkpoints/{id}" page={CheckpointCheckpointPage} name="checkpoint" />
         <Route path="/checkpoints" page={CheckpointCheckpointsPage} name="checkpoints" />

@@ -1,8 +1,8 @@
 export const schema = gql`
   type Lap {
     id: String!
-    startTime: DateTime!
-    stopTimee: DateTime!
+    startTime: DateTime
+    stopTime: DateTime
     userId: String!
     user: User!
     pathId: String!
@@ -15,15 +15,15 @@ export const schema = gql`
   }
 
   input CreateLapInput {
-    startTime: DateTime!
-    stopTimee: DateTime!
+    startTime: DateTime
+    stopTime: DateTime
     userId: String!
     pathId: String!
   }
 
   input UpdateLapInput {
     startTime: DateTime
-    stopTimee: DateTime
+    stopTime: DateTime
     userId: String
     pathId: String
   }

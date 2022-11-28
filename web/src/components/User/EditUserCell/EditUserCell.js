@@ -20,7 +20,6 @@ export const QUERY = gql`
       firstName
       imageUrl
       lastName
-      currentPath
       currentCheckpoint
       createdAt
     }
@@ -41,7 +40,6 @@ const UPDATE_USER_MUTATION = gql`
       firstName
       imageUrl
       lastName
-      currentPath
       currentCheckpoint
       createdAt
     }

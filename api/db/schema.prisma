@@ -76,13 +76,13 @@ model Log {
 }
 
 model Lap {
-  id        String   @id @default(uuid())
-  startTime DateTime
-  stopTimee DateTime
+  id        String    @id @default(uuid())
+  startTime DateTime?
+  stopTime  DateTime?
   userId    String
-  user      User     @relation(fields: [userId], references: [id])
+  user      User      @relation(fields: [userId], references: [id])
   pathId    String
-  path      Path     @relation(fields: [pathId], references: [id])
+  path      Path      @relation(fields: [pathId], references: [id])
 }
 
 model Path {
