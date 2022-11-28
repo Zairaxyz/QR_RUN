@@ -14,6 +14,22 @@ import NavbarLayout from './layouts/NavbarLayout/NavbarLayout'
 const Routes = () => {
   return (
     <Router>
+      <Set wrap={UsersLayout}>
+        <Route path="/users/new" page={UserNewUserPage} name="newUser" />
+        <Route path="/users/{id}/edit" page={UserEditUserPage} name="editUser" />
+        <Route path="/users/{id}" page={UserUserPage} name="user" />
+        <Route path="/users" page={UserUsersPage} name="users" />
+      </Set>
+      <Set wrap={LapsLayout}>
+        <Route path="/laps/new" page={LapNewLapPage} name="newLap" />
+        <Route path="/laps/{id}/edit" page={LapEditLapPage} name="editLap" />
+        <Route path="/laps/{id}" page={LapLapPage} name="lap" />
+        <Route path="/laps" page={LapLapsPage} name="laps" />
+      </Set>
+      {/* <Set wrap={CheckpointsLayout}>
+        <Route path="/checkpoints/{id}" page={CheckpointCheckpointPage} name="checkpoint" />
+        <Route path="/checkpoints" page={CheckpointCheckpointsPage} name="checkpoints" />
+      </Set> */}
       <Set wrap={PathCheckpointsLayout}>
         <Route path="/path-checkpoints/new" page={PathCheckpointNewPathCheckpointPage} name="newPathCheckpoint" />
         <Route path="/path-checkpoints/{id}/edit" page={PathCheckpointEditPathCheckpointPage} name="editPathCheckpoint" />
@@ -27,10 +43,10 @@ const Routes = () => {
         <Route path="/paths" page={PathPathsPage} name="paths" />
       </Set>
       <Set wrap={CheckpointsLayout}>
-        <Route path="/checkpoints/new" page={CheckPointNewCheckPointPage} name="newCheckpoint" />
-        <Route path="/checkpoints/{id}/edit" page={CheckPointEditCheckPointPage} name="editCheckpoint" />
-        <Route path="/checkpoints/{id}" page={CheckPointCheckPointsPage} name="checkpoint" />
-        <Route path="/checkpoints" page={CheckPointCheckPointPage} name="checkpoints" />
+        <Route path="/checkpoints/new" page={CheckpointNewCheckpointPage} name="newCheckpoint" />
+        <Route path="/checkpoints/{id}/edit" page={CheckpointEditCheckpointPage} name="editCheckpoint" />
+        <Route path="/checkpoints/{id}" page={CheckpointCheckpointPage} name="checkpoint" />
+        <Route path="/checkpoints" page={CheckpointCheckpointsPage} name="checkpoints" />
       </Set>
       {/* */}
 
