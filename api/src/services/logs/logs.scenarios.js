@@ -2,10 +2,10 @@ export const standard = defineScenario({
   log: {
     one: {
       data: {
-        timeStamp: '2022-11-24T09:47:47Z',
+        timeStamp: '2022-11-30T08:28:00Z',
         user: {
           create: {
-            email: 'String6633023',
+            email: 'String9981011',
             hashedPassword: 'String',
             salt: 'String',
           },
@@ -15,10 +15,10 @@ export const standard = defineScenario({
 
     two: {
       data: {
-        timeStamp: '2022-11-24T09:47:47Z',
+        timeStamp: '2022-11-30T08:28:00Z',
         user: {
           create: {
-            email: 'String8951806',
+            email: 'String9044615',
             hashedPassword: 'String',
             salt: 'String',
           },

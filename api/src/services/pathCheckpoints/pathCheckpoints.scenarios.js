@@ -5,11 +5,10 @@ export const standard = defineScenario({
         isStart: true,
         isFinish: true,
         checkpoint: { create: { name: 'String', park: { create: {} } } },
-        park: { create: {} },
         path: {
           create: {
             name: 'String',
-            distance: 8502852.981811106,
+            distance: 6830578.966907472,
             park: { create: {} },
           },
         },
@@ -21,11 +20,10 @@ export const standard = defineScenario({
         isStart: true,
         isFinish: true,
         checkpoint: { create: { name: 'String', park: { create: {} } } },
-        park: { create: {} },
         path: {
           create: {
             name: 'String',
-            distance: 2927275.3442234634,
+            distance: 1765476.3174331079,
             park: { create: {} },
           },
         },

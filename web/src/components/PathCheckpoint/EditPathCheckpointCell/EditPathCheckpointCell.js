@@ -13,7 +13,6 @@ export const QUERY = gql`
       prevCheckpointId
       isStart
       isFinish
-      parkId
       pathId
     }
   }
@@ -29,7 +28,6 @@ const UPDATE_PATH_CHECKPOINT_MUTATION = gql`
       prevCheckpointId
       isStart
       isFinish
-      parkId
       pathId
     }
   }

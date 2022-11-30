@@ -3,7 +3,7 @@ export const standard = defineScenario({
     one: {
       data: {
         name: 'String',
-        distance: 6740982.111700297,
+        distance: 9974840.512192616,
         park: { create: {} },
       },
     },
@@ -11,7 +11,7 @@ export const standard = defineScenario({
     two: {
       data: {
         name: 'String',
-        distance: 9199991.20990822,
+        distance: 7368692.685283613,
         park: { create: {} },
       },
     },

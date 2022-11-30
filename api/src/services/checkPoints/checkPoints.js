@@ -48,13 +48,9 @@ export const Checkpoint = {
   },
 }
 export const checkRunningPath = async ({ userId, checkpointId }) => {
-  // ดึงข้อมูล user
   const user = await db.user.findUnique({
     where: { id: userId },
   })
-  // ได้ข้อมูล user ที่เข้ามาสแกน
-  // ดึงข้อมูลของ เส้นทางที่ได้จากเครื่องสแกนมา
-  // console.log(checkpointId)
   const checkpointNull = await db.pathCheckpoint.findFirst({
     where: {
       checkpointId: checkpointId,
@@ -67,12 +63,6 @@ export const checkRunningPath = async ({ userId, checkpointId }) => {
       NOT: { prevCheckpointId: null },
     },
   })
-  // logger.warn(JSON.stringify(checkpointNull.prevCheckpointId))
-
-  // logger.warn(JSON.stringify(userId))
-  console.log(checkpoint + 'dawdwdad')
-  console.log(checkpointNull + 'testtttttt')
-  // console.log(checkpoint.prevCheckpointId)
   // logger.warn(checkpoint.prevCheckpointId)
   if (checkpoint != null) {
     if (user.currentCheckpoint == checkpoint.prevCheckpointId) {
@@ -84,23 +74,30 @@ export const checkRunningPath = async ({ userId, checkpointId }) => {
             checkpointId: checkpointId,
           },
         })
-        const poplap = await db.lap.findFirst({
+        // console.log(checkpoint)
+        const poplap = await db.lap.findMany({
           orderBy: {
             userId: 'desc',
           },
           where: {
             userId: userId,
+            AND: {
+              pathId: checkpoint.pathId,
+            },
           },
           include: {
             path: true,
           },
         })
+        console.log(poplap)
+        // logger.warn(JSON.stringify(poplap.path.parkId) + 'Null')
         const createrun = await db.lap.update({
           where: {
             id: poplap.id,
           },
           data: { stopTime: new Date() },
         })
+        console.log(createrun)
         await db.run.create({
           data: {
             startTime: createrun.startTime,
@@ -109,16 +106,15 @@ export const checkRunningPath = async ({ userId, checkpointId }) => {
             pace:
               poplap.path.distance / (createrun.startTime + createrun.stopTime),
             userId: createrun.userId,
-            parkId: checkpoint.parkId,
+            parkId: poplap.path.parkId,
           },
         })
-        const usernull = await db.user.update({
+        await db.user.update({
           data: { currentCheckpoint: null },
           where: {
             id: userId,
           },
         })
-        logger.warn(usernull)
       } else {
         // console.log('เปลี่ยน ID currentCheckpoint')
         logger.warn(JSON.stringify('เปลี่ยน id'))

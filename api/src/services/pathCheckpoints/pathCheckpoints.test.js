@@ -33,7 +33,6 @@ describe('pathCheckpoints', () => {
         checkpointId: scenario.pathCheckpoint.two.checkpointId,
         isStart: true,
         isFinish: true,
-        parkId: scenario.pathCheckpoint.two.parkId,
         pathId: scenario.pathCheckpoint.two.pathId,
       },
     })
@@ -44,7 +43,6 @@ describe('pathCheckpoints', () => {
 
     expect(result.isStart).toEqual(true)
     expect(result.isFinish).toEqual(true)
-    expect(result.parkId).toEqual(scenario.pathCheckpoint.two.parkId)
     expect(result.pathId).toEqual(scenario.pathCheckpoint.two.pathId)
   })
 

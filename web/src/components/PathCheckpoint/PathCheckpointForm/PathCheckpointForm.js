@@ -93,24 +93,6 @@ const PathCheckpointForm = (props) => {
         <FieldError name="isFinish" className="rw-field-error" />
 
         <Label
-          name="parkId"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Park id
-        </Label>
-
-        <TextField
-          name="parkId"
-          defaultValue={props.pathCheckpoint?.parkId}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-
-        <FieldError name="parkId" className="rw-field-error" />
-
-        <Label
           name="pathId"
           className="rw-label"
           errorClassName="rw-label rw-label-error"

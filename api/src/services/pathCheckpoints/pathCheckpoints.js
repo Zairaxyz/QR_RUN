@@ -40,9 +40,6 @@ export const PathCheckpoint = {
       .findUnique({ where: { id: root?.id } })
       .prevCheckpoint()
   },
-  park: (_obj, { root }) => {
-    return db.pathCheckpoint.findUnique({ where: { id: root?.id } }).park()
-  },
   path: (_obj, { root }) => {
     return db.pathCheckpoint.findUnique({ where: { id: root?.id } }).path()
   },

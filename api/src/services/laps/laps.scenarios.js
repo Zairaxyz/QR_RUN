@@ -4,7 +4,7 @@ export const standard = defineScenario({
       data: {
         user: {
           create: {
-            email: 'String5306048',
+            email: 'String2038715',
             hashedPassword: 'String',
             salt: 'String',
           },
@@ -13,7 +13,7 @@ export const standard = defineScenario({
         path: {
           create: {
             name: 'String',
-            distance: 642290.8792631987,
+            distance: 485567.000497118,
             park: { create: {} },
           },
         },
@@ -24,7 +24,7 @@ export const standard = defineScenario({
       data: {
         user: {
           create: {
-            email: 'String3320563',
+            email: 'String1662226',
             hashedPassword: 'String',
             salt: 'String',
           },
@@ -33,7 +33,7 @@ export const standard = defineScenario({
         path: {
           create: {
             name: 'String',
-            distance: 4036874.3457263,
+            distance: 2965876.1983200945,
             park: { create: {} },
           },
         },

@@ -7,7 +7,6 @@ export const schema = gql`
     address: String
     workingHours: JSON
     Run: [Run]!
-    PathCheckpoint: [PathCheckpoint]!
     Checkpoint: [Checkpoint]!
     Path: [Path]!
   }

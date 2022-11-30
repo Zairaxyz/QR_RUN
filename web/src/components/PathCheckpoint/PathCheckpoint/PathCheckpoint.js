@@ -93,10 +93,6 @@ const PathCheckpoint = ({ pathCheckpoint }) => {
               <td>{checkboxInputTag(pathCheckpoint.isFinish)}</td>
             </tr>
             <tr>
-              <th>Park id</th>
-              <td>{pathCheckpoint.parkId}</td>
-            </tr>
-            <tr>
               <th>Path id</th>
               <td>{pathCheckpoint.pathId}</td>
             </tr>

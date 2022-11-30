@@ -14,6 +14,36 @@ import NavbarLayout from './layouts/NavbarLayout/NavbarLayout'
 const Routes = () => {
   return (
     <Router>
+      <Set wrap={LapsLayout}>
+        <Route path="/laps/new" page={LapNewLapPage} name="newLap" />
+        <Route path="/laps/{id}/edit" page={LapEditLapPage} name="editLap" />
+        <Route path="/laps/{id}" page={LapLapPage} name="lap" />
+        <Route path="/laps" page={LapLapsPage} name="laps" />
+      </Set>
+      <Set wrap={LogsLayout}>
+        <Route path="/logs/new" page={LogNewLogPage} name="newLog" />
+        <Route path="/logs/{id}/edit" page={LogEditLogPage} name="editLog" />
+        <Route path="/logs/{id}" page={LogLogPage} name="log" />
+        <Route path="/logs" page={LogLogsPage} name="logs" />
+      </Set>
+      <Set wrap={RunsLayout}>
+        <Route path="/runs/new" page={RunNewRunPage} name="newRun" />
+        <Route path="/runs/{id}/edit" page={RunEditRunPage} name="editRun" />
+        <Route path="/runs/{id}" page={RunRunPage} name="run" />
+        <Route path="/runs" page={RunRunsPage} name="runs" />
+      </Set>
+      <Set wrap={UsersLayout}>
+        <Route path="/users/new" page={UserNewUserPage} name="newUser" />
+        <Route path="/users/{id}/edit" page={UserEditUserPage} name="editUser" />
+        <Route path="/users/{id}" page={UserUserPage} name="user" />
+        <Route path="/users" page={UserUsersPage} name="users" />
+      </Set>
+      <Set wrap={ParksLayout}>
+        <Route path="/parks/new" page={ParkNewParkPage} name="newPark" />
+        <Route path="/parks/{id}/edit" page={ParkEditParkPage} name="editPark" />
+        <Route path="/parks/{id}" page={ParkParkPage} name="park" />
+        <Route path="/parks" page={ParkParksPage} name="parks" />
+      </Set>
       {/* <Set wrap={CheckpointsLayout}>
         <Route path="/checkpoints/{id}" page={CheckpointCheckpointPage} name="checkpoint" />
         <Route path="/checkpoints" page={CheckpointCheckpointsPage} name="checkpoints" />

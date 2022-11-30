@@ -2,13 +2,11 @@ export const schema = gql`
   type PathCheckpoint {
     id: String!
     checkpointId: String!
-    # checkpoint: Checkpoint!
+    checkpoint: Checkpoint!
     prevCheckpointId: String
-    # prevCheckpoint: Checkpoint
+    prevCheckpoint: Checkpoint
     isStart: Boolean!
     isFinish: Boolean!
-    parkId: String!
-    park: Park!
     pathId: String!
     path: Path!
   }
@@ -23,7 +21,6 @@ export const schema = gql`
     prevCheckpointId: String
     isStart: Boolean!
     isFinish: Boolean!
-    parkId: String!
     pathId: String!
   }
 
@@ -32,7 +29,6 @@ export const schema = gql`
     prevCheckpointId: String
     isStart: Boolean
     isFinish: Boolean
-    parkId: String
     pathId: String
   }
 

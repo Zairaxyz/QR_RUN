@@ -24,13 +24,13 @@ describe('paths', () => {
       input: {
         name: 'String',
         parkId: scenario.path.two.parkId,
-        distance: 1644848.627569433,
+        distance: 9999643.119740492,
       },
     })
 
     expect(result.name).toEqual('String')
     expect(result.parkId).toEqual(scenario.path.two.parkId)
-    expect(result.distance).toEqual(1644848.627569433)
+    expect(result.distance).toEqual(9999643.119740492)
   })
 
   scenario('updates a path', async (scenario) => {

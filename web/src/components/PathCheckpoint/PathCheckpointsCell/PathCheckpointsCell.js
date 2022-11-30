@@ -10,7 +10,6 @@ export const QUERY = gql`
       prevCheckpointId
       isStart
       isFinish
-      parkId
       pathId
     }
   }

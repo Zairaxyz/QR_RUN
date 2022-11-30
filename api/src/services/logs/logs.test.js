@@ -23,22 +23,22 @@ describe('logs', () => {
     const result = await createLog({
       input: {
         userId: scenario.log.two.userId,
-        timeStamp: '2022-11-24T09:47:47Z',
+        timeStamp: '2022-11-30T08:28:00Z',
       },
     })
 
     expect(result.userId).toEqual(scenario.log.two.userId)
-    expect(result.timeStamp).toEqual('2022-11-24T09:47:47Z')
+    expect(result.timeStamp).toEqual('2022-11-30T08:28:00Z')
   })
 
   scenario('updates a log', async (scenario) => {
     const original = await log({ id: scenario.log.one.id })
     const result = await updateLog({
       id: original.id,
-      input: { timeStamp: '2022-11-25T09:47:47Z' },
+      input: { timeStamp: '2022-12-01T08:28:00Z' },
     })
 
-    expect(result.timeStamp).toEqual('2022-11-25T09:47:47Z')
+    expect(result.timeStamp).toEqual('2022-12-01T08:28:00Z')
   })
 
   scenario('deletes a log', async (scenario) => {
