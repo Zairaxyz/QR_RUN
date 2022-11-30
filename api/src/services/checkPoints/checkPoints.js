@@ -60,9 +60,6 @@ export const checkRunningPath = async ({ userId, checkpointId }) => {
       checkpointId: checkpointId,
       AND: { prevCheckpointId: null },
     },
-    // include: {
-    //   park: true,
-    // },
   })
   const checkpoint = await db.pathCheckpoint.findFirst({
     where: {
@@ -73,78 +70,109 @@ export const checkRunningPath = async ({ userId, checkpointId }) => {
   // logger.warn(JSON.stringify(checkpointNull.prevCheckpointId))
 
   // logger.warn(JSON.stringify(userId))
-  // logger.warn(userId)
-  if (user.currentCheckpoint === checkpoint.prevCheckpointId) {
-    if (checkpoint.isFinish === true) {
-      await db.log.create({
-        data: {
-          userId: userId,
-          timeStamp: new Date(),
-          checkpointId: checkpointId,
-        },
-      })
-      await db.user.update({
-        data: { currentCheckpoint: null },
-        where: {
-          id: userId,
-        },
-      })
-      await db.lap.update({
-        data: { stopTime: new Date() },
-        where: {
-          id: userId,
-        },
-        orderBy: {
-          id: 'desc',
-        },
-      })
-    }
-    await db.user.update({
-      data: { currentCheckpoint: checkpointId },
-      where: {
-        id: userId,
-      },
-    })
-    await db.log.create({
-      data: {
-        userId: userId,
-        timeStamp: new Date(),
-        checkpointId: checkpointId,
-      },
-    })
-    // logger.warn(JSON.stringify(checkpoint.prevCheckpointId))
-  }
-  try {
-    if (checkpointNull != null) {
-      if (user.currentCheckpoint === checkpointNull.prevCheckpointId) {
-        if (checkpointNull.isStart === true) {
-          await db.user.update({
-            data: { currentCheckpoint: checkpointId },
-            where: {
-              id: userId,
-            },
-          })
-
-          await db.log.create({
-            data: {
-              userId: userId,
-              timeStamp: new Date(),
-              checkpointId: checkpointId,
-            },
-          })
-          await db.lap.create({
-            data: {
-              userId: userId,
-              pathId: checkpoint.pathId,
-              startTime: new Date(),
-              stopTime: null,
-            },
-          })
-        }
+  console.log(checkpoint + 'dawdwdad')
+  console.log(checkpointNull + 'testtttttt')
+  // console.log(checkpoint.prevCheckpointId)
+  // logger.warn(checkpoint.prevCheckpointId)
+  if (checkpoint != null) {
+    if (user.currentCheckpoint == checkpoint.prevCheckpointId) {
+      if (checkpoint.isFinish === true) {
+        await db.log.create({
+          data: {
+            userId: userId,
+            timeStamp: new Date(),
+            checkpointId: checkpointId,
+          },
+        })
+        const poplap = await db.lap.findFirst({
+          orderBy: {
+            userId: 'desc',
+          },
+          where: {
+            userId: userId,
+          },
+          include: {
+            path: true,
+          },
+        })
+        const createrun = await db.lap.update({
+          where: {
+            id: poplap.id,
+          },
+          data: { stopTime: new Date() },
+        })
+        await db.run.create({
+          data: {
+            startTime: createrun.startTime,
+            stopTime: createrun.stopTime,
+            distance: poplap.path.distance,
+            pace:
+              poplap.path.distance / (createrun.startTime + createrun.stopTime),
+            userId: createrun.userId,
+            parkId: checkpoint.parkId,
+          },
+        })
+        const usernull = await db.user.update({
+          data: { currentCheckpoint: null },
+          where: {
+            id: userId,
+          },
+        })
+        logger.warn(usernull)
+      } else {
+        // console.log('เปลี่ยน ID currentCheckpoint')
+        logger.warn(JSON.stringify('เปลี่ยน id'))
+        await db.user.update({
+          data: { currentCheckpoint: checkpointId },
+          where: {
+            id: userId,
+          },
+        })
+        await db.log.create({
+          data: {
+            userId: userId,
+            timeStamp: new Date(),
+            checkpointId: checkpointId,
+          },
+        })
+        logger.warn('จบ')
+        console.log('จบ')
       }
     }
-  } catch (e) {
-    logger.error(JSON.stringify(e))
+  }
+  console.log('เริ่มต้นใหม่')
+  if (checkpointNull != null) {
+    const user = await db.user.findUnique({
+      where: { id: userId },
+    })
+    console.log(user.currentCheckpoint)
+    console.log('เช็คเงื่อนไข 1')
+    if (user.currentCheckpoint === checkpointNull.prevCheckpointId) {
+      console.log('เช็คเงื่อนไข 2')
+      if (checkpointNull.isStart === true) {
+        await db.user.update({
+          data: { currentCheckpoint: checkpointId },
+          where: {
+            id: userId,
+          },
+        })
+        await db.log.create({
+          data: {
+            userId: userId,
+            timeStamp: new Date(),
+            checkpointId: checkpointId,
+          },
+        })
+        await db.lap.create({
+          data: {
+            userId: userId,
+            pathId: checkpointNull.pathId,
+            startTime: new Date(),
+            stopTime: null,
+          },
+        })
+      }
+    }
   }
   return userId + ' / ' + checkpointId
 }

@@ -30,16 +30,16 @@ model User {
 }
 
 model Park {
-  id             String           @id @default(uuid())
-  name           String?
-  imageUrl       String?
-  description    String?
-  address        String?
-  workingHours   Json?
-  Run            Run[]
-  PathCheckpoint PathCheckpoint[]
-  Checkpoint     Checkpoint[]
-  Path           Path[]
+  id           String       @id @default(uuid())
+  name         String?
+  imageUrl     String?
+  description  String?
+  address      String?
+  workingHours Json?
+  Run          Run[]
+  // PathCheckpoint PathCheckpoint[]
+  Checkpoint   Checkpoint[]
+  Path         Path[]
 }
 
 model Run {
@@ -103,8 +103,8 @@ model PathCheckpoint {
   prevCheckpoint   Checkpoint? @relation(fields: [prevCheckpointId], references: [id], name: "PrevPathCheckpoint")
   isStart          Boolean
   isFinish         Boolean
-  parkId           String
-  park             Park        @relation(fields: [parkId], references: [id])
+  // parkId           String
+  // park             Park        @relation(fields: [parkId], references: [id])
   pathId           String
   path             Path        @relation(fields: [pathId], references: [id])
 }
