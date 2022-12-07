@@ -13,14 +13,16 @@ export const schema = gql`
     resetTokenExpiresAt: DateTime
     roles: String!
     registertimestamp: DateTime
+    currentCheckPoint: String
+    currentRoad: String
     Run: [Run]!
     Log: [Log]!
     Lap: [Lap]!
   }
 
   type Query {
-    users: [User!]! @requireAuth
-    user(id: String!): User @requireAuth
+    users: [User!]! @skipAuth
+    user(id: String!): User @skipAuth
   }
 
   input CreateUserInput {
@@ -36,6 +38,8 @@ export const schema = gql`
     resetTokenExpiresAt: DateTime
     roles: String!
     registertimestamp: DateTime
+    currentCheckPoint: String
+    currentRoad: String
   }
 
   input UpdateUserInput {
@@ -51,6 +55,8 @@ export const schema = gql`
     resetTokenExpiresAt: DateTime
     roles: String
     registertimestamp: DateTime
+    currentCheckPoint: String
+    currentRoad: String
   }
 
   type Mutation {

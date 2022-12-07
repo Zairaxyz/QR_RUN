@@ -31,12 +31,12 @@ const NavbarLayout = ({ children }) => {
   const navigationAdmin = [
     { name: 'Home', href: '/', current: false },
     { name: 'Parks', href: '/admin/parks', current: false },
-    { name: 'Scanners', href: '/admin/scanners', current: false },
+    { name: 'CheckPoint', href: '/admin/check-points', current: false },
     { name: 'Runs', href: '/admin/runs', current: false },
     { name: 'Users', href: '/admin/users', current: false },
     { name: 'Log', href: '/admin/logs', current: false },
     { name: 'Lap', href: '/admin/laps', current: false },
-    { name: 'Routescanners', href: '/admin/routescanners', current: false },
+    { name: 'RouteCheckPoint', href: '/admin/route-check-points', current: false },
   ]
 
   const navigationGovernor = [
@@ -53,7 +53,7 @@ const NavbarLayout = ({ children }) => {
 
   const userNavigation = [
     { name: 'Your Profile', href: '/statistic', state: false },
-    { name: 'Settings', href: '#', state: false },
+    { name: 'Settings', href: '/edit-profile', state: false },
     { name: 'Sign out', href: '#', state: true },
   ]
 
@@ -339,14 +339,17 @@ const NavbarLayout = ({ children }) => {
                     </>
                   )}
                 </div>
+
+                {isAuthenticated && (
+
                 <div className="border-t border-gray-700 pt-4 pb-3">
                   <div className="flex items-center px-5">
                     <div className="flex-shrink-0">
-                      <img className="h-10 w-10 rounded-full" src={user.imageUrl} alt="" />
+                      <img className="h-10 w-10 rounded-full" src={currentUser.imageUrl} alt="" />
                     </div>
                     <div className="ml-3">
-                      <div className="text-base font-medium leading-none text-white">{user.name}</div>
-                      <div className="text-sm font-medium leading-none text-gray-400">{user.email}</div>
+                      <div className="text-base font-medium leading-none text-white">{currentUser.name}</div>
+                      <div className="text-sm font-medium leading-none text-gray-400">{currentUser.email}</div>
                     </div>
                   </div>
                   <div className="mt-3 space-y-1 px-2">
@@ -367,6 +370,9 @@ const NavbarLayout = ({ children }) => {
                     ))}
                   </div>
                 </div>
+
+                )}
+
               </Disclosure.Panel>
             </>
           )}

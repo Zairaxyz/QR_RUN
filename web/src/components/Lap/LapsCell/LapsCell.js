@@ -6,8 +6,8 @@ export const QUERY = gql`
   query FindLaps {
     laps {
       id
-      start_timestamp
-      stop_timestamp
+      startTimeStamp
+      stopTimeStamp
       userId
     }
   }

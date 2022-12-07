@@ -80,8 +80,8 @@ const LapsList = ({ laps }) => {
         <thead>
           <tr>
             <th>Id</th>
-            <th>Start timestamp</th>
-            <th>Stop timestamp</th>
+            <th>Start time stamp</th>
+            <th>Stop time stamp</th>
             <th>User id</th>
             <th>&nbsp;</th>
           </tr>
@@ -90,8 +90,8 @@ const LapsList = ({ laps }) => {
           {laps.map((lap) => (
             <tr key={lap.id}>
               <td>{truncate(lap.id)}</td>
-              <td>{timeTag(lap.start_timestamp)}</td>
-              <td>{timeTag(lap.stop_timestamp)}</td>
+              <td>{timeTag(lap.startTimeStamp)}</td>
+              <td>{timeTag(lap.stopTimeStamp)}</td>
               <td>{truncate(lap.userId)}</td>
               <td>
                 <nav className="rw-table-actions">

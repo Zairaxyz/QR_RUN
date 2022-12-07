@@ -78,11 +78,11 @@ const Park = ({ park }) => {
             </tr>
             <tr>
               <th>Park name</th>
-              <td>{park.park_name}</td>
+              <td>{park.parkName}</td>
             </tr>
             <tr>
               <th>Image url</th>
-              <td>{park.image_url}</td>
+              <td>{park.imageUrl}</td>
             </tr>
             <tr>
               <th>Description</th>
@@ -94,7 +94,7 @@ const Park = ({ park }) => {
             </tr>
             <tr>
               <th>Working time</th>
-              <td>{jsonDisplay(park.working_time)}</td>
+              <td>{jsonDisplay(park.workingTime)}</td>
             </tr>
           </tbody>
         </table>

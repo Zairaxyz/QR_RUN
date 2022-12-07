@@ -6,9 +6,9 @@ export const QUERY = gql`
   query FindLogs {
     logs {
       id
-      time_stamp
       userId
-      scannerId
+      timeStamp
+      checkPointId
     }
   }
 `

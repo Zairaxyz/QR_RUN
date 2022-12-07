@@ -2,9 +2,11 @@ export const standard = defineScenario({
   lap: {
     one: {
       data: {
+        startTimeStamp: '2022-11-21T03:26:37Z',
+        stopTimeStamp: '2022-11-21T03:26:37Z',
         user: {
           create: {
-            email: 'String2531466',
+            email: 'String384379',
             hashedPassword: 'String',
             salt: 'String',
           },
@@ -14,9 +16,11 @@ export const standard = defineScenario({
 
     two: {
       data: {
+        startTimeStamp: '2022-11-21T03:26:37Z',
+        stopTimeStamp: '2022-11-21T03:26:37Z',
         user: {
           create: {
-            email: 'String6496737',
+            email: 'String5289721',
             hashedPassword: 'String',
             salt: 'String',
           },

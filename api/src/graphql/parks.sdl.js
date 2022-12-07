@@ -1,14 +1,14 @@
 export const schema = gql`
   type Park {
     id: String!
-    park_name: String
-    image_url: String
+    parkName: String
+    imageUrl: String
     description: String
     address: String
-    working_time: JSON
+    workingTime: JSON
     Run: [Run]!
-    Scanner: [Scanner]!
-    Routescanner: [Routescanner]!
+    CheckPoint: [CheckPoint]!
+    RouteCheckPoint: [RouteCheckPoint]!
   }
 
   type Query {
@@ -17,19 +17,19 @@ export const schema = gql`
   }
 
   input CreateParkInput {
-    park_name: String
-    image_url: String
+    parkName: String
+    imageUrl: String
     description: String
     address: String
-    working_time: JSON
+    workingTime: JSON
   }
 
   input UpdateParkInput {
-    park_name: String
-    image_url: String
+    parkName: String
+    imageUrl: String
     description: String
     address: String
-    working_time: JSON
+    workingTime: JSON
   }
 
   type Mutation {

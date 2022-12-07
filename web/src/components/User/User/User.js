@@ -124,6 +124,14 @@ const User = ({ user }) => {
               <th>Registertimestamp</th>
               <td>{timeTag(user.registertimestamp)}</td>
             </tr>
+            <tr>
+              <th>Current check point</th>
+              <td>{user.currentCheckPoint}</td>
+            </tr>
+            <tr>
+              <th>Current road</th>
+              <td>{user.currentRoad}</td>
+            </tr>
           </tbody>
         </table>
       </div>

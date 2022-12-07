@@ -21,6 +21,8 @@ export const QUERY = gql`
       resetTokenExpiresAt
       roles
       registertimestamp
+      currentCheckPoint
+      currentRoad
     }
   }
 `
@@ -40,6 +42,8 @@ const UPDATE_USER_MUTATION = gql`
       resetTokenExpiresAt
       roles
       registertimestamp
+      currentCheckPoint
+      currentRoad
     }
   }
 `

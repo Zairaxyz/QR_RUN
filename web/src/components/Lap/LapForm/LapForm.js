@@ -30,38 +30,40 @@ const LapForm = (props) => {
         />
 
         <Label
-          name="start_timestamp"
+          name="startTimeStamp"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Start timestamp
+          Start time stamp
         </Label>
 
         <DatetimeLocalField
-          name="start_timestamp"
-          defaultValue={formatDatetime(props.lap?.start_timestamp)}
+          name="startTimeStamp"
+          defaultValue={formatDatetime(props.lap?.startTimeStamp)}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
+          validation={{ required: true }}
         />
 
-        <FieldError name="start_timestamp" className="rw-field-error" />
+        <FieldError name="startTimeStamp" className="rw-field-error" />
 
         <Label
-          name="stop_timestamp"
+          name="stopTimeStamp"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Stop timestamp
+          Stop time stamp
         </Label>
 
         <DatetimeLocalField
-          name="stop_timestamp"
-          defaultValue={formatDatetime(props.lap?.stop_timestamp)}
+          name="stopTimeStamp"
+          defaultValue={formatDatetime(props.lap?.stopTimeStamp)}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
+          validation={{ required: true }}
         />
 
-        <FieldError name="stop_timestamp" className="rw-field-error" />
+        <FieldError name="stopTimeStamp" className="rw-field-error" />
 
         <Label
           name="userId"

@@ -37,3 +37,9 @@ export const Run = {
     return db.run.findUnique({ where: { id: root?.id } }).park()
   },
 }
+
+// export const checkInRunner = async ({ userId, checkpointId }) => {
+
+//  const routeCheckPoints = await db.routeCheckPoint.findMany({ where: { checkpointId  } })
+//  return true
+// }

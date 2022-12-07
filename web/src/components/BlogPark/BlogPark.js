@@ -2,36 +2,38 @@ import { Link, routes } from "@redwoodjs/router"
 
 const BlogPark = ({ park }) => {
 
-  const { park_name, image_url, description, address, working_time, Run } = park
+  const { parkName, imageUrl, description, address, workingTime, Run } = park
 
   return (
 
     <article className="container mx-auto">
 
-      <div class="flex justify-center items-center w-full px-0 py-0">
-        <img class="object-cover shadow-lg rounded-sm sm:w-full md:w-full lg:w-full xl:w-6/12 xl:py-10 xk:h-full xl:shrink-0" src={image_url} alt="" width="1000" height="500" />
+      <div className="flex justify-center items-center w-full px-0 py-0">
+        <img className="object-cover rounded-sm sm:w-full md:w-full lg:w-full xl:w-8/12 xl:py-8 xk:h-full xl:shrink-0" src={imageUrl} alt="" width="1000" height="1000" />
       </div>
 
-      <div class="px-8 py-4">
+      <div className="px-8 py-4">
 
-        <div class="font-bold text-2xl my-5">
-          {park_name}
+        <div className="font-bold text-2xl my-5">
+          {parkName}
         </div>
 
-        <div class="my-5">
-          <span class="font-bold mb-5"> "Sunday - Wednesday" : </span> {working_time["Sunday - Wednesday"]}
+        <div className="font-bold"> Time Working </div>
+
+        <div className="my-5">
+          <span className="mb-6"> "Sunday - Wednesday" : </span> {workingTime["Sunday - Wednesday"]}
         </div>
 
-        <div class="my-5">
-          <span class="font-bold mb-5"> "Thursday - Saturday" : </span> {working_time["Thursday - Saturday"]}
+        <div className="my-5">
+          <span className="mb-6"> "Thursday - Saturday" : </span> {workingTime["Thursday - Saturday"]}
         </div>
 
-        <div class="my-5">
-          <p class="font-bold mb-5">Address</p> {address}
+        <div className="my-5">
+          <p className="font-bold mb-5">Address</p> {address}
         </div>
 
-        <div class="my-5">
-          <p class="font-bold mb-5">Description</p> {description}
+        <div className="my-5">
+          <p className="font-bold mb-5">Description</p> {description}
         </div>
 
         <div className="w-full mb-8 overflow-hidden rounded-lg shadow-lg">

@@ -18,6 +18,8 @@ export const QUERY = gql`
       resetTokenExpiresAt
       roles
       registertimestamp
+      currentCheckPoint
+      currentRoad
     }
   }
 `

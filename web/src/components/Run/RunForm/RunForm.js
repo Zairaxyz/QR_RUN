@@ -30,41 +30,41 @@ const RunForm = (props) => {
         />
 
         <Label
-          name="start_timestamp"
+          name="startTimeStamp"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Start timestamp
+          Start time stamp
         </Label>
 
         <DatetimeLocalField
-          name="start_timestamp"
-          defaultValue={formatDatetime(props.run?.start_timestamp)}
+          name="startTimeStamp"
+          defaultValue={formatDatetime(props.run?.startTimeStamp)}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
 
-        <FieldError name="start_timestamp" className="rw-field-error" />
+        <FieldError name="startTimeStamp" className="rw-field-error" />
 
         <Label
-          name="stop_timestamp"
+          name="stopTimeStamp"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Stop timestamp
+          Stop time stamp
         </Label>
 
         <DatetimeLocalField
-          name="stop_timestamp"
-          defaultValue={formatDatetime(props.run?.stop_timestamp)}
+          name="stopTimeStamp"
+          defaultValue={formatDatetime(props.run?.stopTimeStamp)}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
 
-        <FieldError name="stop_timestamp" className="rw-field-error" />
+        <FieldError name="stopTimeStamp" className="rw-field-error" />
 
         <Label
-          name="total_distance"
+          name="totalDistance"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
@@ -72,14 +72,14 @@ const RunForm = (props) => {
         </Label>
 
         <TextField
-          name="total_distance"
-          defaultValue={props.run?.total_distance}
+          name="totalDistance"
+          defaultValue={props.run?.totalDistance}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ valueAsNumber: true }}
         />
 
-        <FieldError name="total_distance" className="rw-field-error" />
+        <FieldError name="totalDistance" className="rw-field-error" />
 
         <Label
           name="pace"

@@ -80,8 +80,8 @@ const RunsList = ({ runs }) => {
         <thead>
           <tr>
             <th>Id</th>
-            <th>Start timestamp</th>
-            <th>Stop timestamp</th>
+            <th>Start time stamp</th>
+            <th>Stop time stamp</th>
             <th>Total distance</th>
             <th>Pace</th>
             <th>User id</th>
@@ -93,9 +93,9 @@ const RunsList = ({ runs }) => {
           {runs.map((run) => (
             <tr key={run.id}>
               <td>{truncate(run.id)}</td>
-              <td>{timeTag(run.start_timestamp)}</td>
-              <td>{timeTag(run.stop_timestamp)}</td>
-              <td>{truncate(run.total_distance)}</td>
+              <td>{timeTag(run.startTimeStamp)}</td>
+              <td>{timeTag(run.stopTimeStamp)}</td>
+              <td>{truncate(run.totalDistance)}</td>
               <td>{truncate(run.pace)}</td>
               <td>{truncate(run.userId)}</td>
               <td>{truncate(run.parkId)}</td>

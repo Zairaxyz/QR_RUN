@@ -4,8 +4,8 @@ export const QUERY = gql`
   query BlogParksQuery {
     parks {
       id
-      park_name
-      image_url
+      parkName
+      imageUrl
     }
   }
 `
@@ -23,11 +23,11 @@ export const Success = ({ parks }) => {
     <>
       {parks.map((park) => (
         <div key={park.id}>
-          <div className="text- xl my-4 flex w-full justify-center">
-            <Link to={routes.blogPark({ id: park.id })}>{park.park_name}</Link>
+          <div className="text-xl font-bold my-4 flex justify-center">
+            <Link to={routes.blogPark({ id: park.id })}>{park.parkName}</Link>
           </div>
-          <div className="flex w-full items-center justify-center">
-            <Link to={routes.blogPark({ id: park.id })}><img src={park.image_url} alt="" width='700' height='700' /></Link>
+          <div className="flex items-center justify-center">
+            <Link to={routes.blogPark({ id: park.id })}><img src={park.imageUrl} alt="" width="700" height="" /></Link>
           </div>
         </div>
       ))}

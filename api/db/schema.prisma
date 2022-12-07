@@ -14,7 +14,7 @@ model User {
   lastName            String?
   gender              String?
   dateOfBirth         DateTime?
-  imageUrl            String?
+  imageUrl            String?   @default("")
   email               String    @unique
   hashedPassword      String
   salt                String
@@ -22,68 +22,70 @@ model User {
   resetTokenExpiresAt DateTime?
   roles               String    @default("user")
   registertimestamp   DateTime? @default(now())
+  currentCheckPoint   String?
+  currentRoad         String?
   Run                 Run[]
   Log                 Log[]
   Lap                 Lap[]
 }
 
 model Park {
-  id           String         @id @default(uuid())
-  park_name    String?
-  image_url    String?
-  description  String?
-  address      String?
-  working_time Json?
-  Run          Run[]
-  Scanner      Scanner[]
-  Routescanner Routescanner[]
+  id              String            @id @default(uuid())
+  parkName        String?
+  imageUrl        String?
+  description     String?
+  address         String?
+  workingTime     Json?
+  Run             Run[]
+  CheckPoint      CheckPoint[]
+  RouteCheckPoint RouteCheckPoint[]
 }
 
 model Run {
-  id              String    @id @default(uuid())
-  start_timestamp DateTime?
-  stop_timestamp  DateTime?
-  total_distance  Float?
-  pace            Float?
-  user            User      @relation(fields: [userId], references: [id])
-  userId          String
-  park            Park      @relation(fields: [parkId], references: [id])
-  parkId          String
+  id             String    @id @default(uuid())
+  startTimeStamp DateTime?
+  stopTimeStamp  DateTime?
+  totalDistance  Float?
+  pace           Float?
+  user           User      @relation(fields: [userId], references: [id])
+  userId         String
+  park           Park      @relation(fields: [parkId], references: [id])
+  parkId         String
 }
 
-model Scanner {
+model CheckPoint {
   id        String @id @default(uuid())
-  park      Park   @relation(fields: [parkId], references: [id])
-  parkId    String
   longitude Float?
   latitude  Float?
+  park      Park   @relation(fields: [parkId], references: [id])
+  parkId    String
   Log       Log[]
 }
 
 model Log {
-  id         String    @id @default(uuid())
-  time_stamp DateTime?
-  user       User      @relation(fields: [userId], references: [id])
-  userId     String
-  scanner    Scanner   @relation(fields: [scannerId], references: [id])
-  scannerId  String
+  id           String     @id @default(uuid())
+  user         User       @relation(fields: [userId], references: [id])
+  userId       String
+  timeStamp    DateTime
+  checkPoint   CheckPoint @relation(fields: [checkPointId], references: [id])
+  checkPointId String
 }
 
 model Lap {
-  id              String    @id @default(uuid())
-  start_timestamp DateTime?
-  stop_timestamp  DateTime?
-  user            User      @relation(fields: [userId], references: [id])
-  userId          String
+  id             String   @id @default(uuid())
+  startTimeStamp DateTime
+  stopTimeStamp  DateTime
+  user           User     @relation(fields: [userId], references: [id])
+  userId         String
 }
 
-model Routescanner {
-  id             String   @id @default(uuid())
-  scanner        String?
-  before         String?
-  total_distance Float?
-  is_start       Boolean?
-  is_stop        Boolean?
-  park           Park     @relation(fields: [parkId], references: [id])
-  parkId         String
+model RouteCheckPoint {
+  id            String  @id @default(uuid())
+  checkPoint    String
+  before        String
+  totalDistance Float
+  isStart       Boolean
+  isFinish      Boolean
+  park          Park    @relation(fields: [parkId], references: [id])
+  parkId        String
 }

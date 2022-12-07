@@ -92,6 +92,8 @@ const UsersList = ({ users }) => {
             <th>Reset token expires at</th>
             <th>Roles</th>
             <th>Registertimestamp</th>
+            <th>Current check point</th>
+            <th>Current road</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -111,6 +113,8 @@ const UsersList = ({ users }) => {
               <td>{timeTag(user.resetTokenExpiresAt)}</td>
               <td>{truncate(user.roles)}</td>
               <td>{timeTag(user.registertimestamp)}</td>
+              <td>{truncate(user.currentCheckPoint)}</td>
+              <td>{truncate(user.currentRoad)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

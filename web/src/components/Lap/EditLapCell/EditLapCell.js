@@ -9,8 +9,8 @@ export const QUERY = gql`
   query EditLapById($id: String!) {
     lap: lap(id: $id) {
       id
-      start_timestamp
-      stop_timestamp
+      startTimeStamp
+      stopTimeStamp
       userId
     }
   }
@@ -19,8 +19,8 @@ const UPDATE_LAP_MUTATION = gql`
   mutation UpdateLapMutation($id: String!, $input: UpdateLapInput!) {
     updateLap(id: $id, input: $input) {
       id
-      start_timestamp
-      stop_timestamp
+      startTimeStamp
+      stopTimeStamp
       userId
     }
   }

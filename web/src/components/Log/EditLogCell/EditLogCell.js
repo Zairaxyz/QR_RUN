@@ -9,9 +9,9 @@ export const QUERY = gql`
   query EditLogById($id: String!) {
     log: log(id: $id) {
       id
-      time_stamp
       userId
-      scannerId
+      timeStamp
+      checkPointId
     }
   }
 `
@@ -19,9 +19,9 @@ const UPDATE_LOG_MUTATION = gql`
   mutation UpdateLogMutation($id: String!, $input: UpdateLogInput!) {
     updateLog(id: $id, input: $input) {
       id
-      time_stamp
       userId
-      scannerId
+      timeStamp
+      checkPointId
     }
   }
 `

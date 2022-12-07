@@ -4,8 +4,8 @@ export const QUERY = gql`
   query FindLapById($id: String!) {
     lap: lap(id: $id) {
       id
-      start_timestamp
-      stop_timestamp
+      startTimeStamp
+      stopTimeStamp
       userId
     }
   }

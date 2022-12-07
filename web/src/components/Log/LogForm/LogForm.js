@@ -3,8 +3,8 @@ import {
   FormError,
   FieldError,
   Label,
-  DatetimeLocalField,
   TextField,
+  DatetimeLocalField,
   Submit,
 } from '@redwoodjs/forms'
 
@@ -30,23 +30,6 @@ const LogForm = (props) => {
         />
 
         <Label
-          name="time_stamp"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Time stamp
-        </Label>
-
-        <DatetimeLocalField
-          name="time_stamp"
-          defaultValue={formatDatetime(props.log?.time_stamp)}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-        />
-
-        <FieldError name="time_stamp" className="rw-field-error" />
-
-        <Label
           name="userId"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
@@ -65,22 +48,40 @@ const LogForm = (props) => {
         <FieldError name="userId" className="rw-field-error" />
 
         <Label
-          name="scannerId"
+          name="timeStamp"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Scanner id
+          Time stamp
         </Label>
 
-        <TextField
-          name="scannerId"
-          defaultValue={props.log?.scannerId}
+        <DatetimeLocalField
+          name="timeStamp"
+          defaultValue={formatDatetime(props.log?.timeStamp)}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
         />
 
-        <FieldError name="scannerId" className="rw-field-error" />
+        <FieldError name="timeStamp" className="rw-field-error" />
+
+        <Label
+          name="checkPointId"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Check point id
+        </Label>
+
+        <TextField
+          name="checkPointId"
+          defaultValue={props.log?.checkPointId}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          validation={{ required: true }}
+        />
+
+        <FieldError name="checkPointId" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">

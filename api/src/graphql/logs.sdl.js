@@ -1,11 +1,11 @@
 export const schema = gql`
   type Log {
     id: String!
-    time_stamp: DateTime
     user: User!
     userId: String!
-    scanner: Scanner!
-    scannerId: String!
+    timeStamp: DateTime!
+    checkPoint: CheckPoint!
+    checkPointId: String!
   }
 
   type Query {
@@ -14,15 +14,15 @@ export const schema = gql`
   }
 
   input CreateLogInput {
-    time_stamp: DateTime
     userId: String!
-    scannerId: String!
+    timeStamp: DateTime!
+    checkPointId: String!
   }
 
   input UpdateLogInput {
-    time_stamp: DateTime
     userId: String
-    scannerId: String
+    timeStamp: DateTime
+    checkPointId: String
   }
 
   type Mutation {

@@ -80,9 +80,9 @@ const LogsList = ({ logs }) => {
         <thead>
           <tr>
             <th>Id</th>
-            <th>Time stamp</th>
             <th>User id</th>
-            <th>Scanner id</th>
+            <th>Time stamp</th>
+            <th>Check point id</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -90,9 +90,9 @@ const LogsList = ({ logs }) => {
           {logs.map((log) => (
             <tr key={log.id}>
               <td>{truncate(log.id)}</td>
-              <td>{timeTag(log.time_stamp)}</td>
               <td>{truncate(log.userId)}</td>
-              <td>{truncate(log.scannerId)}</td>
+              <td>{timeTag(log.timeStamp)}</td>
+              <td>{truncate(log.checkPointId)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

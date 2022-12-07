@@ -4,11 +4,11 @@ export const QUERY = gql`
   query FindParkById($id: String!) {
     park: park(id: $id) {
       id
-      park_name
-      image_url
+      parkName
+      imageUrl
       description
       address
-      working_time
+      workingTime
     }
   }
 `

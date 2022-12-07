@@ -77,16 +77,16 @@ const Log = ({ log }) => {
               <td>{log.id}</td>
             </tr>
             <tr>
-              <th>Time stamp</th>
-              <td>{timeTag(log.time_stamp)}</td>
-            </tr>
-            <tr>
               <th>User id</th>
               <td>{log.userId}</td>
             </tr>
             <tr>
-              <th>Scanner id</th>
-              <td>{log.scannerId}</td>
+              <th>Time stamp</th>
+              <td>{timeTag(log.timeStamp)}</td>
+            </tr>
+            <tr>
+              <th>Check point id</th>
+              <td>{log.checkPointId}</td>
             </tr>
           </tbody>
         </table>

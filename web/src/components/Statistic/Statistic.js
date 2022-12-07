@@ -1,10 +1,7 @@
 import { useState } from 'react'
-
-import QRCode from 'qrcode.react'
-
 import { useAuth } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
-
+import QRCode from 'qrcode.react'
 import { DateTime } from 'luxon'
 
 const Statistic = () => {
@@ -102,12 +99,12 @@ const Statistic = () => {
                   </div>
                   <div className='text-center'>
                     <p>Distace</p>
-                    <p>{el.total_distance} km</p>
+                    <p>{el.totalDistance} km</p>
                   </div>
                   <div className='text-center'>
                     <p>Time</p>
                     <p>
-                      {DateTime.fromISO(el.stop_timestamp).diff(DateTime.fromISO(el.start_timestamp), 'hours').toFormat(" hh ':' mm ':' ss ")}
+                      {DateTime.fromISO(el.stopTimeStamp).diff(DateTime.fromISO(el.startTimeStamp), 'hours').toFormat(" hh ':' mm ':' ss ")}
                     </p>
                   </div>
                 </div>
@@ -128,7 +125,7 @@ const Statistic = () => {
                 <span class="flex-shrink mx-4 text-gray-400">All time</span>
                 <div class="flex-grow border-t border-gray-400"></div>
               </div>
-              {currentUser.Run.map((el) => (
+              {/* {currentUser.Run.map((el) => (
                 <div className='grid grid-cols-3 gap-3'>
                   <div className='text-center'>
                     <p>Avg.Pace</p>
@@ -136,16 +133,16 @@ const Statistic = () => {
                   </div>
                   <div className='text-center'>
                     <p>Distace</p>
-                    <p>{el.total_distance} km</p>
+                    <p>{el.totalDistance} km</p>
                   </div>
                   <div className='text-center'>
                     <p>Time</p>
                     <p>
-                      {DateTime.fromISO(el.stop_timestamp).diff(DateTime.fromISO(el.start_timestamp), 'hours').toFormat(" hh ':' mm ':' ss ")}
+                      {DateTime.fromISO(el.stopTimeStamp).diff(DateTime.fromISO(el.startTimeStamp), 'hours').toFormat(" hh ':' mm ':' ss ")}
                     </p>
                   </div>
                 </div>
-              ))}
+              ))} */}
             </div>
           </div>
         </div>

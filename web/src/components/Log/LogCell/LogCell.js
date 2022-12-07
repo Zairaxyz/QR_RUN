@@ -4,9 +4,9 @@ export const QUERY = gql`
   query FindLogById($id: String!) {
     log: log(id: $id) {
       id
-      time_stamp
       userId
-      scannerId
+      timeStamp
+      checkPointId
     }
   }
 `

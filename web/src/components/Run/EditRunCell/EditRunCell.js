@@ -9,9 +9,9 @@ export const QUERY = gql`
   query EditRunById($id: String!) {
     run: run(id: $id) {
       id
-      start_timestamp
-      stop_timestamp
-      total_distance
+      startTimeStamp
+      stopTimeStamp
+      totalDistance
       pace
       userId
       parkId
@@ -22,9 +22,9 @@ const UPDATE_RUN_MUTATION = gql`
   mutation UpdateRunMutation($id: String!, $input: UpdateRunInput!) {
     updateRun(id: $id, input: $input) {
       id
-      start_timestamp
-      stop_timestamp
-      total_distance
+      startTimeStamp
+      stopTimeStamp
+      totalDistance
       pace
       userId
       parkId

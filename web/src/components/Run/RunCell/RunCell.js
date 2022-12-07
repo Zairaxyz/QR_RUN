@@ -4,9 +4,9 @@ export const QUERY = gql`
   query FindRunById($id: String!) {
     run: run(id: $id) {
       id
-      start_timestamp
-      stop_timestamp
-      total_distance
+      startTimeStamp
+      stopTimeStamp
+      totalDistance
       pace
       userId
       parkId

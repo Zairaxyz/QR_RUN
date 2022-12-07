@@ -77,12 +77,12 @@ const Lap = ({ lap }) => {
               <td>{lap.id}</td>
             </tr>
             <tr>
-              <th>Start timestamp</th>
-              <td>{timeTag(lap.start_timestamp)}</td>
+              <th>Start time stamp</th>
+              <td>{timeTag(lap.startTimeStamp)}</td>
             </tr>
             <tr>
-              <th>Stop timestamp</th>
-              <td>{timeTag(lap.stop_timestamp)}</td>
+              <th>Stop time stamp</th>
+              <td>{timeTag(lap.stopTimeStamp)}</td>
             </tr>
             <tr>
               <th>User id</th>

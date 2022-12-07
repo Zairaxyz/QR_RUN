@@ -9,11 +9,11 @@ export const QUERY = gql`
   query EditParkById($id: String!) {
     park: park(id: $id) {
       id
-      park_name
-      image_url
+      parkName
+      imageUrl
       description
       address
-      working_time
+      workingTime
     }
   }
 `
@@ -21,11 +21,11 @@ const UPDATE_PARK_MUTATION = gql`
   mutation UpdateParkMutation($id: String!, $input: UpdateParkInput!) {
     updatePark(id: $id, input: $input) {
       id
-      park_name
-      image_url
+      parkName
+      imageUrl
       description
       address
-      working_time
+      workingTime
     }
   }
 `
