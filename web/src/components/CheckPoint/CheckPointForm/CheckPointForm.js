@@ -1,3 +1,7 @@
+import React, { useState } from 'react'
+
+import { Select } from 'antd'
+
 import {
   Form,
   FormError,
@@ -6,12 +10,53 @@ import {
   TextField,
   Submit,
 } from '@redwoodjs/forms'
+// import { useQuery } from '@redwoodjs/web'
+import { useQuery } from '@redwoodjs/web'
 
 const CheckpointForm = (props) => {
-  const onSubmit = (data) => {
-    props.onSave(data, props?.checkpoint?.id)
-  }
+  const QUERY = gql`
+    query FindParks {
+      parks {
+        id
+        name
+      }
+    }
+  `
+  const { loading, data } = useQuery(QUERY)
+  const [parkId, setParkId] = useState('')
+  if (loading)
+    return (
+      <div className="... bg-indigo-500" disabled>
+        <svg
+          className="... mr-3 h-5 w-5 animate-spin"
+          viewBox="0 0 24 24"
+        ></svg>
+        Processing...
+      </div>
+    )
 
+  const onSubmit = (data) => {
+    // ...data เป็นการแตกไฟล์จาก Form
+    const record = { ...data, parkId: parkId }
+    props.onSave(record, props?.checkpoint?.id)
+  }
+  console.log(data.parks)
+  const parkOption = data.parks.map((data) => ({
+    value: data.id,
+    label: data.name,
+  }))
+  const handleChangePark = (e) => {
+    setParkId(e.value)
+  }
+  // const onChange = (e) => {
+  //   setParkId(`selected ${e.value}`)
+  // }
+  const onSearch = (e) => {
+    setParkId('search:', e.value)
+  }
+  const validateMessages = {
+    required: '',
+  }
   return (
     <div className="rw-form-wrapper">
       <Form onSubmit={onSubmit} error={props.error}>
@@ -29,14 +74,29 @@ const CheckpointForm = (props) => {
         >
           Park id
         </Label>
-
-        <TextField
+        <Select
+          showSearch
+          placeholder="Select a person"
+          validateStatus="error"
+          validateMessages={validateMessages}
+          optionFilterProp="children"
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          options={parkOption}
+          onChange={handleChangePark}
+          name="parkId"
+          onSearch={onSearch}
+          filterOption={(input, option) =>
+            (option?.label ?? null).toLowerCase().includes(input.toLowerCase())
+          }
+        />
+        {/* <TextField
           name="parkId"
           defaultValue={props.checkpoint?.parkId}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
-        />
+        /> */}
 
         <FieldError name="parkId" className="rw-field-error" />
 

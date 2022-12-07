@@ -11,9 +11,9 @@ const LapsLayout = ({ children }) => {
             Laps
           </Link>
         </h1>
-        <Link to={routes.newLap()} className="rw-button rw-button-green">
+        {/* <Link to={routes.newLap()} className="rw-button rw-button-green">
           <div className="rw-button-icon">+</div> New Lap
-        </Link>
+        </Link> */}
       </header>
       <main className="rw-main">{children}</main>
     </div>

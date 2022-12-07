@@ -35,6 +35,6 @@ export const schema = gql`
     updateCheckpoint(id: String!, input: UpdateCheckpointInput!): Checkpoint!
       @requireAuth
     deleteCheckpoint(id: String!): Checkpoint! @requireAuth
-    checkRunningPath(userId: String!, checkpointId: String!): String @skipAuth
+    checkRunningPath(userId: String!, checkpointId: String!): Boolean @skipAuth
   }
 `

@@ -22,6 +22,8 @@
     "@redwoodjs/forms": "3.0.3",
     "@redwoodjs/router": "3.0.3",
     "@redwoodjs/web": "3.0.3",
+    "antd": "^5.0.4",
+    "dayjs": "^1.11.6",
     "flowbite": "^1.5.3",
     "framer-motion": "^6",
     "prop-types": "15.8.1",

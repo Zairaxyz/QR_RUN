@@ -1,5 +1,8 @@
+// import moment from 'moment'
+// import { dayjs } from 'dayjs'
+
 import { db } from 'src/lib/db'
-import { logger } from 'src/lib/logger'
+// import { logger } from 'src/lib/logger'
 export const checkpoints = () => {
   return db.checkpoint.findMany()
 }
@@ -63,61 +66,11 @@ export const checkRunningPath = async ({ userId, checkpointId }) => {
       NOT: { prevCheckpointId: null },
     },
   })
-  // logger.warn(checkpoint.prevCheckpointId)
-  if (checkpoint != null) {
+  if (checkpoint) {
     if (user.currentCheckpoint == checkpoint.prevCheckpointId) {
       if (checkpoint.isFinish === true) {
-        await db.log.create({
-          data: {
-            userId: userId,
-            timeStamp: new Date(),
-            checkpointId: checkpointId,
-          },
-        })
-        // console.log(checkpoint)
-        const poplap = await db.lap.findMany({
-          orderBy: {
-            userId: 'desc',
-          },
-          where: {
-            userId: userId,
-            AND: {
-              pathId: checkpoint.pathId,
-            },
-          },
-          include: {
-            path: true,
-          },
-        })
-        console.log(poplap)
-        // logger.warn(JSON.stringify(poplap.path.parkId) + 'Null')
-        const createrun = await db.lap.update({
-          where: {
-            id: poplap.id,
-          },
-          data: { stopTime: new Date() },
-        })
-        console.log(createrun)
-        await db.run.create({
-          data: {
-            startTime: createrun.startTime,
-            stopTime: createrun.stopTime,
-            distance: poplap.path.distance,
-            pace:
-              poplap.path.distance / (createrun.startTime + createrun.stopTime),
-            userId: createrun.userId,
-            parkId: poplap.path.parkId,
-          },
-        })
-        await db.user.update({
-          data: { currentCheckpoint: null },
-          where: {
-            id: userId,
-          },
-        })
+        stopRuning({ userId, checkpointId, checkpointNull })
       } else {
-        // console.log('เปลี่ยน ID currentCheckpoint')
-        logger.warn(JSON.stringify('เปลี่ยน id'))
         await db.user.update({
           data: { currentCheckpoint: checkpointId },
           where: {
@@ -131,44 +84,107 @@ export const checkRunningPath = async ({ userId, checkpointId }) => {
             checkpointId: checkpointId,
           },
         })
-        logger.warn('จบ')
-        console.log('จบ')
       }
     }
   }
-  console.log('เริ่มต้นใหม่')
-  if (checkpointNull != null) {
-    const user = await db.user.findUnique({
-      where: { id: userId },
-    })
-    console.log(user.currentCheckpoint)
-    console.log('เช็คเงื่อนไข 1')
-    if (user.currentCheckpoint === checkpointNull.prevCheckpointId) {
-      console.log('เช็คเงื่อนไข 2')
-      if (checkpointNull.isStart === true) {
-        await db.user.update({
-          data: { currentCheckpoint: checkpointId },
-          where: {
-            id: userId,
-          },
-        })
-        await db.log.create({
-          data: {
-            userId: userId,
-            timeStamp: new Date(),
-            checkpointId: checkpointId,
-          },
-        })
-        await db.lap.create({
-          data: {
-            userId: userId,
-            pathId: checkpointNull.pathId,
-            startTime: new Date(),
-            stopTime: null,
-          },
-        })
-      }
+  if (checkpointNull) {
+    startRuning({ userId, checkpointNull, checkpointId })
+  }
+  return true
+}
+
+const startRuning = async ({ userId, checkpointNull, checkpointId }) => {
+  const user = await db.user.findUnique({
+    where: { id: userId },
+  })
+  if (user.currentCheckpoint === checkpointNull.prevCheckpointId) {
+    if (checkpointNull.isStart === true) {
+      await db.user.update({
+        data: { currentCheckpoint: checkpointId },
+        where: {
+          id: userId,
+        },
+      })
+      await db.log.create({
+        data: {
+          userId: userId,
+          timeStamp: new Date(),
+          checkpointId: checkpointId,
+        },
+      })
+      await db.lap.create({
+        data: {
+          userId: userId,
+          pathId: checkpointNull.pathId,
+          startTime: new Date(),
+          stopTime: null,
+        },
+      })
     }
   }
-  return userId + ' / ' + checkpointId
+}
+
+const stopRuning = async ({ userId, checkpointId, checkpointNull }) => {
+  const dayjs = require('dayjs')
+  await db.log.create({
+    data: {
+      userId: userId,
+      timeStamp: new Date(),
+      checkpointId: checkpointId,
+    },
+  })
+  // console.log(checkpoint)
+  const poplap = await db.lap.findMany({
+    orderBy: {
+      id: 'desc',
+    },
+    where: {
+      userId: userId,
+      AND: {
+        pathId: checkpoint.pathId,
+      },
+    },
+    include: {
+      path: true,
+    },
+  })
+  // console.log(poplap[0].id)
+  // logger.warn(JSON.stringify(poplap.path.parkId) + 'Null')
+  const createrun = await db.lap.update({
+    where: {
+      id: poplap[0].id,
+    },
+    data: { stopTime: new Date() },
+  })
+  // console.log(createrun)
+  // console.log((createrun.startTime / 1000) * 24 * 60)
+  const lopiuo = dayjs(createrun.stopTime).diff(
+    createrun.startTime,
+    'minute',
+    true
+  )
+  // console.log(lopiuo.diff(createrun.startTime, 'minute', true))
+  console.log(lopiuo.toFixed(2))
+  // console.log(lopiuo * 60)
+  // console.log(lopiuo * 60)
+  // console.log((createrun.stopTime - createrun.startTime) * 60)
+  await db.run.create({
+    data: {
+      startTime: createrun.startTime,
+      stopTime: createrun.stopTime,
+      distance: poplap[0].path.distance,
+      pace: lopiuo.toFixed(2) / poplap[0].path.distance,
+      userId: createrun.userId,
+      parkId: poplap[0].path.parkId,
+    },
+  })
+  await db.user.update({
+    data: { currentCheckpoint: null },
+    where: {
+      id: userId,
+    },
+  })
+  if (checkpointNull) {
+    startRuning({ userId, checkpointNull, checkpointId })
+  }
 }

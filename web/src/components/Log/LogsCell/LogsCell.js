@@ -18,10 +18,10 @@ export const Loading = () => <div>Loading...</div>
 export const Empty = () => {
   return (
     <div className="rw-text-center">
-      {'No logs yet. '}
-      <Link to={routes.newLog()} className="rw-link">
+      {'No data logs yet. '}
+      {/* <Link to={routes.newLog()} className="rw-link">
         {'Create one?'}
-      </Link>
+      </Link> */}
     </div>
   )
 }

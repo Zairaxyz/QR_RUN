@@ -11,9 +11,9 @@ const RunsLayout = ({ children }) => {
             Runs
           </Link>
         </h1>
-        <Link to={routes.newRun()} className="rw-button rw-button-green">
+        {/* <Link to={routes.newRun()} className="rw-button rw-button-green">
           <div className="rw-button-icon">+</div> New Run
-        </Link>
+        </Link> */}
       </header>
       <main className="rw-main">{children}</main>
     </div>
