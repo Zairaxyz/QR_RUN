@@ -40,7 +40,7 @@ const CheckpointForm = (props) => {
     const record = { ...data, parkId: parkId }
     props.onSave(record, props?.checkpoint?.id)
   }
-  console.log(data.parks)
+
   const parkOption = data.parks.map((data) => ({
     value: data.id,
     label: data.name,
@@ -55,7 +55,7 @@ const CheckpointForm = (props) => {
     setParkId('search:', e.value)
   }
   const validateMessages = {
-    required: '',
+    required: 'Not data',
   }
   return (
     <div className="rw-form-wrapper">

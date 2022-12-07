@@ -96,6 +96,13 @@ const PathsList = ({ paths }) => {
               <td>
                 <nav className="rw-table-actions">
                   <Link
+                    to={routes.path({ id: path.id }, { parkId: path.parkId })}
+                    title={'Show path ' + path.id + ' detail'}
+                    className="rw-button rw-button-small"
+                  >
+                    Show
+                  </Link>
+                  <Link
                     to={routes.path({ id: path.id })}
                     title={'Show path ' + path.id + ' detail'}
                     className="rw-button rw-button-small"

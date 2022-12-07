@@ -1,3 +1,7 @@
+import React, { useState } from 'react'
+
+import { Select } from 'antd'
+
 import {
   Form,
   FormError,
@@ -6,12 +10,46 @@ import {
   TextField,
   Submit,
 } from '@redwoodjs/forms'
-
+import { useQuery } from '@redwoodjs/web'
 const PathForm = (props) => {
+  const QUERY = gql`
+    query FieldParks {
+      parks {
+        id
+        name
+      }
+    }
+  `
+  const { loading, data } = useQuery(QUERY)
+  const [parkId, setParkId] = useState('')
+  if (loading)
+    return (
+      <div className="... bg-indigo-500" disabled>
+        <svg
+          className="... mr-3 h-5 w-5 animate-spin"
+          viewBox="0 0 24 24"
+        ></svg>
+        Processing...
+      </div>
+    )
   const onSubmit = (data) => {
-    props.onSave(data, props?.path?.id)
+    const record = { ...data, parkId: parkId }
+    props.onSave(record, props?.path?.id)
   }
 
+  const parkOption = data.parks.map((data) => ({
+    value: data.id,
+    label: data.name,
+  }))
+  const handleChangePark = (e) => {
+    setParkId(e.value)
+  }
+  const onSearch = (e) => {
+    setParkId('search', e.value)
+  }
+  const validateMessages = {
+    required: 'Not data',
+  }
   return (
     <div className="rw-form-wrapper">
       <Form onSubmit={onSubmit} error={props.error}>
@@ -21,6 +59,39 @@ const PathForm = (props) => {
           titleClassName="rw-form-error-title"
           listClassName="rw-form-error-list"
         />
+        <Label
+          name="parkId"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Park id
+        </Label>
+
+        <Select
+          showSearch
+          placeholder="Select a person"
+          validateStatus="error"
+          validateMessages={validateMessages}
+          optionFilterProp="children"
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          options={parkOption}
+          onChange={handleChangePark}
+          name="parkId"
+          onSearch={onSearch}
+          filterOption={(input, option) =>
+            (option?.label ?? null).toLowerCase().includes(input.toLowerCase())
+          }
+        />
+        {/* <TextField
+          name="parkId"
+          defaultValue={props.path?.parkId}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          validation={{ required: true }}
+        /> */}
+
+        <FieldError name="parkId" className="rw-field-error" />
 
         <Label
           name="name"
@@ -39,24 +110,6 @@ const PathForm = (props) => {
         />
 
         <FieldError name="name" className="rw-field-error" />
-
-        <Label
-          name="parkId"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Park id
-        </Label>
-
-        <TextField
-          name="parkId"
-          defaultValue={props.path?.parkId}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-
-        <FieldError name="parkId" className="rw-field-error" />
 
         <Label
           name="distance"

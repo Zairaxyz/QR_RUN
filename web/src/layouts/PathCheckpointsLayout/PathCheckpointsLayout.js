@@ -11,12 +11,12 @@ const PathCheckpointsLayout = ({ children }) => {
             PathCheckpoints
           </Link>
         </h1>
-        <Link
+        {/* <Link
           to={routes.newPathCheckpoint()}
           className="rw-button rw-button-green"
         >
           <div className="rw-button-icon">+</div> New PathCheckpoint
-        </Link>
+        </Link> */}
       </header>
       <main className="rw-main">{children}</main>
     </div>
