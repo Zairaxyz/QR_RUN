@@ -97,7 +97,7 @@ const LapsList = ({ laps }) => {
               <td>{truncate(lap.pathId)}</td>
               <td>
                 <nav className="rw-table-actions">
-                  <Link
+                  {/* <Link
                     to={routes.lap({ id: lap.id })}
                     title={'Show lap ' + lap.id + ' detail'}
                     className="rw-button rw-button-small"
@@ -118,7 +118,7 @@ const LapsList = ({ laps }) => {
                     onClick={() => onDeleteClick(lap.id)}
                   >
                     Delete
-                  </button>
+                  </button> */}
                 </nav>
               </td>
             </tr>

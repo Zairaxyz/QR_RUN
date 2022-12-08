@@ -95,7 +95,7 @@ const LogsList = ({ logs }) => {
               <td>{truncate(log.checkpointId)}</td>
               <td>
                 <nav className="rw-table-actions">
-                  <Link
+                  {/* <Link
                     to={routes.log({ id: log.id })}
                     title={'Show log ' + log.id + ' detail'}
                     className="rw-button rw-button-small"
@@ -116,7 +116,7 @@ const LogsList = ({ logs }) => {
                     onClick={() => onDeleteClick(log.id)}
                   >
                     Delete
-                  </button>
+                  </button> */}
                 </nav>
               </td>
             </tr>

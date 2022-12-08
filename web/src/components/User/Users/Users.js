@@ -1,3 +1,5 @@
+import { Select as AntSelect } from 'antd'
+import { Tag } from 'antd'
 import humanize from 'humanize-string'
 
 import { Link, routes } from '@redwoodjs/router'
@@ -11,6 +13,12 @@ const DELETE_USER_MUTATION = gql`
     deleteUser(id: $id) {
       id
     }
+  }
+`
+const UPDATE_ROLE_USER_MUTATION = gql`
+  mutation UpdateRoleUserMutation($id: string!, $role: string) {
+    setRoleUser(id: $id, role: $string)
+    roles
   }
 `
 
@@ -48,10 +56,11 @@ const timeTag = (datetime) => {
     )
   )
 }
-
 const checkboxInputTag = (checked) => {
   return <input type="checkbox" checked={checked} disabled />
 }
+export const Loading = () => <div>Loading...</div>
+const setroles = ['admin', 'user', 'governor', 'owner']
 
 const UsersList = ({ users }) => {
   const [deleteUser] = useMutation(DELETE_USER_MUTATION, {
@@ -67,11 +76,29 @@ const UsersList = ({ users }) => {
     refetchQueries: [{ query: QUERY }],
     awaitRefetchQueries: true,
   })
+  const [updateRoleUser, { loading, error }] = useMutation(
+    UPDATE_ROLE_USER_MUTATION,
+    {
+      onError: (error) => {
+        toast.error(error.message)
+      },
+      // This refetches the query on the list page. Read more about other ways to
+      // update the cache over here:
+      // https://www.apollographql.com/docs/react/data/mutations/#making-all-other-cache-updates
+      refetchQueries: [{ query: QUERY }],
+      awaitRefetchQueries: true,
+    }
+  )
 
   const onDeleteClick = (id) => {
     if (confirm('Are you sure you want to delete user ' + id + '?')) {
       deleteUser({ variables: { id } })
     }
+  }
+  const handleChangePosition = (role, id) => {
+    console.log(id, role)
+    updateRoleUser({ variables: { id, role } })
+    console.log({ updateRoleUser })
   }
 
   return (
@@ -106,6 +133,28 @@ const UsersList = ({ users }) => {
               <td>{truncate(user.salt)}</td>
               <td>{truncate(user.resetToken)}</td>
               <td>{timeTag(user.resetTokenExpiresAt)}</td>
+              <td>
+                <AntSelect
+                  style={{ width: '100px' }}
+                  value={truncate(user.roles)}
+                  onChange={(e) => handleChangePosition(e, user.id)}
+                  loading={loading}
+                  error={error}
+                >
+                  {setroles.map((roles) => (
+                    <>
+                      <AntSelect.Option value={roles}>
+                        <Tag color="black">{roles}</Tag>
+                        {/* {roles === 'admin' ? (
+                          <Tag color="green">{roles}</Tag>
+                        ) : (
+                          <Tag color="red">{roles}</Tag>
+                        )} */}
+                      </AntSelect.Option>
+                    </>
+                  ))}
+                </AntSelect>
+              </td>
               <td>{truncate(user.roles)}</td>
               <td>{timeTag(user.dateOfBirth)}</td>
               <td>{truncate(user.firstName)}</td>
@@ -115,28 +164,28 @@ const UsersList = ({ users }) => {
               <td>{timeTag(user.createdAt)}</td>
               <td>
                 <nav className="rw-table-actions">
-                  <Link
+                  {/* <Link
                     to={routes.user({ id: user.id })}
                     title={'Show user ' + user.id + ' detail'}
                     className="rw-button rw-button-small"
                   >
                     Show
-                  </Link>
-                  <Link
+                  </Link> */}
+                  {/* <Link
                     to={routes.editUser({ id: user.id })}
                     title={'Edit user ' + user.id}
                     className="rw-button rw-button-small rw-button-blue"
                   >
                     Edit
-                  </Link>
-                  <button
+                  </Link> */}
+                  {/* <button
                     type="button"
                     title={'Delete user ' + user.id}
                     className="rw-button rw-button-small rw-button-red"
                     onClick={() => onDeleteClick(user.id)}
                   >
                     Delete
-                  </button>
+                  </button> */}
                 </nav>
               </td>
             </tr>

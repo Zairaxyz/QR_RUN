@@ -58,5 +58,6 @@ export const schema = gql`
     createUser(input: CreateUserInput!): User! @requireAuth
     updateUser(id: String!, input: UpdateUserInput!): User! @requireAuth
     deleteUser(id: String!): User! @requireAuth
+    updateRoleUser(id: String!, role: String!): User! @skipAuth
   }
 `

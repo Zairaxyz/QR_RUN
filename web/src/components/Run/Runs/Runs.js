@@ -101,7 +101,7 @@ const RunsList = ({ runs }) => {
               <td>{truncate(run.parkId)}</td>
               <td>
                 <nav className="rw-table-actions">
-                  <Link
+                  {/* <Link
                     to={routes.run({ id: run.id })}
                     title={'Show run ' + run.id + ' detail'}
                     className="rw-button rw-button-small"
@@ -122,7 +122,7 @@ const RunsList = ({ runs }) => {
                     onClick={() => onDeleteClick(run.id)}
                   >
                     Delete
-                  </button>
+                  </button> */}
                 </nav>
               </td>
             </tr>

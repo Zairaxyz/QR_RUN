@@ -1,5 +1,6 @@
-import { db } from 'src/lib/db'
+import { logger } from '@redwoodjs/api/dist/logger'
 
+import { db } from 'src/lib/db'
 export const users = () => {
   return db.user.findMany()
 }
@@ -25,6 +26,14 @@ export const updateUser = ({ id, input }) => {
 
 export const deleteUser = ({ id }) => {
   return db.user.delete({
+    where: { id },
+  })
+}
+export const updateRoleUser = ({ id, role }) => {
+  return db.user.update({
+    data: {
+      roles: role,
+    },
     where: { id },
   })
 }
