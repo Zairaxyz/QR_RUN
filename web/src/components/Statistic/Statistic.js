@@ -40,7 +40,7 @@ const Statistic = () => {
             </div>
             <button className="btn btn-blue"></button>
 
-            <div class="border-t border-gray-200 my-8"></div>
+            <div className="border-t border-gray-200 my-8"></div>
 
             <p className="mt-1 mx-4 text- text-gray-600">
               Name : {currentUser.firstName} {currentUser.lastName}
@@ -55,7 +55,7 @@ const Statistic = () => {
               Role : {currentUser.roles}
             </p>
 
-            <div class="border-t border-gray-200 my-8"></div>
+            <div className="border-t border-gray-200 my-8"></div>
 
             <div className="flex justify-center">
               {isAuthenticated && (
@@ -90,7 +90,7 @@ const Statistic = () => {
                   <button className='bg-sky-400 rounded-full font-bold text-white py-2 px-4'>History</button>
                 </div>
               </div>
-              <div class="border-t border-gray-200"></div>
+              <div className="border-t border-gray-200"></div>
               {currentUser.Run.map((el) => (
                 <div className='grid grid-cols-3 gap-3'>
                   <div className='text-center'>
@@ -120,10 +120,10 @@ const Statistic = () => {
                   </label>
                 </div>
               </div>
-              <div class="relative flex items-center">
-                <div class="flex-grow border-t border-gray-400"></div>
-                <span class="flex-shrink mx-4 text-gray-400">All time</span>
-                <div class="flex-grow border-t border-gray-400"></div>
+              <div className="relative flex items-center">
+                <div className="flex-grow border-t border-gray-400"></div>
+                <span className="flex-shrink mx-4 text-gray-400">All time</span>
+                <div className="flex-grow border-t border-gray-400"></div>
               </div>
               {/* {currentUser.Run.map((el) => (
                 <div className='grid grid-cols-3 gap-3'>

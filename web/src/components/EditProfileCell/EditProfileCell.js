@@ -1,11 +1,7 @@
-import { navigate, routes } from '@redwoodjs/router'
-import { useMutation } from '@redwoodjs/web'
-import { toast } from '@redwoodjs/web/toast'
-
-import UserForm from '../User/UserForm/UserForm'
+import EditProfile from "../EditProfile/EditProfile"
 
 export const QUERY = gql`
-  query EditProfileById($id: String!) {
+  query FindEditProfileQuery($id: String!) {
     user(id: $id) {
       id
       firstName
@@ -16,20 +12,6 @@ export const QUERY = gql`
     }
   }
 `
-
-const UPDATE_USER_MUTATION = gql`
-  mutation UpdateUserMutation($id: String!, $input: UpdateUserInput!) {
-    updateUser(id: $id, input: $input) {
-      id
-      firstName
-      lastName
-      gender
-      dateOfBirth
-      imageUrl
-    }
-  }
-`
-
 export const Loading = () => <div>Loading...</div>
 
 export const Empty = () => <div>Empty</div>
@@ -38,31 +20,6 @@ export const Failure = ({ error }) => (
   <div style={{ color: 'red' }}>Error: {error?.message}</div>
 )
 
-export const Success = ({ user }) => {
-  const [updateUser, { Loading, error }] = useMutation(UPDATE_USER_MUTATION, {
-    onCompleted: () => {
-      toast.success('อัปเดตเรียบร้อย')
-      navigate(routes.users())
-    },
-    onError: (error) => {
-      toast.error(error.message)
-    },
-  })
-
-  const onSave = (input, id) => {
-    updateUser({ variables: { id, input } })
-  }
-
-  return (
-    <div className="rw-segment">
-      <header className="rw-segment-header">
-        <h2 className="rw-heading rw-heading-secondary">
-          Edit Park {user?.id}
-        </h2>
-      </header>
-      <div className="rw-segment-main">
-        <ParkForm park={user} onSave={onSave} error={error} loading={loading} />
-      </div>
-    </div>
-  )
+export const Success = ({ EditProfile }) => {
+  return <EditProfile user={user}/>
 }

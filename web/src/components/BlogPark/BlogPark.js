@@ -40,20 +40,20 @@ const BlogPark = ({ park }) => {
           <div className="w-full overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr class="text-md tracking-wide text-left text-gray-900 bg-gray-100 border-b border-gray-600">
-                  <th class="py-3 text-center">No.</th>
-                  <th class="py-3 text-center">Username</th>
-                  <th class="py-3 text-center">Avg.pace</th>
+                <tr className="text-md tracking-wide text-left text-gray-900 bg-gray-100 border-b border-gray-600">
+                  <th className="py-3 text-center">No.</th>
+                  <th className="py-3 text-center">Username</th>
+                  <th className="py-3 text-center">Avg.pace</th>
                 </tr>
               </thead>
               <tbody>
                 {Run.slice(0, 3).map((el , index) => (
-                  <tr class="text-center text-md">
+                  <tr className="text-center text-md">
                   <td>{index + 1}</td>
-                  <td class="py-8">
-                    <a class="flex justify-center	items-center">
-                    <img width="40" height="40" src={el.user.imageUrl} class="block rounded-full float-left" alt="" sizes="(max-width: 150px) 100vw, 150px" />
-                    <span class="px-4">{el.user.firstName}</span>
+                  <td className="py-8">
+                    <a className="flex justify-center	items-center">
+                    <img width="40" height="40" src={el.user.imageUrl} className="block rounded-full float-left" alt="" sizes="(max-width: 150px) 100vw, 150px" />
+                    <span className="px-4">{el.user.firstName}</span>
                     </a>
                   </td>
                   <td>{el.pace}</td>

@@ -1,7 +1,7 @@
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
-import EditProfileCell from "src/components/EditProfileCell/EditProfileCell"
+import EditProfile from 'src/components/EditProfile/EditProfile'
 
 const EditProfilePage = () => {
   return (
@@ -14,7 +14,7 @@ const EditProfilePage = () => {
         </div>
       </header>
 
-      <EditProfileCell />
+      <EditProfile />
     </>
   )
 }

@@ -7,12 +7,12 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 import logo from './thairun.png'
 
-const user = {
-  name: 'Tom Cook',
-  email: 'tom@example.com',
-  imageUrl:
-    'https://scontent.fbkk5-1.fna.fbcdn.net/v/t39.30808-6/309922894_1450507872120357_2013748573071282769_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHoEFb3pcAmyzmuJHWgIm5GBZ8fFtv-FNIFnx8W2_4U0s2v9993OlrYZk-wrMXtrZ5HUrFx9zwyGNxHxVXJmMSZ&_nc_ohc=q2tyEG78H5EAX9B1eiu&_nc_ht=scontent.fbkk5-1.fna&oh=00_AT_r4gU-GBM6MvfYBqcsPBlhHA-u3LAEr0QjlBGmRQjh5Q&oe=635285BB',
-}
+// const user = {
+//   name: 'Tom Cook',
+//   email: 'tom@example.com',
+//   imageUrl:
+//     'https://scontent.fbkk5-1.fna.fbcdn.net/v/t39.30808-6/309922894_1450507872120357_2013748573071282769_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHoEFb3pcAmyzmuJHWgIm5GBZ8fFtv-FNIFnx8W2_4U0s2v9993OlrYZk-wrMXtrZ5HUrFx9zwyGNxHxVXJmMSZ&_nc_ohc=q2tyEG78H5EAX9B1eiu&_nc_ht=scontent.fbkk5-1.fna&oh=00_AT_r4gU-GBM6MvfYBqcsPBlhHA-u3LAEr0QjlBGmRQjh5Q&oe=635285BB',
+// }
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -52,8 +52,8 @@ const NavbarLayout = ({ children }) => {
   ]
 
   const userNavigation = [
-    { name: 'Your Profile', href: '/statistic', state: false },
-    { name: 'Settings', href: '/edit-profile', state: false },
+    { name: 'My Statistic', href: '/statistic', state: false },
+    { name: 'EditProfile', href: '/edit-profile', state: false },
     { name: 'Sign out', href: '#', state: true },
   ]
 
