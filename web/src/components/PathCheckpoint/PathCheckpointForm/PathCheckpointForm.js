@@ -7,12 +7,11 @@ import {
   CheckboxField,
   Submit,
 } from '@redwoodjs/forms'
-
+// console.log(id)
 const PathCheckpointForm = (props) => {
   const onSubmit = (data) => {
     props.onSave(data, props?.pathCheckpoint?.id)
   }
-
   return (
     <div className="rw-form-wrapper">
       <Form onSubmit={onSubmit} error={props.error}>
@@ -102,7 +101,7 @@ const PathCheckpointForm = (props) => {
 
         <TextField
           name="pathId"
-          defaultValue={props.pathCheckpoint?.pathId}
+          defaultValue={props.pathCheckpoint?.pathId || props.pathId}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
