@@ -16,9 +16,11 @@ const DELETE_USER_MUTATION = gql`
   }
 `
 const UPDATE_ROLE_USER_MUTATION = gql`
-  mutation UpdateRoleUserMutation($id: string!, $role: string) {
-    setRoleUser(id: $id, role: $string)
-    roles
+  mutation UpdateRoleUserMutation($id: String!, $role: String!) {
+    updateRoleUser(id: $id, role: $role) {
+      id
+      roles
+    }
   }
 `
 
@@ -95,10 +97,11 @@ const UsersList = ({ users }) => {
       deleteUser({ variables: { id } })
     }
   }
-  const handleChangePosition = (role, id) => {
+  const handleChangePosition = async (role, id) => {
     console.log(id, role)
-    updateRoleUser({ variables: { id, role } })
-    console.log({ updateRoleUser })
+    const data = await updateRoleUser({ variables: { id, role } })
+    // console.log(JSON.stringify(updateRoleUser))
+    console.log(data)
   }
 
   return (
