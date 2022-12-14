@@ -23,10 +23,10 @@ const Routes = () => {
             <Route path="/admin/paths" page={PathPathsPage} name="paths" />
           </Set>
           <Set wrap={CheckpointsLayout}>
-            <Route path="/admin/checkpoints/new" page={CheckpointNewCheckpointPage} name="newCheckpoint" />
-            <Route path="/admin/checkpoints/{id}/edit" page={CheckpointEditCheckpointPage} name="editCheckpoint" />
-            <Route path="/admin/checkpoints/{id}" page={CheckpointCheckpointPage} name="checkpoint" />
-            <Route path="/admin/checkpoints" page={CheckpointCheckpointsPage} name="checkpoints" />
+            <Route path="/admin/checkpoints/new" page={CheckPointNewCheckPointPage} name="newCheckpoint" />
+            <Route path="/admin/checkpoints/{id}/edit" page={CheckPointEditCheckPointPage} name="editCheckpoint" />
+            <Route path="/admin/checkpoints/{id}" page={CheckPointCheckPointPage} name="checkpoint" />
+            <Route path="/admin/checkpoints" page={CheckPointCheckPointsPage} name="checkpoints" />
           </Set>
           <Set wrap={PathCheckpointsLayout}>
             <Route path="/admin/path-checkpoints/new" page={PathCheckpointNewPathCheckpointPage} name="newPathCheckpoint" />
