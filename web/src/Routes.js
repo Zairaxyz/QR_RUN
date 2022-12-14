@@ -74,7 +74,7 @@ const Routes = () => {
         <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
 
         <Route path="/" page={HomePage} name="home" />
-        {/* <Route path="/parks" page={ParksPage} name="parks" /> */}
+        <Route path="/parks" page={ParksPage} name="parks" />
         <Route path="/blog-park/{id:String}" page={BlogParkPage} name="blogPark" />
       </Set>
 
