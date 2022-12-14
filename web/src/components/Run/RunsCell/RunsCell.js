@@ -6,9 +6,9 @@ export const QUERY = gql`
   query FindRuns {
     runs {
       id
-      start_timestamp
-      stop_timestamp
-      total_distance
+      startTime
+      stopTime
+      distance
       pace
       userId
       parkId
@@ -21,10 +21,10 @@ export const Loading = () => <div>Loading...</div>
 export const Empty = () => {
   return (
     <div className="rw-text-center">
-      {'No runs yet. '}
-      <Link to={routes.newRun()} className="rw-link">
+      {'No data runs yet. '}
+      {/* <Link to={routes.newRun()} className="rw-link">
         {'Create one?'}
-      </Link>
+      </Link> */}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import ParksCell from 'src/components/Admin/Park/ParksCell'
+import ParksCell from 'src/components/Park/ParksCell'
 
 const ParksPage = () => {
   return <ParksCell />

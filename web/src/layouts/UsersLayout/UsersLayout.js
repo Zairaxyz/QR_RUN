@@ -11,9 +11,9 @@ const UsersLayout = ({ children }) => {
             Users
           </Link>
         </h1>
-        <Link to={routes.newUser()} className="rw-button rw-button-green">
+        {/* <Link to={routes.newUser()} className="rw-button rw-button-green">
           <div className="rw-button-icon">+</div> New User
-        </Link>
+        </Link> */}
       </header>
       <main className="rw-main">{children}</main>
     </div>

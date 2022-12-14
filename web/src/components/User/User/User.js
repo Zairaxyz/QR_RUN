@@ -77,20 +77,8 @@ const User = ({ user }) => {
               <td>{user.id}</td>
             </tr>
             <tr>
-              <th>First name</th>
-              <td>{user.firstName}</td>
-            </tr>
-            <tr>
-              <th>Last name</th>
-              <td>{user.lastName}</td>
-            </tr>
-            <tr>
               <th>Gender</th>
               <td>{user.gender}</td>
-            </tr>
-            <tr>
-              <th>Date of birth</th>
-              <td>{timeTag(user.dateOfBirth)}</td>
             </tr>
             <tr>
               <th>Email</th>
@@ -109,10 +97,6 @@ const User = ({ user }) => {
               <td>{user.resetToken}</td>
             </tr>
             <tr>
-              <th>Image url</th>
-              <td>{user.imageUrl}</td>
-            </tr>
-            <tr>
               <th>Reset token expires at</th>
               <td>{timeTag(user.resetTokenExpiresAt)}</td>
             </tr>
@@ -121,8 +105,28 @@ const User = ({ user }) => {
               <td>{user.roles}</td>
             </tr>
             <tr>
-              <th>Register times tamp</th>
-              <td>{timeTag(user.registerTimesTamp)}</td>
+              <th>Date of birth</th>
+              <td>{timeTag(user.dateOfBirth)}</td>
+            </tr>
+            <tr>
+              <th>First name</th>
+              <td>{user.firstName}</td>
+            </tr>
+            <tr>
+              <th>Image url</th>
+              <td>{user.imageUrl}</td>
+            </tr>
+            <tr>
+              <th>Last name</th>
+              <td>{user.lastName}</td>
+            </tr>
+            <tr>
+              <th>Current checkpoint</th>
+              <td>{user.currentCheckpoint}</td>
+            </tr>
+            <tr>
+              <th>Created at</th>
+              <td>{timeTag(user.createdAt)}</td>
             </tr>
           </tbody>
         </table>

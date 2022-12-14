@@ -1,7 +1,7 @@
 import BlogPark from 'src/components/BlogPark'
 
 export const QUERY = gql`
-  query FindBlogParkQuery($id: Int!) {
+  query FindBlogParkQuery($id: String!) {
     park(id: $id) {
       id
       park_name

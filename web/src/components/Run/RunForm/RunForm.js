@@ -30,56 +30,56 @@ const RunForm = (props) => {
         />
 
         <Label
-          name="start_timestamp"
+          name="startTime"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Start timestamp
+          Start time
         </Label>
 
         <DatetimeLocalField
-          name="start_timestamp"
-          defaultValue={formatDatetime(props.run?.start_timestamp)}
+          name="startTime"
+          defaultValue={formatDatetime(props.run?.startTime)}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
 
-        <FieldError name="start_timestamp" className="rw-field-error" />
+        <FieldError name="startTime" className="rw-field-error" />
 
         <Label
-          name="stop_timestamp"
+          name="stopTime"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Stop timestamp
+          Stop time
         </Label>
 
         <DatetimeLocalField
-          name="stop_timestamp"
-          defaultValue={formatDatetime(props.run?.stop_timestamp)}
+          name="stopTime"
+          defaultValue={formatDatetime(props.run?.stopTime)}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
 
-        <FieldError name="stop_timestamp" className="rw-field-error" />
+        <FieldError name="stopTime" className="rw-field-error" />
 
         <Label
-          name="total_distance"
+          name="distance"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Total distance
+          Distance
         </Label>
 
         <TextField
-          name="total_distance"
-          defaultValue={props.run?.total_distance}
+          name="distance"
+          defaultValue={props.run?.distance}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ valueAsNumber: true }}
         />
 
-        <FieldError name="total_distance" className="rw-field-error" />
+        <FieldError name="distance" className="rw-field-error" />
 
         <Label
           name="pace"

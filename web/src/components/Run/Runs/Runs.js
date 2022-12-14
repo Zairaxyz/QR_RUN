@@ -7,7 +7,7 @@ import { toast } from '@redwoodjs/web/toast'
 import { QUERY } from 'src/components/Run/RunsCell'
 
 const DELETE_RUN_MUTATION = gql`
-  mutation DeleteRunMutation($id: Int!) {
+  mutation DeleteRunMutation($id: String!) {
     deleteRun(id: $id) {
       id
     }
@@ -80,9 +80,9 @@ const RunsList = ({ runs }) => {
         <thead>
           <tr>
             <th>Id</th>
-            <th>Start timestamp</th>
-            <th>Stop timestamp</th>
-            <th>Total distance</th>
+            <th>Start time</th>
+            <th>Stop time</th>
+            <th>Distance</th>
             <th>Pace</th>
             <th>User id</th>
             <th>Park id</th>
@@ -93,15 +93,15 @@ const RunsList = ({ runs }) => {
           {runs.map((run) => (
             <tr key={run.id}>
               <td>{truncate(run.id)}</td>
-              <td>{timeTag(run.start_timestamp)}</td>
-              <td>{timeTag(run.stop_timestamp)}</td>
-              <td>{truncate(run.total_distance)}</td>
+              <td>{timeTag(run.startTime)}</td>
+              <td>{timeTag(run.stopTime)}</td>
+              <td>{truncate(run.distance)}</td>
               <td>{truncate(run.pace)}</td>
               <td>{truncate(run.userId)}</td>
               <td>{truncate(run.parkId)}</td>
               <td>
                 <nav className="rw-table-actions">
-                  <Link
+                  {/* <Link
                     to={routes.run({ id: run.id })}
                     title={'Show run ' + run.id + ' detail'}
                     className="rw-button rw-button-small"
@@ -122,7 +122,7 @@ const RunsList = ({ runs }) => {
                     onClick={() => onDeleteClick(run.id)}
                   >
                     Delete
-                  </button>
+                  </button> */}
                 </nav>
               </td>
             </tr>

@@ -1,34 +1,36 @@
 export const schema = gql`
   type Run {
-    id: Int!
-    start_timestamp: DateTime
-    stop_timestamp: DateTime
-    total_distance: Float
+    id: String!
+    startTime: DateTime
+    stopTime: DateTime
+    distance: Float
     pace: Float
-    user: User!
     userId: String!
-    park: Park!
     parkId: String!
+    park: Park!
+    user: User!
   }
 
   type Query {
     runs: [Run!]! @requireAuth
-    run(id: Int!): Run @requireAuth
+    run(id: String!): Run @requireAuth
+    findFirstRun(userId: String!): [Run!]! @requireAuth
+    findTotalOfSumRun(userId: String!): Boolean! @skipAuth
   }
 
   input CreateRunInput {
-    start_timestamp: DateTime
-    stop_timestamp: DateTime
-    total_distance: Float
+    startTime: DateTime
+    stopTime: DateTime
+    distance: Float
     pace: Float
     userId: String!
     parkId: String!
   }
 
   input UpdateRunInput {
-    start_timestamp: DateTime
-    stop_timestamp: DateTime
-    total_distance: Float
+    startTime: DateTime
+    stopTime: DateTime
+    distance: Float
     pace: Float
     userId: String
     parkId: String
@@ -36,7 +38,7 @@ export const schema = gql`
 
   type Mutation {
     createRun(input: CreateRunInput!): Run! @requireAuth
-    updateRun(id: Int!, input: UpdateRunInput!): Run! @requireAuth
-    deleteRun(id: Int!): Run! @requireAuth
+    updateRun(id: String!, input: UpdateRunInput!): Run! @requireAuth
+    deleteRun(id: String!): Run! @requireAuth
   }
 `

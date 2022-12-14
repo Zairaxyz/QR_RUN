@@ -9,18 +9,19 @@ export const QUERY = gql`
   query EditUserById($id: String!) {
     user: user(id: $id) {
       id
-      firstName
-      lastName
       gender
-      dateOfBirth
       email
       hashedPassword
       salt
       resetToken
-      imageUrl
       resetTokenExpiresAt
       roles
-      registerTimesTamp
+      dateOfBirth
+      firstName
+      imageUrl
+      lastName
+      currentCheckpoint
+      createdAt
     }
   }
 `
@@ -28,18 +29,19 @@ const UPDATE_USER_MUTATION = gql`
   mutation UpdateUserMutation($id: String!, $input: UpdateUserInput!) {
     updateUser(id: $id, input: $input) {
       id
-      firstName
-      lastName
       gender
-      dateOfBirth
       email
       hashedPassword
       salt
       resetToken
-      imageUrl
       resetTokenExpiresAt
       roles
-      registerTimesTamp
+      dateOfBirth
+      firstName
+      imageUrl
+      lastName
+      currentCheckpoint
+      createdAt
     }
   }
 `

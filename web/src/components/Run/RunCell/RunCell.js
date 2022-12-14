@@ -1,12 +1,12 @@
 import Run from 'src/components/Run/Run'
 
 export const QUERY = gql`
-  query FindRunById($id: Int!) {
+  query FindRunById($id: String!) {
     run: run(id: $id) {
       id
-      start_timestamp
-      stop_timestamp
-      total_distance
+      startTime
+      stopTime
+      distance
       pace
       userId
       parkId

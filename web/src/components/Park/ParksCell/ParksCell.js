@@ -6,11 +6,11 @@ export const QUERY = gql`
   query FindParks {
     parks {
       id
-      park_name
-      image_url
+      name
+      imageUrl
       description
       address
-      working_time
+      workingHours
     }
   }
 `

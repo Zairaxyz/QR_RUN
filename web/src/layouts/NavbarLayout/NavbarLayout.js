@@ -1,13 +1,20 @@
-import { Fragment } from 'react'
+import React, { Fragment } from 'react'
 
+import {
+  MailOutlined,
+  AppstoreOutlined,
+  SettingOutlined,
+  UnorderedListOutlined,
+} from '@ant-design/icons'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 // import { calcLength } from 'framer-motion'
 
+import { Menu as AntMenu } from 'antd'
+
 import { useAuth } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
 // import { useMutation } from '@redwoodjs/web'
-
 // import { QUERY } from 'src/components/User/UsersCell'
 
 import logo from './thairun.png'
@@ -33,18 +40,104 @@ const NavbarLayout = ({ children }) => {
     { name: 'Parks', href: '/parks', current: false },
   ]
 
+  // const navigationAdmin = [
+  //   { name: 'Parks', href: '/admin/parks', current: false },
+  //   { name: 'Checkpoints', href: '/admin/checkpoints', current: false },
+  //   { name: 'Runs', href: '/admin/runs', current: false },
+  //   { name: 'Users', href: '/admin/users', current: false },
+  //   { name: 'Logs', href: '/admin/logs', current: false },
+  //   { name: 'Laps', href: '/admin/laps', current: false },
+  //   {
+  //     name: 'PathCheckpoints',
+  //     href: '/admin/path-checkpoints',
+  //     current: false,
+  //   },
+  //   { name: 'Path', href: '/admin/paths', current: false },
+  // ]
   const navigationAdmin = [
-    { name: 'Home', href: '/', current: false },
-    { name: 'Parks', href: '/admin/parks', current: false },
-    { name: 'Scanners', href: '/admin/scanners', current: false },
-    { name: 'Runs', href: '/admin/runs', current: false },
-    { name: 'Users', href: '/admin/users', current: false },
+    {
+      label: (
+        <Link to="/admin/parks" target="_blank" rel="noopener noreferrer">
+          Park
+        </Link>
+      ),
+      key: 'manu-1',
+      // icon: <MailOutlined />,
+    },
+    {
+      label: (
+        <Link to="/admin/checkpoints" target="_blank" rel="noopener noreferrer">
+          Checkpoints
+        </Link>
+      ),
+      key: 'manu-2',
+      // icon: <AppstoreOutlined />,
+    },
+    {
+      label: (
+        <Link to="/admin/paths" target="_blank" rel="noopener noreferrer">
+          Paths
+        </Link>
+      ),
+      key: 'manu-3',
+    },
+    {
+      label: (
+        <Link to="/admin/users" target="_blank" rel="noopener noreferrer">
+          Users
+        </Link>
+      ),
+      key: 'menu-4',
+    },
+    {
+      lable: 'sub menu',
+      key: 'summenu',
+      icon: <UnorderedListOutlined />,
+      children: [
+        {
+          label: (
+            <Link to="/admin/logs" target="_blank" rel="noopener noreferrer">
+              Logs
+            </Link>
+          ),
+          key: 'summenu-2',
+        },
+        {
+          label: (
+            <Link to="/admin/laps" target="_blank" rel="noopener noreferrer">
+              Laps
+            </Link>
+          ),
+          key: 'summenu-3',
+        },
+        {
+          label: (
+            <Link to="/admin/runs" target="_blank" rel="noopener noreferrer">
+              Runs
+            </Link>
+          ),
+          key: 'summenu-4',
+        },
+        {
+          label: (
+            <Link
+              to="/admin/path-checkpoints"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              PathCheckpoints
+            </Link>
+          ),
+          key: 'summenu-5',
+        },
+      ],
+    },
   ]
 
   const navigationGovernor = [
     { name: 'Home', href: '/', current: false },
     { name: 'Parks', href: '/admin/parks', current: false },
-    { name: 'Scanners', href: '/admin/scanners', current: false },
+    { name: 'CheckPoints', href: '/admin/scanners', current: false },
   ]
 
   const navigationOwner = [
@@ -58,7 +151,6 @@ const NavbarLayout = ({ children }) => {
     { name: 'Settings', href: '#', state: false },
     { name: 'Sign out', href: '#', state: true },
   ]
-
   return (
     <>
       <div className="min-h-full">
@@ -79,7 +171,12 @@ const NavbarLayout = ({ children }) => {
                           <>
                             {currentUser.roles === 'admin' ? (
                               <>
-                                {navigationAdmin.map((item) => (
+                                <AntMenu
+                                  className=""
+                                  mode="horizontal"
+                                  items={navigationAdmin}
+                                />
+                                {/* {navigationAdmin.map((item) => (
                                   <>
                                     <Link
                                       key={item.name}
@@ -98,7 +195,7 @@ const NavbarLayout = ({ children }) => {
                                       {item.name}
                                     </Link>
                                   </>
-                                ))}
+                                ))} */}
                               </>
                             ) : (
                               <>

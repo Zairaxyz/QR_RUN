@@ -24,24 +24,24 @@ const ParkForm = (props) => {
         />
 
         <Label
-          name="park_name"
+          name="name"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Park name
+          Name
         </Label>
 
         <TextField
-          name="park_name"
-          defaultValue={props.park?.park_name}
+          name="name"
+          defaultValue={props.park?.name}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
 
-        <FieldError name="park_name" className="rw-field-error" />
+        <FieldError name="name" className="rw-field-error" />
 
         <Label
-          name="image_url"
+          name="imageUrl"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
@@ -49,13 +49,13 @@ const ParkForm = (props) => {
         </Label>
 
         <TextField
-          name="image_url"
-          defaultValue={props.park?.image_url}
+          name="imageUrl"
+          defaultValue={props.park?.imageUrl}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
 
-        <FieldError name="image_url" className="rw-field-error" />
+        <FieldError name="imageUrl" className="rw-field-error" />
 
         <Label
           name="description"
@@ -92,22 +92,22 @@ const ParkForm = (props) => {
         <FieldError name="address" className="rw-field-error" />
 
         <Label
-          name="working_time"
+          name="workingHours"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Working time
+          Working hours
         </Label>
 
         <TextAreaField
-          name="working_time"
-          defaultValue={JSON.stringify(props.park?.working_time)}
+          name="workingHours"
+          defaultValue={JSON.stringify(props.park?.workingHours)}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ valueAsJSON: true }}
         />
 
-        <FieldError name="working_time" className="rw-field-error" />
+        <FieldError name="workingHours" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">

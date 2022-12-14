@@ -1,4 +1,4 @@
-import RunsCell from 'src/components/Admin/Run/RunsCell'
+import RunsCell from 'src/components/Run/RunsCell'
 
 const RunsPage = () => {
   return <RunsCell />

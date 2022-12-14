@@ -80,11 +80,11 @@ const ParksList = ({ parks }) => {
         <thead>
           <tr>
             <th>Id</th>
-            <th>Park name</th>
+            <th>Name</th>
             <th>Image url</th>
             <th>Description</th>
             <th>Address</th>
-            <th>Working time</th>
+            <th>Working hours</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -92,11 +92,11 @@ const ParksList = ({ parks }) => {
           {parks.map((park) => (
             <tr key={park.id}>
               <td>{truncate(park.id)}</td>
-              <td>{truncate(park.park_name)}</td>
-              <td>{truncate(park.image_url)}</td>
+              <td>{truncate(park.name)}</td>
+              <td>{truncate(park.imageUrl)}</td>
               <td>{truncate(park.description)}</td>
               <td>{truncate(park.address)}</td>
-              <td>{jsonTruncate(park.working_time)}</td>
+              <td>{jsonTruncate(park.workingHours)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

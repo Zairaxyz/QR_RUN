@@ -30,40 +30,6 @@ const UserForm = (props) => {
         />
 
         <Label
-          name="firstName"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          First name
-        </Label>
-
-        <TextField
-          name="firstName"
-          defaultValue={props.user?.firstName}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-        />
-
-        <FieldError name="firstName" className="rw-field-error" />
-
-        <Label
-          name="lastName"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Last name
-        </Label>
-
-        <TextField
-          name="lastName"
-          defaultValue={props.user?.lastName}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-        />
-
-        <FieldError name="lastName" className="rw-field-error" />
-
-        <Label
           name="gender"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
@@ -79,23 +45,6 @@ const UserForm = (props) => {
         />
 
         <FieldError name="gender" className="rw-field-error" />
-
-        <Label
-          name="dateOfBirth"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Date of birth
-        </Label>
-
-        <DatetimeLocalField
-          name="dateOfBirth"
-          defaultValue={formatDatetime(props.user?.dateOfBirth)}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-        />
-
-        <FieldError name="dateOfBirth" className="rw-field-error" />
 
         <Label
           name="email"
@@ -169,23 +118,6 @@ const UserForm = (props) => {
         <FieldError name="resetToken" className="rw-field-error" />
 
         <Label
-          name="imageUrl"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Image url
-        </Label>
-
-        <TextField
-          name="imageUrl"
-          defaultValue={props.user?.imageUrl}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-        />
-
-        <FieldError name="imageUrl" className="rw-field-error" />
-
-        <Label
           name="resetTokenExpiresAt"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
@@ -219,6 +151,91 @@ const UserForm = (props) => {
         />
 
         <FieldError name="roles" className="rw-field-error" />
+
+        <Label
+          name="dateOfBirth"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Date of birth
+        </Label>
+
+        <DatetimeLocalField
+          name="dateOfBirth"
+          defaultValue={formatDatetime(props.user?.dateOfBirth)}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+
+        <FieldError name="dateOfBirth" className="rw-field-error" />
+
+        <Label
+          name="firstName"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          First name
+        </Label>
+
+        <TextField
+          name="firstName"
+          defaultValue={props.user?.firstName}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+
+        <FieldError name="firstName" className="rw-field-error" />
+
+        <Label
+          name="imageUrl"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Image url
+        </Label>
+
+        <TextField
+          name="imageUrl"
+          defaultValue={props.user?.imageUrl}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+
+        <FieldError name="imageUrl" className="rw-field-error" />
+
+        <Label
+          name="lastName"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Last name
+        </Label>
+
+        <TextField
+          name="lastName"
+          defaultValue={props.user?.lastName}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+
+        <FieldError name="lastName" className="rw-field-error" />
+
+        <Label
+          name="currentCheckpoint"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Current checkpoint
+        </Label>
+
+        <TextField
+          name="currentCheckpoint"
+          defaultValue={props.user?.currentCheckpoint}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+
+        <FieldError name="currentCheckpoint" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">

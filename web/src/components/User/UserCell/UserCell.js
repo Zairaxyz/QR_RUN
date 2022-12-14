@@ -4,18 +4,19 @@ export const QUERY = gql`
   query FindUserById($id: String!) {
     user: user(id: $id) {
       id
-      firstName
-      lastName
       gender
-      dateOfBirth
       email
       hashedPassword
       salt
       resetToken
-      imageUrl
       resetTokenExpiresAt
       roles
-      registerTimesTamp
+      dateOfBirth
+      firstName
+      imageUrl
+      lastName
+      currentCheckpoint
+      createdAt
     }
   }
 `
