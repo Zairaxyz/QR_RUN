@@ -23,14 +23,15 @@ export const Success = ({ parks }) => {
     <>
       {parks.map((park) => (
         <div key={park.id}>
-          <div className="text- xl my-4 flex w-full justify-center">
+          <div className="mt-6 text-xl font-bold flex justify-center">
             <Link to={routes.blogPark({ id: park.id })}>{park.name}</Link>
           </div>
-          <div className="flex w-full items-center justify-center">
+          <div className="mt-8 flex items-center justify-center">
             <Link to={routes.blogPark({ id: park.id })}>
-              <img src={park.imageUrl} alt="" width="700" height="700" />
+              <img src={park.imageUrl} alt="park" className="h-64 w-96 md:h-[30rem] md:w-[40rem]" />
             </Link>
           </div>
+          <div class="my-4 mx-auto w-48 h-1 bg-gray-100 rounded border-0 md:my-10 dark:bg-gray-700" />
         </div>
       ))}
     </>
