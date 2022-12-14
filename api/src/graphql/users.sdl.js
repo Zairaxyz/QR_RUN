@@ -54,10 +54,18 @@ export const schema = gql`
     currentCheckpoint: String
   }
 
+  input UpdateUserProfile {
+    firstName: String!
+    lastName: String!
+    imageUrl: String!
+    gender: String!
+  }
+
   type Mutation {
     createUser(input: CreateUserInput!): User! @requireAuth
     updateUser(id: String!, input: UpdateUserInput!): User! @requireAuth
     deleteUser(id: String!): User! @requireAuth
-    updateRoleUser(id: String!, role: String!): User! @skipAuth
+    updateRoleUser(id: String!, role: String!): User! @requireAuth
+    updateProfile(id: String!, input: UpdateUserProfile!): User! @skipAuth
   }
 `

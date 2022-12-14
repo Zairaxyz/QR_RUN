@@ -37,3 +37,28 @@ export const Run = {
     return db.run.findUnique({ where: { id: root?.id } }).user()
   },
 }
+
+export const findFirstRun = ({ userId }) => {
+  return db.run.findMany({
+    orderBy: {
+      id: 'desc',
+    },
+    where: {
+      userId: userId,
+    },
+  })
+}
+
+export const findTotalOfSumRun = async ({ userId }) => {
+  const wow = await db.run.groupBy({
+    by: ['distance'],
+    _sum: {
+      distance: true,
+    },
+    where: {
+      userId: userId,
+    },
+  })
+  console.log(wow)
+  return true
+}

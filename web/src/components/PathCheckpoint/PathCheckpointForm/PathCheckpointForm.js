@@ -98,15 +98,25 @@ const PathCheckpointForm = (props) => {
         >
           Path id
         </Label>
-
-        <TextField
-          name="pathId"
-          defaultValue={props.pathCheckpoint?.pathId || props.pathId}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-
+        {props.pathId ? (
+          <TextField
+            name="pathId"
+            // defaultValue={props.pathCheckpoint?.pathId || props.pathId}
+            value={props.pathId}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+            validation={{ required: true }}
+          />
+        ) : (
+          <TextField
+            name="pathId"
+            defaultValue={props.pathCheckpoint?.pathId || props.pathId}
+            // value={props.pathId}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+            validation={{ required: true }}
+          />
+        )}
         <FieldError name="pathId" className="rw-field-error" />
 
         <div className="rw-button-group">

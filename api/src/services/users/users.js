@@ -49,3 +49,10 @@ export const User = {
     return db.user.findUnique({ where: { id: root?.id } }).Lap()
   },
 }
+
+export const updateProfile = async ({ id, input }) => {
+  return await db.user.update({
+    data: input,
+    where: { id },
+  })
+}
