@@ -20,8 +20,8 @@ export const schema = gql`
   }
 
   type Query {
-    users: [User!]! @requireAuth
-    user(id: String!): User @requireAuth
+    users: [User!]! @skipAuth
+    user(id: String!): User @skipAuth
   }
 
   input CreateUserInput {
@@ -55,10 +55,10 @@ export const schema = gql`
   }
 
   input UpdateUserProfile {
-    firstName: String!
-    lastName: String!
-    imageUrl: String!
-    gender: String!
+    firstName: String
+    lastName: String
+    imageUrl: String
+    gender: String
   }
 
   type Mutation {

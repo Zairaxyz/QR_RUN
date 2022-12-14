@@ -34,6 +34,7 @@ export const getCurrentUser = async (session) => {
       lastName: true,
       imageUrl: true,
       gender: true,
+      dateOfBirth: true,
     },
   })
 }

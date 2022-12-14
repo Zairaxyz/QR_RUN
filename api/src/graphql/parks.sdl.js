@@ -12,8 +12,8 @@ export const schema = gql`
   }
 
   type Query {
-    parks: [Park!]! @requireAuth
-    park(id: String!): Park @requireAuth
+    parks: [Park!]! @skipAuth
+    park(id: String!): Park @skipAuth
   }
 
   input CreateParkInput {

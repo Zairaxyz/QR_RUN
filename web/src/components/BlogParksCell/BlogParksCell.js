@@ -31,7 +31,7 @@ export const Success = ({ parks }) => {
               <img src={park.imageUrl} alt="park" className="h-64 w-96 md:h-[30rem] md:w-[40rem]" />
             </Link>
           </div>
-          <div class="my-4 mx-auto w-48 h-1 bg-gray-100 rounded border-0 md:my-10 dark:bg-gray-700" />
+          <div className="my-4 mx-auto w-48 h-1 bg-gray-100 rounded border-0 md:my-10 dark:bg-gray-700" />
         </div>
       ))}
     </>

@@ -18617,6 +18617,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"luxon@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "luxon@npm:3.1.1"
+  checksum: 4e537ec58735c5741710919d5fd552e39d0dc485e77eed02d7a4bd057ae8c6dd25a18e677892dd523556e28caa85be4c98cbbf67fb49467c0365099c07ea9f71
+  languageName: node
+  linkType: hard
+
 "lz-string@npm:^1.4.4":
   version: 1.4.4
   resolution: "lz-string@npm:1.4.4"
@@ -26591,6 +26598,7 @@ __metadata:
     dayjs: ^1.11.6
     flowbite: ^1.5.3
     framer-motion: ^6
+    luxon: ^3.1.1
     postcss: ^8.4.17
     postcss-loader: ^7.0.1
     prop-types: 15.8.1

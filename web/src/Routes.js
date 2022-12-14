@@ -15,6 +15,7 @@ const Routes = () => {
   return (
     <Router>
       <Set wrap={NavbarLayout}>
+      <Private unauthenticated="home" roles={['admin', 'user']}>
         <Private unauthenticated="home" roles="admin">
           <Set wrap={PathsLayout}>
             <Route path="/admin/paths/new" page={PathNewPathPage} name="newPath" />
@@ -68,6 +69,10 @@ const Routes = () => {
           </Set>
         </Private>
 
+          <Route path="/statistic" page={StatisticPage} name="statistic" />
+
+      </Private>
+
         <Route path="/login" page={LoginPage} name="login" />
         <Route path="/signup" page={SignupPage} name="signup" />
         <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
@@ -75,7 +80,9 @@ const Routes = () => {
 
         <Route path="/" page={HomePage} name="home" />
         <Route path="/parks" page={ParksPage} name="parks" />
-        <Route path="/blog-park/{id:String}" page={BlogParkPage} name="blogPark" />
+        <Route path="/park/{id:String}" page={BlogParkPage} name="blogPark" />
+
+
       </Set>
 
       <Route notfound page={NotFoundPage} />

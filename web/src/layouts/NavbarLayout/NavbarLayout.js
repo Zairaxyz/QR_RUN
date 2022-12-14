@@ -148,7 +148,7 @@ const NavbarLayout = ({ children }) => {
   ]
 
   const userNavigation = [
-    { name: 'My Statistic', href: '#', state: false },
+    { name: 'My Statistic', href: '/statistic', state: false },
     { name: 'EditProfile', href: '#', state: false },
     { name: 'Sign out', href: '#', state: true },
   ]
@@ -275,70 +275,79 @@ const NavbarLayout = ({ children }) => {
                   </div>
 
                   <div className="hidden text-gray-300 md:block">
-                    {isAuthenticated ? (
-                      <div className="grid grid-rows-1">
-                        {/* <span className="px-2"> {currentUser.email} </span>{' '} */}
-                        <Menu
-                          as="div"
-                          className="relative ml-3 grid grid-cols-1"
-                        >
-                          <div>
-                            <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                              <span className="sr-only">Open user menu</span>
-                              <img
-                                className="h-8 w-8 rounded-full"
-                                src={currentUser.imageUrl}
-                                alt=""
-                              />
-                            </Menu.Button>
-                          </div>
-                          <Transition
-                            as={Fragment}
-                            enter="transition ease-out duration-100"
-                            enterFrom="transform opacity-0 scale-95"
-                            enterTo="transform opacity-100 scale-100"
-                            leave="transition ease-in duration-75"
-                            leaveFrom="transform opacity-100 scale-100"
-                            leaveTo="transform opacity-0 scale-95"
-                          >
-                            <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                              {userNavigation.map((item) => (
-                                <Menu.Item key={item.name}>
-                                  {({ active }) => (
-                                    <a
-                                      href={item.href}
-                                      // state={item.state}
-                                      onClick={
-                                        item.name === 'Sign out'
-                                          ? logOut
-                                          : undefined
-                                      }
-                                      className={classNames(
-                                        active ? 'bg-gray-100' : '',
-                                        'block px-4 py-2 text-sm text-gray-700'
-                                      )}
-                                    >
-                                      {item.name}
-                                    </a>
-                                  )}
-                                </Menu.Item>
-                              ))}
-                            </Menu.Items>
-                          </Transition>
-                        </Menu>
-                        {/* <div className="grid grid-cols-1">
-                          <button
-                            className="grid grid-cols-1"
-                            type="button"
-                            onClick={logOut}
-                          >
-                            Logout
-                          </button>
-                        </div> */}
+                    <div className='flex items-center md:ml-6'>
+                      <div className='ml-4 flex items-center md:ml-6'>
+                        {isAuthenticated && (
+                          <>
+                            <span className='pr-2'>{currentUser.firstName}</span>
+                            <span className='pr-2'>{currentUser.lastName}</span>
+                          </>
+                        )}
                       </div>
-                    ) : (
-                      <Link to={routes.login()}>Login</Link>
-                    )}
+                      {isAuthenticated ? (
+                        <div className="grid grid-rows-1">
+                          <Menu
+                            as="div"
+                            className="relative ml-3 grid grid-cols-1"
+                          >
+                            <div>
+                              <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                                <span className="sr-only">Open user menu</span>
+                                <img
+                                  className="h-8 w-8 rounded-full"
+                                  src={currentUser.imageUrl}
+                                  alt=""
+                                />
+                              </Menu.Button>
+                            </div>
+                            <Transition
+                              as={Fragment}
+                              enter="transition ease-out duration-100"
+                              enterFrom="transform opacity-0 scale-95"
+                              enterTo="transform opacity-100 scale-100"
+                              leave="transition ease-in duration-75"
+                              leaveFrom="transform opacity-100 scale-100"
+                              leaveTo="transform opacity-0 scale-95"
+                            >
+                              <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                {userNavigation.map((item) => (
+                                  <Menu.Item key={item.name}>
+                                    {({ active }) => (
+                                      <a
+                                        href={item.href}
+                                        // state={item.state}
+                                        onClick={
+                                          item.name === 'Sign out'
+                                            ? logOut
+                                            : undefined
+                                        }
+                                        className={classNames(
+                                          active ? 'bg-gray-100' : '',
+                                          'block px-4 py-2 text-sm text-gray-700'
+                                        )}
+                                      >
+                                        {item.name}
+                                      </a>
+                                    )}
+                                  </Menu.Item>
+                                ))}
+                              </Menu.Items>
+                            </Transition>
+                          </Menu>
+                          {/* <div className="grid grid-cols-1">
+                            <button
+                              className="grid grid-cols-1"
+                              type="button"
+                              onClick={logOut}
+                            >
+                              Logout
+                            </button>
+                          </div> */}
+                        </div>
+                      ) : (
+                        <Link to={routes.login()}>Login</Link>
+                      )}
+                    </div>
                   </div>
                   <div className="-mr-2 flex md:hidden">
                     {/* Mobile menu button */}
