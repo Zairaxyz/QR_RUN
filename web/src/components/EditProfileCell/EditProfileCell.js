@@ -20,6 +20,7 @@ export const QUERY = gql`
       firstName
       lastName
       gender
+      imageUrl
     }
   }
 `
@@ -31,6 +32,7 @@ const UPDATE_PROFILE_MUTATION = gql`
       firstName
       lastName
       gender
+      imageUrl
     }
   }
 `
@@ -68,7 +70,7 @@ export const Success = ({ profile }) => {
     <>
       <MetaTags
         title={`${
-          profile.firstName || profile.lastName || profile.gender
+          profile.firstName || profile.lastName || profile.gender || profile.imageUrl
         } | EditProfile`}
       />
       <div className="rw-segment">

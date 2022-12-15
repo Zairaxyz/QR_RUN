@@ -6,6 +6,7 @@ import {
   Submit,
   InputField,
   SelectField,
+  DateField,
 } from '@redwoodjs/forms'
 
 const EditProfile = ({ error, loading, profile, onSave }) => {
@@ -26,14 +27,25 @@ const EditProfile = ({ error, loading, profile, onSave }) => {
             <div>
               <Form onSubmit={onSave} error={error}>
 
-                {/* <FormError
-                  error={error}
-                  wrapperClassName="rw-form-error-wrapper"
-                  titleClassName="rw-form-error-title"
-                  listClassName="rw-form-error-list"
-                /> */}
+                <div className='mt-6'>
+                  <Label
+                    name="imageUrl"
+                    className="block text-sm font-medium text-gray-700"
+                    errorClassName="rw-label rw-label-error"
+                    >
+                    imageurl
+                  </Label>
+                  <InputField
+                      name="imageUrl"
+                      defaultValue={profile.imageUrl}
+                      errorClassName="rw-input rw-input-error"
+                      className="mt-1 rw-input"
+                      validation={{ required: true }}
+                    />
 
-                <div className="grid grid-cols-6 gap-6 mt-6">
+                    <FieldError name="imageUrl" className="rw-field-error" />
+                </div>
+                <div className="grid grid-cols-6 gap-6">
                   <div className="col-span-6 sm:col-span-3">
 
                     <Label
@@ -78,18 +90,17 @@ const EditProfile = ({ error, loading, profile, onSave }) => {
                   </div>
                 </div>
                 <div className="mt-6">
-                  <Label className="block text-sm font-medium text-gray-700" errorClassName="label error">
+                  <Label
+                    name="gerder"
+                    className="block text-sm font-medium text-gray-700"
+                    errorClassName="rw-label rw-label-error"
+                    >
                     Gender
                   </Label>
                   <SelectField name='gender' className='w-full rw-input' defaultValue={profile.gender}>
                     <option>Male</option>
                     <option>Female</option>
                   </SelectField>
-                </div>
-                <div className="mt-6">
-                  <Label className="block text-sm font-medium text-gray-700" errorClassName="label error">
-                    Dateofbirth
-                  </Label>
                 </div>
                 <div className="mt-8 rw-button-group">
                   <Submit disabled={loading} className="rw-button rw-button-blue">
