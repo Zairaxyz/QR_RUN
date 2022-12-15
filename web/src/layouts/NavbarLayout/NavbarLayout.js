@@ -149,7 +149,7 @@ const NavbarLayout = ({ children }) => {
 
   const userNavigation = [
     { name: 'My Statistic', href: '/statistic', state: false },
-    { name: 'EditProfile', href: '#', state: false },
+    { name: 'EditProfile', href: '/edit-profile', state: false },
     { name: 'Sign out', href: '#', state: true },
   ]
   return (

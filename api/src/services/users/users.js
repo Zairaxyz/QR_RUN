@@ -50,9 +50,3 @@ export const User = {
   },
 }
 
-export const updateProfile = async ({ id, input }) => {
-  return await db.user.update({
-    data: input,
-    where: { id },
-  })
-}
