@@ -10,6 +10,13 @@ export const QUERY = gql`
       gender
       dateOfBirth
       roles
+      Run {
+        id
+        distance
+        pace
+        startTime
+        stopTime
+      }
     }
   }
 `

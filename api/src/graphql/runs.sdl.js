@@ -12,8 +12,8 @@ export const schema = gql`
   }
 
   type Query {
-    runs: [Run!]! @requireAuth
-    run(id: String!): Run @requireAuth
+    runs: [Run!]! @skipAuth
+    run(id: String!): Run @skipAuth
     findFirstRun(userId: String!): [Run!]! @requireAuth
     findTotalOfSumRun(userId: String!): Boolean! @skipAuth
   }
@@ -37,7 +37,7 @@ export const schema = gql`
   }
 
   type Mutation {
-    createRun(input: CreateRunInput!): Run! @requireAuth
+    createRun(input: CreateRunInput!): Run! @skipAuth
     updateRun(id: String!, input: UpdateRunInput!): Run! @requireAuth
     deleteRun(id: String!): Run! @requireAuth
   }

@@ -8,7 +8,7 @@ export const schema = gql`
     imageUrl: String
   }
   type Query {
-    profile: Profile @skipAuth
+    profile: Profile @requireAuth(roles: ["user","admin"])
   }
 
   input UpdateProfileInput {

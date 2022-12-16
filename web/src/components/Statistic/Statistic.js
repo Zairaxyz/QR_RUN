@@ -128,7 +128,7 @@ const Statistic = () => {
                 <span className="flex-shrink mx-4 text-gray-400">All time</span>
                 <div className="flex-grow border-t border-gray-400"></div>
               </div>
-              {/* {currentUser.Run.map((el) => (
+              {currentUser.Run.slice(0,1).map((el) => (
                 <div className='grid grid-cols-3 gap-3'>
                   <div className='text-center'>
                     <p>Avg.Pace</p>
@@ -136,16 +136,16 @@ const Statistic = () => {
                   </div>
                   <div className='text-center'>
                     <p>Distace</p>
-                    <p>{el.totalDistance} km</p>
+                    <p>{el.distance} km</p>
                   </div>
                   <div className='text-center'>
                     <p>Time</p>
                     <p>
-                      {DateTime.fromISO(el.stopTimeStamp).diff(DateTime.fromISO(el.startTimeStamp), 'hours').toFormat(" hh ':' mm ':' ss ")}
+                      {DateTime.fromISO(el.stopTime).diff(DateTime.fromISO(el.startTime), 'hours').toFormat(" hh ':' mm ':' ss ")}
                     </p>
                   </div>
                 </div>
-              ))} */}
+              ))}
             </div>
           </div>
         </div>
