@@ -1,22 +1,22 @@
-import Statistic from "../Statistic/Statistic"
+import { Statistic } from "../Statistic/Statistic"
+
+export const beforeQuery = (props) => {
+  return {
+    variables: props,
+    fetchPolicy: 'no-cache',
+  }
+}
 
 export const QUERY = gql`
-  query FindStatisticQuery($id: String!) {
-    user(id: $id) {
+  query RUN {
+    findCurrentRun {
       id
-      firstName
-      lastName
-      imageUrl
-      gender
-      dateOfBirth
-      roles
-      Run {
-        id
-        distance
-        pace
-        startTime
-        stopTime
-      }
+      startTime
+      stopTime
+      distance
+      pace
+      userId
+      parkId
     }
   }
 `
@@ -29,6 +29,6 @@ export const Failure = ({ error }) => (
   <div style={{ color: 'red' }}>Error: {error?.message}</div>
 )
 
-export const Success = () => {
-  return <Statistic user={user}/>
+export const Success = ({ findCurrentRun }) => {
+  return <Statistic findCurrentRun={findCurrentRun}/>
 }

@@ -6,7 +6,6 @@ import {
   Submit,
   InputField,
   SelectField,
-  DateField,
 } from '@redwoodjs/forms'
 
 const EditProfile = ({ error, loading, profile, onSave }) => {

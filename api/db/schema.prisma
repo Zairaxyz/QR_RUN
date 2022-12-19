@@ -21,7 +21,6 @@ model User {
   firstName           String?
   imageUrl            String?   @default("")
   lastName            String?
-  // currentPath         String?
   currentCheckpoint   String?
   createdAt           DateTime? @default(now())
   Run                 Run[]

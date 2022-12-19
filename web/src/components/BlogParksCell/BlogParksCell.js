@@ -23,7 +23,7 @@ export const Success = ({ parks }) => {
     <>
       {parks.map((park) => (
         <div key={park.id}>
-          <div className="mt-6 text-xl font-bold flex justify-center">
+          <div className="mt-6 text-xl font-mono font-bold flex justify-center">
             <Link to={routes.blogPark({ id: park.id })}>{park.name}</Link>
           </div>
           <div className="mt-8 flex items-center justify-center">
