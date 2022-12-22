@@ -14,7 +14,6 @@ import NavbarLayout from './layouts/NavbarLayout/NavbarLayout'
 const Routes = () => {
   return (
     <Router>
-
       <Set wrap={NavbarLayout}>
       <Private unauthenticated="home" roles={['admin', 'user']}>
         <Private unauthenticated="home" roles="admin">
@@ -72,6 +71,7 @@ const Routes = () => {
 
           <Route path="/statistic" page={StatisticPage} name="statistic" />
           <Route path="/edit-profile" page={EditProfilePage} name="editProfile" />
+          <Route path="/history" page={HistoryPage} name="history" />
 
       </Private>
 

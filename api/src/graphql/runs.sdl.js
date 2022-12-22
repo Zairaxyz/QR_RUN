@@ -14,8 +14,9 @@ export const schema = gql`
   type Query {
     runs: [Run!]! @skipAuth
     run(id: String!): Run @skipAuth
-    findCurrentRun: [Run!]! @skipAuth
+    findCurrentRun: Run @skipAuth
     findTotalRun(userId: String!): String! @skipAuth
+    findHistoryRun: [Run!]! @skipAuth
   }
 
   input CreateRunInput {

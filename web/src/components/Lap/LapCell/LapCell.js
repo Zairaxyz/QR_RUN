@@ -14,7 +14,16 @@ export const QUERY = gql`
 
 export const Loading = () => <div>Loading...</div>
 
-export const Empty = () => <div>Lap not found</div>
+export const Empty = () => {
+  return (
+    <div className="rw-text-center">
+      {'No data laps yet. '}
+      {/* <Link to={routes.newLap()} className="rw-link">
+        {'Create one?'}
+      </Link> */}
+    </div>
+  )
+}
 
 export const Failure = ({ error }) => (
   <div className="rw-cell-error">{error?.message}</div>

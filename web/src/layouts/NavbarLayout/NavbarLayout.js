@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-
 import {
   MailOutlined,
   AppstoreOutlined,
@@ -8,52 +7,23 @@ import {
 } from '@ant-design/icons'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-// import { calcLength } from 'framer-motion'
-
 import { Menu as AntMenu } from 'antd'
-
 import { useAuth } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
-// import { useMutation } from '@redwoodjs/web'
-// import { QUERY } from 'src/components/User/UsersCell'
-
 import logo from './thairun.png'
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 const NavbarLayout = ({ children }) => {
-  // const [current, setcurrent] = useState(false)
-  const { isAuthenticated, currentUser, logOut } = useAuth()
-  // console.log(isAuthenticated.currentUser.imageUrl)
 
-  // console.log(current)
-  // const user = {
-  //   name: '',
-  //   email: 'currentUser.email',
-  //   imageUrl:
-  //     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  // }
+  const { isAuthenticated, currentUser, logOut } = useAuth()
 
   const navigationUser = [
     { name: 'Home', href: '/', current: false },
     { name: 'Parks', href: '/parks', current: false },
   ]
-
-  // const navigationAdmin = [
-  //   { name: 'Parks', href: '/admin/parks', current: false },
-  //   { name: 'Checkpoints', href: '/admin/checkpoints', current: false },
-  //   { name: 'Runs', href: '/admin/runs', current: false },
-  //   { name: 'Users', href: '/admin/users', current: false },
-  //   { name: 'Logs', href: '/admin/logs', current: false },
-  //   { name: 'Laps', href: '/admin/laps', current: false },
-  //   {
-  //     name: 'PathCheckpoints',
-  //     href: '/admin/path-checkpoints',
-  //     current: false,
-  //   },
-  //   { name: 'Path', href: '/admin/paths', current: false },
-  // ]
 
   const navigationAdmin = [
     {
@@ -177,26 +147,6 @@ const NavbarLayout = ({ children }) => {
                                   mode="horizontal"
                                   items={navigationAdmin}
                                 />
-                                {/* {navigationAdmin.map((item) => (
-                                  <>
-                                    <Link
-                                      key={item.name}
-                                      to={item.href}
-                                      // onClick={() => setcurrent(true)}
-                                      className={classNames(
-                                        item.current
-                                          ? 'bg-gray-900 text-white'
-                                          : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                        'rounded-md px-3 py-2 text-sm font-medium'
-                                      )}
-                                      aria-current={
-                                        item.current ? 'page' : undefined
-                                      }
-                                    >
-                                      {item.name}
-                                    </Link>
-                                  </>
-                                ))} */}
                               </>
                             ) : (
                               <>
@@ -315,7 +265,6 @@ const NavbarLayout = ({ children }) => {
                                     {({ active }) => (
                                       <a
                                         href={item.href}
-                                        // state={item.state}
                                         onClick={
                                           item.name === 'Sign out'
                                             ? logOut
@@ -334,15 +283,6 @@ const NavbarLayout = ({ children }) => {
                               </Menu.Items>
                             </Transition>
                           </Menu>
-                          {/* <div className="grid grid-cols-1">
-                            <button
-                              className="grid grid-cols-1"
-                              type="button"
-                              onClick={logOut}
-                            >
-                              Logout
-                            </button>
-                          </div> */}
                         </div>
                       ) : (
                         <Link to={routes.login()}>Login</Link>

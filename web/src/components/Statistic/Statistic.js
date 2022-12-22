@@ -2,8 +2,9 @@ import { useState } from 'react'
 import { useAuth } from '@redwoodjs/auth'
 import QRCode from 'qrcode.react'
 import { DateTime } from 'luxon'
+import { routes, Link } from '@redwoodjs/router'
 
-const Statistic = ({ findCurrentRun }) => {
+const Statistic = ({ findCurrentRun, findTotalRun }) => {
 
   const { currentUser, isAuthenticated } = useAuth()
   const [qrValue, setQrValue] = useState('QR-CODE')
@@ -23,8 +24,6 @@ const Statistic = ({ findCurrentRun }) => {
     document.body.removeChild(downloadLink)
     console.log(pngUrl)
   }
-
-  console.log(findCurrentRun)
 
   return (
     <div className="container mx-auto">
@@ -92,28 +91,30 @@ const Statistic = ({ findCurrentRun }) => {
                   <label htmlFor="company-website" className="block text-xl sm:text-2xl font-bold text-gray-700">
                     Recent activity
                   </label>
-                  <button className='bg-sky-400 rounded-full font-bold text-white py-2 px-4'>History</button>
+                  <Link to ={routes.history()}>
+                    <button className='bg-sky-400 rounded-full font-bold text-white py-2 px-4'>
+                      History
+                    </button>
+                  </Link>
                 </div>
               </div>
               <div className="border-t border-gray-200"></div>
-              {findCurrentRun.map((el) => (
                 <div className='grid grid-cols-3 gap-3'>
                   <div className='text-center'>
                     <p>Avg.Pace</p>
-                    <p>{el.pace}</p>
+                    <p>{findCurrentRun.pace}</p>
                   </div>
                   <div className='text-center'>
                     <p>Distace</p>
-                    <p>{el.distance} km</p>
+                    <p>{findCurrentRun.distance} km</p>
                   </div>
                   <div className='text-center'>
                     <p>Time</p>
                     <p>
-                      {DateTime.fromISO(el.stopTime).diff(DateTime.fromISO(el.startTime), 'hours').toFormat(" hh ':' mm ':' ss ")}
+                      {DateTime.fromISO(findCurrentRun.stopTime).diff(DateTime.fromISO(findCurrentRun.startTime), 'hours').toFormat(" hh ':' mm ':' ss ")}
                     </p>
                   </div>
                 </div>
-              ))}
             </div>
           </div>
           <div className="shadow-lg sm:overflow-hidden sm:rounded-md my-2">
@@ -130,24 +131,22 @@ const Statistic = ({ findCurrentRun }) => {
                 <span className="flex-shrink mx-4 text-gray-400">All time</span>
                 <div className="flex-grow border-t border-gray-400"></div>
               </div>
-              {/* {findCurrentRun.slice(0,1).map((el) => (
-                <div className='grid grid-cols-3 gap-3'>
-                  <div className='text-center'>
-                    <p>Avg.Pace</p>
-                    <p>{el.pace}</p>
-                  </div>
-                  <div className='text-center'>
-                    <p>Distace</p>
-                    <p>{el.distance} km</p>
-                  </div>
-                  <div className='text-center'>
-                    <p>Time</p>
-                    <p>
-                      {DateTime.fromISO(el.stopTime).diff(DateTime.fromISO(el.startTime), 'hours').toFormat(" hh ':' mm ':' ss ")}
-                    </p>
-                  </div>
+              <div className='grid grid-cols-3 gap-3'>
+                <div className='text-center'>
+                  <p>Avg.Pace</p>
+                  <p>{findCurrentRun.pace}</p>
                 </div>
-              ))} */}
+                <div className='text-center'>
+                  <p>Distace</p>
+                  <p>{findTotalRun} km</p>
+                </div>
+                <div className='text-center'>
+                  <p>Time</p>
+                  <p>
+                    {DateTime.fromISO(findCurrentRun.stopTime).diff(DateTime.fromISO(findCurrentRun.startTime), 'hours').toFormat(" hh ':' mm ':' ss ")}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

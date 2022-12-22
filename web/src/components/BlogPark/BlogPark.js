@@ -2,7 +2,7 @@ import { Link, routes } from '@redwoodjs/router'
 
 const BlogPark = ({ park }) => {
   const { name, imageUrl, description, address, workingHours } = park
-
+  console.log(park)
   return (
     <article className="container mx-auto">
       <div className="flex w-full items-center justify-center px-0 py-0">

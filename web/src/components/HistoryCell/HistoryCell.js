@@ -1,4 +1,4 @@
-import { Statistic } from "../Statistic/Statistic"
+import { History } from "../../components/History/History"
 
 export const beforeQuery = (props) => {
   return {
@@ -8,8 +8,8 @@ export const beforeQuery = (props) => {
 }
 
 export const QUERY = gql`
-  query RUN{
-    findCurrentRun {
+  query FindHistoryQuery {
+    findHistoryRun {
       id
       startTime
       stopTime
@@ -29,6 +29,6 @@ export const Failure = ({ error }) => (
   <div style={{ color: 'red' }}>Error: {error?.message}</div>
 )
 
-export const Success = ({ findCurrentRun }) => {
-  return <Statistic findCurrentRun={ findCurrentRun }/>
+export const Success = ({ findHistoryRun }) => {
+  return <History findHistoryRun={ findHistoryRun }/>
 }
