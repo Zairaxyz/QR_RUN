@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@redwoodjs/api": "3.0.3",
-    "@redwoodjs/graphql-server": "3.0.3"
+    "@redwoodjs/graphql-server": "3.0.3",
+    "node-cron": "^3.0.2",
+    "node-schedule": "^2.1.0"
   }
 }

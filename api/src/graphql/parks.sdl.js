@@ -6,6 +6,10 @@ export const schema = gql`
     description: String
     address: String
     workingHours: JSON
+    ownerId: String
+    owner: User
+    governorId: String
+    governor: User
     Run: [Run]!
     Checkpoint: [Checkpoint]!
     Path: [Path]!
@@ -14,6 +18,7 @@ export const schema = gql`
   type Query {
     parks: [Park!]! @skipAuth
     park(id: String!): Park @skipAuth
+    countParks: String! @skipAuth
   }
 
   input CreateParkInput {
@@ -22,6 +27,8 @@ export const schema = gql`
     description: String
     address: String
     workingHours: JSON
+    ownerId: String
+    governorId: String
   }
 
   input UpdateParkInput {
@@ -30,11 +37,14 @@ export const schema = gql`
     description: String
     address: String
     workingHours: JSON
+    ownerId: String
+    governorId: String
   }
 
   type Mutation {
     createPark(input: CreateParkInput!): Park! @requireAuth
     updatePark(id: String!, input: UpdateParkInput!): Park! @requireAuth
     deletePark(id: String!): Park! @requireAuth
+    dwadaw(parkId: String): String! @skipAuth
   }
 `

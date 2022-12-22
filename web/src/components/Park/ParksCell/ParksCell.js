@@ -11,6 +11,8 @@ export const QUERY = gql`
       description
       address
       workingHours
+      ownerId
+      governorId
     }
   }
 `

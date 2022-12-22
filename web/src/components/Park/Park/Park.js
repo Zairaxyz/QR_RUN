@@ -96,6 +96,14 @@ const Park = ({ park }) => {
               <th>Working hours</th>
               <td>{jsonDisplay(park.workingHours)}</td>
             </tr>
+            <tr>
+              <th>Owner id</th>
+              <td>{park.ownerId}</td>
+            </tr>
+            <tr>
+              <th>Governor id</th>
+              <td>{park.governorId}</td>
+            </tr>
           </tbody>
         </table>
       </div>

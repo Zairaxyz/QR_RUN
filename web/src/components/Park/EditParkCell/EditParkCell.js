@@ -14,6 +14,8 @@ export const QUERY = gql`
       description
       address
       workingHours
+      ownerId
+      governorId
     }
   }
 `
@@ -26,6 +28,8 @@ const UPDATE_PARK_MUTATION = gql`
       description
       address
       workingHours
+      ownerId
+      governorId
     }
   }
 `

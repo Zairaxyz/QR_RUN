@@ -27,7 +27,9 @@
     "antd": "^5.0.4",
     "dayjs": "^1.11.6",
     "moment": "^2.29.4",
+    "node-cron": "^3.0.2",
     "pack": "^2.2.0",
+    "path-browserify": "^1.0.1",
     "react-router-dom": "^6.4.5"
   }
 }

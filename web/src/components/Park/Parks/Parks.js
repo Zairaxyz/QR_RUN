@@ -85,6 +85,8 @@ const ParksList = ({ parks }) => {
             <th>Description</th>
             <th>Address</th>
             <th>Working hours</th>
+            <th>Owner id</th>
+            <th>Governor id</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -97,6 +99,8 @@ const ParksList = ({ parks }) => {
               <td>{truncate(park.description)}</td>
               <td>{truncate(park.address)}</td>
               <td>{jsonTruncate(park.workingHours)}</td>
+              <td>{truncate(park.ownerId)}</td>
+              <td>{truncate(park.governorId)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

@@ -17,11 +17,14 @@ export const schema = gql`
     Run: [Run]!
     Log: [Log]!
     Lap: [Lap]!
+    OwnedParks: [Park]!
+    GovernedParks: [Park]!
   }
 
   type Query {
     users: [User!]! @skipAuth
     user(id: String!): User @skipAuth
+    countUsers: String @skipAuth
   }
 
   input CreateUserInput {
@@ -54,11 +57,18 @@ export const schema = gql`
     currentCheckpoint: String
   }
 
+  input UpdateUserProfile {
+    firstName: String!
+    lastName: String!
+    imageUrl: String!
+    gender: String!
+  }
 
   type Mutation {
     createUser(input: CreateUserInput!): User! @requireAuth (roles: ["admin"])
     updateUser(id: String!, input: UpdateUserInput!): User! @requireAuth (roles: ["admin"])
     deleteUser(id: String!): User! @requireAuth (roles: ["admin"])
     updateRoleUser(id: String!, role: String!): User! @requireAuth (roles: ["admin"])
+    updateProfile(id: String!, input: UpdateUserProfile!): User! @requireAuth  (roles: ["admin"])
   }
 `

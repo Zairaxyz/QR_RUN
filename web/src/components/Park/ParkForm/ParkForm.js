@@ -109,6 +109,40 @@ const ParkForm = (props) => {
 
         <FieldError name="workingHours" className="rw-field-error" />
 
+        <Label
+          name="ownerId"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Owner id
+        </Label>
+
+        <TextField
+          name="ownerId"
+          defaultValue={props.park?.ownerId}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+
+        <FieldError name="ownerId" className="rw-field-error" />
+
+        <Label
+          name="governorId"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Governor id
+        </Label>
+
+        <TextField
+          name="governorId"
+          defaultValue={props.park?.governorId}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+
+        <FieldError name="governorId" className="rw-field-error" />
+
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">
             Save

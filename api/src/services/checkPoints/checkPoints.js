@@ -1,6 +1,3 @@
-// import moment from 'moment'
-// import { dayjs } from 'dayjs'
-
 import { db } from 'src/lib/db'
 // import { logger } from 'src/lib/logger'
 export const checkpoints = () => {
@@ -136,7 +133,7 @@ const stopRuning = async ({ userId, checkpointId, checkpointNull }) => {
   // console.log(checkpoint)
   const poplap = await db.lap.findMany({
     orderBy: {
-      id: 'desc',
+      stopTime: 'desc',
     },
     where: {
       userId: userId,

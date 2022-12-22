@@ -1,4 +1,5 @@
-import { logger } from '@redwoodjs/api/dist/logger'
+// import { logger } from '@redwoodjs/api/dist/logger'
+import { scheduleJob } from 'node-schedule'
 
 import { db } from 'src/lib/db'
 export const users = () => {
@@ -29,14 +30,6 @@ export const deleteUser = ({ id }) => {
     where: { id },
   })
 }
-export const updateRoleUser = ({ id, role }) => {
-  return db.user.update({
-    data: {
-      roles: role,
-    },
-    where: { id },
-  })
-}
 
 export const User = {
   Run: (_obj, { root }) => {
@@ -48,5 +41,39 @@ export const User = {
   Lap: (_obj, { root }) => {
     return db.user.findUnique({ where: { id: root?.id } }).Lap()
   },
+}
+
+export const updateProfile = async ({ id, input }) => {
+  return await db.user.update({
+    data: input,
+    where: { id },
+  })
+}
+
+export const updateRoleUser = ({ id, role }) => {
+  return db.user.update({
+    data: {
+      roles: role,
+    },
+    where: { id },
+  })
+}
+
+export const countUsers = async () => {
+  const eoe = await db.park.count()
+  console.log(eoe)
+  return eoe
+}
+
+export const resetRun = async () => {
+  scheduleJob('* * 0 * * *', async () => {
+    await db.user.updateMany({
+      data: {
+        currentCheckpoint: null,
+      },
+    })
+  })
+
+  return true
 }
 

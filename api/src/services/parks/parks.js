@@ -40,3 +40,23 @@ export const Park = {
     return db.park.findUnique({ where: { id: root?.id } }).Path()
   },
 }
+
+export const countParks = async () => {
+  const eoe = await db.park.count()
+  // console.log(eoe._count.id)
+  return eoe
+}
+
+export const dwadaw = async ({ parkId }) => {
+  const ddd = await db.run.groupBy({
+    by: ['parkId'],
+    where: {
+      parkId: parkId,
+    },
+    _count: {
+      userId: true,
+    },
+  })
+  console.log(ddd)
+  return 'ss'
+}

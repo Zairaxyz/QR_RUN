@@ -26,6 +26,8 @@ model User {
   Run                 Run[]
   Log                 Log[]
   Lap                 Lap[]
+  OwnedParks          Park[]    @relation(name: "OwnedParks")
+  GovernedParks       Park[]    @relation(name: "GovernedParks")
 }
 
 model Park {
@@ -35,8 +37,11 @@ model Park {
   description  String?
   address      String?
   workingHours Json?
+  ownerId      String?
+  owner        User?        @relation(fields: [ownerId], references: [id], name: "OwnedParks")
+  governorId   String?
+  governor     User?        @relation(fields: [governorId], references: [id], name: "GovernedParks")
   Run          Run[]
-  // PathCheckpoint PathCheckpoint[]
   Checkpoint   Checkpoint[]
   Path         Path[]
 }
@@ -102,8 +107,6 @@ model PathCheckpoint {
   prevCheckpoint   Checkpoint? @relation(fields: [prevCheckpointId], references: [id], name: "PrevPathCheckpoint")
   isStart          Boolean
   isFinish         Boolean
-  // parkId           String
-  // park             Park        @relation(fields: [parkId], references: [id])
   pathId           String
   path             Path        @relation(fields: [pathId], references: [id])
 }
