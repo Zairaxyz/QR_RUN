@@ -67,7 +67,24 @@ export const findTotalRun = async ({ userId }) => {
       userId: userId,
     },
   })
-  if (context.currentUser) {
-    return totalDistance._sum.distance
-  }
+  return totalDistance._sum.distance
 }
+
+export const findBestPace = () => {
+  return db.run.findFirst({
+    orderBy: {
+      pace: 'asc',
+    },
+    where: {
+      userId: context.currentUser.id,
+    },
+  })
+}
+
+// export const findBestTime = () => {
+//   return db.run.findFirst({
+//     orderBy: {
+
+//     }
+//   })
+// }

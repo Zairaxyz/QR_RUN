@@ -4,7 +4,9 @@ import QRCode from 'qrcode.react'
 import { DateTime } from 'luxon'
 import { routes, Link } from '@redwoodjs/router'
 
-const Statistic = ({ findCurrentRun, findTotalRun }) => {
+const Statistic = ({ findCurrentRun, findTotalRun, findBestPace }) => {
+
+  console.log(findTotalRun)
 
   const { currentUser, isAuthenticated } = useAuth()
   const [qrValue, setQrValue] = useState('QR-CODE')
@@ -134,7 +136,7 @@ const Statistic = ({ findCurrentRun, findTotalRun }) => {
               <div className='grid grid-cols-3 gap-3'>
                 <div className='text-center'>
                   <p>Avg.Pace</p>
-                  <p>{findCurrentRun.pace}</p>
+                  <p>{findBestPace.pace}</p>
                 </div>
                 <div className='text-center'>
                   <p>Distace</p>

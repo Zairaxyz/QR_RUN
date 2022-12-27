@@ -15,7 +15,9 @@ export const schema = gql`
     runs: [Run!]! @skipAuth
     run(id: String!): Run @skipAuth
     findCurrentRun: Run @skipAuth
-    findTotalRun(userId: String!): String! @skipAuth
+    findBestPace: Run @skipAuth
+    findTotalRun(userId: String!): Float! @skipAuth
+    # findBestTime: Run @skipAuth
     findHistoryRun: [Run!]! @skipAuth
   }
 

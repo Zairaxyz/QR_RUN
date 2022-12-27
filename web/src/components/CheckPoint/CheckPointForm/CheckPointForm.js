@@ -46,7 +46,7 @@ const CheckpointForm = (props) => {
     label: data.name,
   }))
   const handleChangePark = (e) => {
-    setParkId(e.value)
+    setParkId(e)
   }
   // const onChange = (e) => {
   //   setParkId(`selected ${e.value}`)

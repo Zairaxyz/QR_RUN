@@ -8,7 +8,7 @@ export const beforeQuery = (props) => {
 }
 
 export const QUERY = gql`
-  query RUN{
+  query RUN($userId: String!){
     findCurrentRun {
       id
       startTime
@@ -17,6 +17,10 @@ export const QUERY = gql`
       pace
       userId
       parkId
+    }
+    findTotalRun(userId: $userId)
+    findBestPace {
+      pace
     }
   }
 `
@@ -29,6 +33,6 @@ export const Failure = ({ error }) => (
   <div style={{ color: 'red' }}>Error: {error?.message}</div>
 )
 
-export const Success = ({ findCurrentRun }) => {
-  return <Statistic findCurrentRun={ findCurrentRun }/>
+export const Success = ({ findCurrentRun, findTotalRun, findBestPace }) => {
+  return <Statistic findCurrentRun={ findCurrentRun } findTotalRun={ findTotalRun } findBestPace={ findBestPace } />
 }

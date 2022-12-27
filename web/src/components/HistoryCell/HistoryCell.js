@@ -16,7 +16,9 @@ export const QUERY = gql`
       distance
       pace
       userId
-      parkId
+      park {
+        name
+      }
     }
   }
 `
