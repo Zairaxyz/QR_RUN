@@ -9,6 +9,6 @@ export const profile = () => {
 export const updateProfile = ({ input }) => {
   return db.user.update({
     data: input,
-    where: { id: context.currentUser.id}
+    where: { id: context.currentUser.id }
   })
 }

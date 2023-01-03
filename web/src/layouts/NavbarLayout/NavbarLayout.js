@@ -21,7 +21,6 @@ const NavbarLayout = ({ children }) => {
   const { isAuthenticated, currentUser, logOut } = useAuth()
 
   const navigationUser = [
-    { name: 'Home', href: '/', current: false },
     { name: 'Parks', href: '/parks', current: false },
   ]
 
@@ -118,15 +117,11 @@ const NavbarLayout = ({ children }) => {
   ]
 
   const navigationGovernor = [
-    { name: 'Home', href: '/', current: false },
-    { name: 'Parks', href: '/admin/parks', current: false },
-    { name: 'CheckPoints', href: '/admin/scanners', current: false },
+    { name: 'GovernorParks', href: '/governor', current: false },
   ]
 
   const navigationOwner = [
-    { name: 'Home', href: '/', current: false },
-    { name: 'Parks', href: '/admin/parks', current: false },
-    { name: 'Owner', href: '/admin/test', current: false },
+    { name: 'OwnerParks', href: '/owner', current: false },
   ]
 
   const userNavigation = [

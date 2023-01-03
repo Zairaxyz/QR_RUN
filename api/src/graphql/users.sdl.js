@@ -69,6 +69,5 @@ export const schema = gql`
     updateUser(id: String!, input: UpdateUserInput!): User! @requireAuth (roles: ["admin"])
     deleteUser(id: String!): User! @requireAuth (roles: ["admin"])
     updateRoleUser(id: String!, role: String!): User! @requireAuth (roles: ["admin"])
-    updateProfile(id: String!, input: UpdateUserProfile!): User! @requireAuth  (roles: ["admin"])
   }
 `

@@ -8,7 +8,7 @@ export const schema = gql`
     imageUrl: String
   }
   type Query {
-    profile: Profile @requireAuth(roles: ["user","admin"])
+    profile: Profile @requireAuth
   }
 
   input UpdateProfileInput {
@@ -19,6 +19,6 @@ export const schema = gql`
     imageUrl: String
   }
   type Mutation {
-    updateProfile(input: UpdateProfileInput!): User! @requireAuth(roles: ["user","admin"])
+    updateProfile(input: UpdateProfileInput!): User! @requireAuth
   }
 `
