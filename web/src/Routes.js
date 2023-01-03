@@ -28,6 +28,7 @@ const Routes = () => {
             <Route path="/admin/checkpoints/{id}/edit" page={CheckPointEditCheckPointPage} name="editCheckpoint" />
             <Route path="/admin/checkpoints/{id}" page={CheckPointCheckPointPage} name="checkpoint" />
             <Route path="/admin/checkpoints" page={CheckPointCheckPointsPage} name="checkpoints" />
+            <Route path="/admin/checkPath" page={CheckPathPage} name="checkPath" />
           </Set>
           <Set wrap={PathCheckpointsLayout}>
             <Route path="/admin/path-checkpoints/new" page={PathCheckpointNewPathCheckpointPage} name="newPathCheckpoint" />

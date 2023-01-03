@@ -81,10 +81,8 @@ export const findBestPace = () => {
   })
 }
 
-// export const findBestTime = () => {
-//   return db.run.findFirst({
-//     orderBy: {
+export const findTimeDiff = async ({ userId }) => {
+  const totalTime = await db.run.aggregate({
 
-//     }
-//   })
-// }
+  })
+}

@@ -27,6 +27,9 @@ const Statistic = ({ findCurrentRun, findTotalRun, findBestPace }) => {
     console.log(pngUrl)
   }
 
+  const timeDiff = findCurrentRun.startTime
+  console.log(timeDiff)
+
   return (
     <div className="container mx-auto">
       <div className="md:grid md:grid-cols-3 md:gap-6">
@@ -135,15 +138,15 @@ const Statistic = ({ findCurrentRun, findTotalRun, findBestPace }) => {
               </div>
               <div className='grid grid-cols-3 gap-3'>
                 <div className='text-center'>
-                  <p>Avg.Pace</p>
+                  <p>Best Pace</p>
                   <p>{findBestPace.pace}</p>
                 </div>
                 <div className='text-center'>
-                  <p>Distace</p>
+                  <p>Best Distace</p>
                   <p>{findTotalRun} km</p>
                 </div>
                 <div className='text-center'>
-                  <p>Time</p>
+                  <p>Best Time</p>
                   <p>
                     {DateTime.fromISO(findCurrentRun.stopTime).diff(DateTime.fromISO(findCurrentRun.startTime), 'hours').toFormat(" hh ':' mm ':' ss ")}
                   </p>

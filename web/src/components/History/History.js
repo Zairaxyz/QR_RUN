@@ -4,7 +4,8 @@ const History = ({ findHistoryRun }) => {
   const history = findHistoryRun.map((findHistoryRun) => {
     return <div key={findHistoryRun.id}>
       <div className='mb-8 font-mono font-bold text-lg'>{findHistoryRun.park.name}</div>
-      <div className="grid grid-cols-3 gap-3">
+      <span>{DateTime.fromISO(findHistoryRun.startTime).toFormat('dd/LLL/yyyy')} at {DateTime.fromISO(findHistoryRun.startTime).toFormat(" hh ':' mm ':' ss ")}</span>
+      <div className="grid grid-cols-3 gap-3 pt-4">
         <div className='text-center'>
           <p className='mb-4'>Avg.Pace</p>
           <p>{findHistoryRun.pace}</p>
@@ -23,7 +24,7 @@ const History = ({ findHistoryRun }) => {
       <div className="border-t border-gray-200 my-8"></div>
     </div>
   })
-  // console.log(findHistoryRun)
+
   return (
     <>
       <div>

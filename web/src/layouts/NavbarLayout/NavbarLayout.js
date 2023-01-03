@@ -101,6 +101,18 @@ const NavbarLayout = ({ children }) => {
           ),
           key: 'summenu-5',
         },
+        {
+          label: (
+            <Link
+              to="/admin/checkPath"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              CheckPath
+            </Link>
+          ),
+          key: 'summenu-5',
+        },
       ],
     },
   ]

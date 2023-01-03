@@ -17,8 +17,8 @@ export const schema = gql`
     findCurrentRun: Run @skipAuth
     findBestPace: Run @skipAuth
     findTotalRun(userId: String!): Float! @skipAuth
-    # findBestTime: Run @skipAuth
     findHistoryRun: [Run!]! @skipAuth
+    findTimeDiff(userId: String!): String! @skipAuth
   }
 
   input CreateRunInput {
@@ -43,5 +43,6 @@ export const schema = gql`
     createRun(input: CreateRunInput!): Run! @skipAuth
     updateRun(id: String!, input: UpdateRunInput!): Run! @requireAuth
     deleteRun(id: String!): Run! @requireAuth
+    parkcountusers(parkId: String): String! @skipAuth
   }
 `

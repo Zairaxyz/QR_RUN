@@ -19,6 +19,8 @@ export const schema = gql`
     parks: [Park!]! @skipAuth
     park(id: String!): Park @skipAuth
     countParks: String! @skipAuth
+    parkUserOwner(userId: String!): Park! @skipAuth
+    parkUserGovernors(userId: String!): [Park!]! @skipAuth
   }
 
   input CreateParkInput {
@@ -45,6 +47,6 @@ export const schema = gql`
     createPark(input: CreateParkInput!): Park! @requireAuth
     updatePark(id: String!, input: UpdateParkInput!): Park! @requireAuth
     deletePark(id: String!): Park! @requireAuth
-    dwadaw(parkId: String): String! @skipAuth
+    # AllRunInUserOfParks(governorId: String!): String! @skipAuth
   }
 `

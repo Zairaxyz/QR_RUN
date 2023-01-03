@@ -28,10 +28,12 @@
     "framer-motion": "^6",
     "luxon": "^3.1.1",
     "prop-types": "15.8.1",
+    "qrcode-reader": "^1.0.4",
     "qrcode.react": "^3.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-qr-code": "^2.0.8",
+    "react-qr-reader": "^3.0.0-beta-1",
     "react-select": "^5.5.2"
   },
   "devDependencies": {

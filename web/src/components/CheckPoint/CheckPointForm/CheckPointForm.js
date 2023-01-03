@@ -48,15 +48,15 @@ const CheckpointForm = (props) => {
   const handleChangePark = (e) => {
     setParkId(e)
   }
-  // const onChange = (e) => {
-  //   setParkId(`selected ${e.value}`)
-  // }
+
   const onSearch = (e) => {
     setParkId('search:', e.value)
   }
+
   const validateMessages = {
     required: 'Not data',
   }
+
   return (
     <div className="rw-form-wrapper">
       <Form onSubmit={onSubmit} error={props.error}>

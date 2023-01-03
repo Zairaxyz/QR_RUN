@@ -1,5 +1,5 @@
 import { db } from 'src/lib/db'
-// import { logger } from 'src/lib/logger'
+
 export const checkpoints = () => {
   return db.checkpoint.findMany()
 }
@@ -47,6 +47,7 @@ export const Checkpoint = {
       .PrevPathCheckpoint()
   },
 }
+
 export const checkRunningPath = async ({ userId, checkpointId }) => {
   const user = await db.user.findUnique({
     where: { id: userId },
@@ -63,6 +64,7 @@ export const checkRunningPath = async ({ userId, checkpointId }) => {
       NOT: { prevCheckpointId: null },
     },
   })
+
   if (checkpoint) {
     if (user.currentCheckpoint == checkpoint.prevCheckpointId) {
       if (checkpoint.isFinish === true) {
@@ -130,7 +132,7 @@ const stopRuning = async ({ userId, checkpointId, checkpointNull }) => {
       checkpointId: checkpointId,
     },
   })
-  // console.log(checkpoint)
+
   const poplap = await db.lap.findMany({
     orderBy: {
       stopTime: 'desc',
@@ -145,26 +147,22 @@ const stopRuning = async ({ userId, checkpointId, checkpointNull }) => {
       path: true,
     },
   })
-  // console.log(poplap[0].id)
-  // logger.warn(JSON.stringify(poplap.path.parkId) + 'Null')
+
   const createrun = await db.lap.update({
     where: {
       id: poplap[0].id,
     },
     data: { stopTime: new Date() },
   })
-  // console.log(createrun)
-  // console.log((createrun.startTime / 1000) * 24 * 60)
+
   const lopiuo = dayjs(createrun.stopTime).diff(
     createrun.startTime,
     'minute',
     true
   )
-  // console.log(lopiuo.diff(createrun.startTime, 'minute', true))
+
   console.log(lopiuo.toFixed(2))
-  // console.log(lopiuo * 60)
-  // console.log(lopiuo * 60)
-  // console.log((createrun.stopTime - createrun.startTime) * 60)
+
   await db.run.create({
     data: {
       startTime: createrun.startTime,
